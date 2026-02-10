@@ -251,14 +251,14 @@ extension HTML.Element.Tag where Content: HTML.View {
 }
 
 extension HTML.Element.Tag: Rendering.`Protocol`
-where Content: Rendering.`Protocol`, Content.Context == HTML.Context, Content.Output == UInt8 {
+where Content: Rendering.`Protocol`, Content.Context == HTML.Context, Content.RenderOutput == UInt8 {
     public var body: Never {
         fatalError()
     }
 
     public typealias Content = Never
     public typealias Context = HTML.Context
-    public typealias Output = UInt8
+    public typealias RenderOutput = UInt8
 
     /// Renders this HTML element into the provided buffer.
     public static func _render<Buffer: RangeReplaceableCollection>(

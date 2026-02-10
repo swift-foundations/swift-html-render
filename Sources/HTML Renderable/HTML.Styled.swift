@@ -23,7 +23,7 @@ extension HTML {
     ///
     /// Styles are collected in the render context and output as a `<style>` block.
     /// The `P` generic preserves the typed property for PDF rendering.
-    public struct Styled<Content, P: Property> {
+    public struct Styled<Content, P: W3C_CSS_Shared.Property> {
         /// The HTML content being styled.
         public let content: Content
 
@@ -74,7 +74,7 @@ extension HTML {
 extension HTML.Styled: Renderable where Content: HTML.View {
     public typealias Context = HTML.Context
 
-    public typealias Output = UInt8
+    public typealias RenderOutput = UInt8
 }
 
 extension HTML.Styled: HTML.View where Content: HTML.View {
@@ -128,7 +128,7 @@ extension HTML.View {
     ///
     /// - Parameter property: The typed CSS property value.
     /// - Returns: An HTML element with the specified style applied.
-    public func inlineStyle<P: Property>(
+    public func inlineStyle<P: W3C_CSS_Shared.Property>(
         _ property: P?
     ) -> HTML.Styled<Self, P> {
         let ctx = HTML.Element.Style.Context.current

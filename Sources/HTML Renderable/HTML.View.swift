@@ -36,7 +36,7 @@ public import WHATWG_HTML_Shared
 ///   making it familiar to Swift developers who have worked with SwiftUI.
 extension HTML {
     public protocol View: Renderable
-    where Content: HTML.View, Context == HTML.Context, Output == UInt8 {
+    where Content: HTML.View, Context == HTML.Context, RenderOutput == UInt8 {
         @HTML.Builder var body: Content { get }
     }
 }

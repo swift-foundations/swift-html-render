@@ -15,7 +15,7 @@ public import RenderingAsync
 extension _Tuple: @retroactive Renderable where repeat each Content: HTML.View {
     public typealias Context = HTML.Context
     public typealias Content = Never
-    public typealias Output = UInt8
+    public typealias RenderOutput = UInt8
     public var body: Never { fatalError("body should not be called") }
 
     public static func _render<Buffer: RangeReplaceableCollection>(

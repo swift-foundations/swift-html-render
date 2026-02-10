@@ -46,7 +46,7 @@ extension HTML.Element {
         ///   - atRule: Optional at-rule (e.g., media query).
         ///   - selector: Optional selector prefix.
         ///   - pseudo: Optional pseudo-class or pseudo-element.
-        public init<P: Property>(
+        public init<P: W3C_CSS_Shared.Property>(
             _ property: P,
             atRule: HTML.AtRule? = nil,
             selector: HTML.Selector? = nil,
