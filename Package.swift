@@ -30,8 +30,8 @@ extension Target.Dependency {
     static var inlineSnapshotTesting: Self {
         .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing")
     }
-    static var incits4_1986: Self {
-        .product(name: "INCITS 4 1986", package: "swift-incits-4-1986")
+    static var ascii: Self {
+        .product(name: "ASCII", package: "swift-ascii")
     }
     static var iso9899: Self {
         .product(name: "ISO 9899", package: "swift-iso-9899")
@@ -77,11 +77,11 @@ let package = Package(
         .package(url: "https://github.com/coenttb/swift-async-algorithms-fork.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-collections.git", from: "1.1.2"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.18.3"),
-        .package(url: "https://github.com/swift-standards/swift-incits-4-1986", from: "0.4.0"),
-        .package(url: "https://github.com/swift-standards/swift-standards", from: "0.16.1"),
-        .package(url: "https://github.com/swift-standards/swift-iso-9899", from: "0.1.0"),
-        .package(url: "https://github.com/swift-standards/swift-html-standard", from: "0.1.6"),
-        .package(url: "https://github.com/swift-standards/swift-w3c-css", from: "0.2.1"),
+        .package(path: "../../swift-foundations/swift-ascii"),
+        .package(path: "../../swift-standards/swift-standards"),
+        .package(path: "../../swift-standards/swift-iso-9899"),
+        .package(path: "../../swift-standards/swift-html-standard"),
+        .package(path: "../../swift-standards/swift-w3c-css"),
     ],
     targets: [
         .target(
@@ -91,7 +91,7 @@ let package = Package(
                 .asyncRenderable,
                 .asyncAlgorithms,
                 .product(name: "OrderedCollections", package: "swift-collections"),
-                .incits4_1986,
+                .ascii,
                 .standards,
                 .iso9899,
                 .w3cCSSShared,

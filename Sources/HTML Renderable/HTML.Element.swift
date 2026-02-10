@@ -5,7 +5,7 @@
 //  Created by Point-Free, Inc
 //
 
-import INCITS_4_1986
+import ASCII
 import OrderedCollections
 import Rendering
 public import RenderingAsync

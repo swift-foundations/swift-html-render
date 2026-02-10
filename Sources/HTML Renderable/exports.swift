@@ -6,7 +6,7 @@
 //
 
 @_exported import HTML_Standard
-@_exported import INCITS_4_1986
+@_exported import ASCII
 @_exported import OrderedCollections
 @_exported import Rendering
 @_exported import W3C_CSS_Shared

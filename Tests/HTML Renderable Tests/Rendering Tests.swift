@@ -9,7 +9,7 @@
 
 import Foundation
 import HTML_Rendering_TestSupport
-import INCITS_4_1986
+import ASCII
 import OrderedCollections
 import Rendering
 import Testing

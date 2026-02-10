@@ -5,7 +5,7 @@
 //  Configuration and error types for HTML rendering.
 //
 
-import INCITS_4_1986
+import ASCII
 import Rendering
 public import WHATWG_HTML_Shared
 

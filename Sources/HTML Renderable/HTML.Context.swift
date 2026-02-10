@@ -6,7 +6,7 @@
 //  Holds state (attributes, styles, indentation) separate from the output buffer.
 //
 
-import INCITS_4_1986
+import ASCII
 public import OrderedCollections
 import Rendering
 public import WHATWG_HTML_Shared
