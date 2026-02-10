@@ -45,6 +45,9 @@ extension Target.Dependency {
     static var htmlStandard: Self {
         .product(name: "HTML Standard", package: "swift-html-standard")
     }
+    static var htmlStandardTestSupport: Self {
+        .product(name: "HTML Standard Test Support", package: "swift-html-standard")
+    }
     static var htmlStandardAttributes: Self {
         .product(name: "HTML Standard Attributes", package: "swift-html-standard")
     }
@@ -128,6 +131,7 @@ let package = Package(
                 .htmlRenderable,
                 .renderableTestSupport,
                 .inlineSnapshotTesting,
+                .htmlStandardTestSupport,
             ]
         ),
         .testTarget(

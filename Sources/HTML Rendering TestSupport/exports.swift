@@ -7,3 +7,4 @@
 
 @_exported import HTML_Renderable
 @_exported import Rendering_TestSupport
+@_exported import HTML_Standard_Test_Support
