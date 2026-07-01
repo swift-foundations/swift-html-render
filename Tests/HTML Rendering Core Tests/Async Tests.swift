@@ -1,0 +1,259 @@
+//
+//  Async Tests.swift
+//  swift-html-rendering
+//
+//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
+//
+//  Cross-cutting tests for async rendering, streaming, and concurrency.
+//
+
+@_spi(DynamicHTML) import HTML_Rendering_Core
+import HTML_Rendering
+import HTML_Standard
+import Testing
+
+@testable import HTML_Rendering_Core
+
+// MARK: - Test Suite
+
+@Suite
+struct `Async Tests` {
+    @Suite struct Unit {}
+    @Suite struct EdgeCase {}
+    @Suite struct Integration {}
+}
+
+// MARK: - Unit
+
+extension `Async Tests`.Unit {
+
+    @Test
+    func `async and sync rendering produce same output`() async throws {
+        struct TestHTML: HTML.View, Sendable {
+            var body: some HTML.View {
+                tag("div") {
+                    tag("h1") { HTML.Text("Header1") }
+                    tag("p") { HTML.Text("Content") }
+                }
+            }
+        }
+
+        let html = HTML.Document {
+            TestHTML()
+        } head: {
+            tag("title") { HTML.Text("Title") }
+        }
+        let syncResult = {
+            String(decoding: [UInt8](html, configuration: .pretty), as: UTF8.self)
+        }()
+        let asyncResult = await String(html, configuration: .pretty)
+
+        #expect(syncResult == asyncResult)
+        print(syncResult)
+    }
+
+    @Test
+    func `async bytes matches sync bytes`() async {
+        let html = tag("p") { HTML.Text("Test content") }
+        let syncBytes = { [UInt8](html) }()
+        let asyncBytes = await [UInt8](html)
+
+        #expect(syncBytes == asyncBytes)
+    }
+
+    @Test
+    func `sync rendering produces complete content`() {
+        struct TestHTML: HTML.View, Sendable {
+            var body: some HTML.View {
+                tag("ul") {
+                    for i in 1...5 {
+                        tag("li") { HTML.Text("Item \(i)") }
+                    }
+                }
+            }
+        }
+
+        let html = TestHTML()
+        let bytes = [UInt8](html)
+        let result = String(decoding: bytes, as: UTF8.self)
+
+        for i in 1...5 {
+            #expect(result.contains("Item \(i)"))
+        }
+    }
+
+    @Test
+    func `async rendering preserves styles`() async {
+        struct StyledHTML: HTML.View, Sendable {
+            var body: some HTML.View {
+                tag("div") {
+                    HTML.Text("Styled")
+                }
+                .inlineStyle("color", "red")
+                .inlineStyle("font-size", "16px")
+            }
+        }
+
+        let html = StyledHTML()
+        let result = await String(html)
+
+        #expect(result.contains("color"))
+        #expect(result.contains("font-size"))
+    }
+
+    @Test
+    func `async rendering preserves attributes`() async {
+        struct AttributedHTML: HTML.View, Sendable {
+            var body: some HTML.View {
+                tag("a") {
+                    HTML.Text("Link")
+                }
+                .attribute("href", "https://example.com")
+                .attribute("class", "link")
+            }
+        }
+
+        let html = AttributedHTML()
+        let result = await String(html)
+
+        #expect(result.contains("href=\"https://example.com\""))
+        #expect(result.contains("class=\"link\""))
+    }
+
+    @Test
+    func `multiple sequential async operations`() async throws {
+        struct TestHTML: HTML.View, Sendable {
+            let id: Int
+            var body: some HTML.View {
+                tag("div") { HTML.Text("ID: \(id)") }
+            }
+        }
+
+        for i in 1...5 {
+            let html = TestHTML(id: i)
+            let result = await String(html)
+            #expect(result.contains("ID: \(i)"))
+        }
+    }
+}
+
+// MARK: - EdgeCase
+
+extension `Async Tests`.EdgeCase {
+
+    @Test
+    func `async with empty content`() async {
+        struct EmptyHTML: HTML.View, Sendable {
+            var body: some HTML.View {
+                HTML.Empty()
+            }
+        }
+
+        let html = EmptyHTML()
+        let result = await [UInt8](html)
+
+        #expect(result.isEmpty)
+    }
+}
+
+// MARK: - Integration
+
+extension `Async Tests`.Integration {
+
+    @Test
+    func `concurrent renders are isolated`() async throws {
+        let results = await withTaskGroup(of: String.self) { group in
+            for i in 0..<10 {
+                group.addTask {
+                    let html = HTML.Document {
+                        tag("div") {
+                            HTML.Text("Item \(i)")
+                        }
+                        .inlineStyle("order", "\(i)")
+                    }
+                    return (try? String(html)) ?? ""
+                }
+            }
+
+            var collected: [String] = []
+            for await result in group {
+                collected.append(result)
+            }
+            return collected
+        }
+
+        #expect(results.count == 10)
+        for result in results {
+            #expect(result.contains("<div"))
+        }
+    }
+
+    @Test
+    func `TaskLocal configuration isolation`() async {
+        let results = await withTaskGroup(of: Bool.self) { group in
+            group.addTask {
+                HTML.Context.Configuration.$current.withValue(.email) {
+                    HTML.Context.Configuration.current.forceImportant
+                }
+            }
+            group.addTask {
+                HTML.Context.Configuration.$current.withValue(.default) {
+                    HTML.Context.Configuration.current.forceImportant
+                }
+            }
+
+            var bools: [Bool] = []
+            for await result in group {
+                bools.append(result)
+            }
+            return bools
+        }
+
+        #expect(results.contains(true))
+        #expect(results.contains(false))
+    }
+
+    @Test
+    func `document sync rendering includes all parts`() {
+        struct StyledMainHTML: HTML.View, Sendable {
+            var body: some HTML.View {
+                tag("main") {
+                    HTML.Text("Body content")
+                }
+                .inlineStyle("color", "blue")
+            }
+        }
+
+        let document = HTML.Document {
+            StyledMainHTML()
+        }
+
+        let bytes = [UInt8](document)
+        let result = String(decoding: bytes, as: UTF8.self)
+
+        #expect(result.contains("<!doctype html>"))
+        #expect(result.contains("<style>"))
+        #expect(result.contains("color:blue"))
+        #expect(result.contains("Body content"))
+    }
+
+    @Test
+    func `parallel async rendering`() async {
+        let htmls = (1...10).map { i in
+            tag("p") { HTML.Text("Parallel \(i)") }
+        }
+
+        await withTaskGroup(of: (Int, String).self) { group in
+            for (index, html) in htmls.enumerated() {
+                group.addTask {
+                    let result = await String(html)
+                    return (index, result)
+                }
+            }
+
+            for await (index, result) in group {
+                #expect(result.contains("Parallel \(index + 1)"))
+            }
+        }
+    }
+}

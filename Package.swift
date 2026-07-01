@@ -1,52 +1,30 @@
-// swift-tools-version: 6.2
+// swift-tools-version: 6.3.1
 
 import PackageDescription
 
 extension String {
-    static let htmlRenderable: Self = "HTML Renderable"
+    static let htmlRenderingCore: Self = "HTML Rendering Core"
     static let htmlAttributesRendering: Self = "HTML Attributes Rendering"
     static let htmlElementsRendering: Self = "HTML Elements Rendering"
     static let htmlRendering: Self = "HTML Rendering"
-    static let htmlRenderableTestSupport: Self = "HTML Rendering TestSupport"
+    var tests: Self { self + " Tests" }
 }
 
 extension Target.Dependency {
-    static var htmlRenderable: Self { .target(name: .htmlRenderable) }
+    static var htmlRenderingCore: Self { .target(name: .htmlRenderingCore) }
     static var htmlAttributesRendering: Self { .target(name: .htmlAttributesRendering) }
     static var htmlElementsRendering: Self { .target(name: .htmlElementsRendering) }
-    static var htmlRenderableTestSupport: Self { .target(name: .htmlRenderableTestSupport) }
 }
 
 extension Target.Dependency {
-    static var renderable: Self {
-        .product(name: "Rendering", package: "swift-renderable")
-    }
-    static var asyncRenderable: Self {
-        .product(name: "RenderingAsync", package: "swift-renderable")
-    }
-    static var renderableTestSupport: Self {
-        .product(name: "Rendering TestSupport", package: "swift-renderable")
-    }
-    static var inlineSnapshotTesting: Self {
-        .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing")
+    static var renderingPrimitives: Self {
+        .product(name: "Render Primitives", package: "swift-render-primitives")
     }
     static var ascii: Self {
         .product(name: "ASCII", package: "swift-ascii")
     }
-    static var iso9899: Self {
-        .product(name: "ISO 9899", package: "swift-iso-9899")
-    }
-    static var standards: Self {
-        .product(name: "Standards", package: "swift-standards")
-    }
-    static var asyncAlgorithms: Self {
-        .product(name: "AsyncAlgorithms", package: "swift-async-algorithms-fork")
-    }
     static var htmlStandard: Self {
         .product(name: "HTML Standard", package: "swift-html-standard")
-    }
-    static var htmlStandardTestSupport: Self {
-        .product(name: "HTML Standard Test Support", package: "swift-html-standard")
     }
     static var htmlStandardAttributes: Self {
         .product(name: "HTML Standard Attributes", package: "swift-html-standard")
@@ -57,58 +35,103 @@ extension Target.Dependency {
     static var w3cCSSShared: Self {
         .product(name: "W3C CSS Shared", package: "swift-w3c-css")
     }
+    static var dictionaryPrimitives: Self {
+        .product(name: "Dictionary Primitives", package: "swift-dictionary-primitives")
+    }
+    static var sharedPrimitive: Self {
+        .product(name: "Shared Primitive", package: "swift-shared-primitives")
+    }
+    static var hashIndexedPrimitive: Self {
+        .product(name: "Hash Indexed Primitive", package: "swift-hash-table-primitives")
+    }
+    static var columnPrimitives: Self {
+        .product(name: "Column Primitives", package: "swift-column-primitives")
+    }
+    static var hashPrimitives: Self {
+        .product(name: "Hash Primitives", package: "swift-hash-primitives")
+    }
+    static var bufferLinearPrimitive: Self {
+        .product(name: "Buffer Linear Primitive", package: "swift-buffer-linear-primitives")
+    }
+    static var ownershipMutablePrimitives: Self {
+        .product(name: "Ownership Mutable Primitives", package: "swift-ownership-primitives")
+    }
+    static var asyncChannelPrimitives: Self {
+        .product(name: "Async Channel Primitives", package: "swift-async-primitives")
+    }
+    static var asyncPrimitive: Self {
+        .product(name: "Async Primitive", package: "swift-async-primitives")
+    }
 }
 
 let package = Package(
-    name: "swift-html-rendering",
+    name: "swift-html-render",
     platforms: [
-        .iOS(.v26),
         .macOS(.v26),
+        .iOS(.v26),
         .tvOS(.v26),
         .watchOS(.v26),
-        .macCatalyst(.v26),
+        .visionOS(.v26),
     ],
     products: [
-        .library(name: .htmlRenderable, targets: [.htmlRenderable]),
+        .library(name: .htmlRenderingCore, targets: [.htmlRenderingCore]),
         .library(name: .htmlAttributesRendering, targets: [.htmlAttributesRendering]),
         .library(name: .htmlElementsRendering, targets: [.htmlElementsRendering]),
         .library(name: .htmlRendering, targets: [.htmlRendering]),
-        .library(name: .htmlRenderableTestSupport, targets: [.htmlRenderableTestSupport]),
+        .library(name: "HTML Rendering Core Test Support", targets: ["HTML Rendering Core Test Support"]),
     ],
     dependencies: [
-        .package(path: "../swift-renderable"),
-        .package(url: "https://github.com/coenttb/swift-async-algorithms-fork.git", from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-collections.git", from: "1.1.2"),
-        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.18.3"),
-        .package(path: "../../swift-foundations/swift-ascii"),
-        .package(path: "../../swift-standards/swift-standards"),
-        .package(path: "../../swift-standards/swift-iso-9899"),
-        .package(path: "../../swift-standards/swift-html-standard"),
-        .package(path: "../../swift-standards/swift-w3c-css"),
+        .package(url: "https://github.com/swift-primitives/swift-render-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-ascii.git", branch: "main"),
+        .package(url: "https://github.com/swift-standards/swift-html-standard.git", branch: "main"),
+        .package(url: "https://github.com/swift-w3c/swift-w3c-css.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-dictionary-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-dictionary-ordered-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-shared-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-hash-table-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-column-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-hash-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-buffer-linear-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ownership-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-async-primitives.git", branch: "main"),
     ],
     targets: [
+
+        // MARK: - Core
+
         .target(
-            name: .htmlRenderable,
+            name: .htmlRenderingCore,
             dependencies: [
-                .renderable,
-                .asyncRenderable,
-                .asyncAlgorithms,
-                .product(name: "OrderedCollections", package: "swift-collections"),
+                .renderingPrimitives,
                 .ascii,
-                .standards,
-                .iso9899,
                 .w3cCSSShared,
                 .htmlStandard,
+                .dictionaryPrimitives,
+                .product(name: "Dictionary Ordered Primitives", package: "swift-dictionary-ordered-primitives"),
+                .sharedPrimitive,
+                .hashIndexedPrimitive,
+                .columnPrimitives,
+                .hashPrimitives,
+                .bufferLinearPrimitive,
+                .ownershipMutablePrimitives,
+                .asyncChannelPrimitives,
+                .asyncPrimitive,
             ]
         ),
+
+        // MARK: - Attributes
+
         .target(
             name: .htmlAttributesRendering,
             dependencies: [
                 .htmlStandard,
-                .htmlRenderable,
+                .htmlRenderingCore,
                 .htmlStandardAttributes,
             ]
         ),
+
+        // MARK: - Elements
+
         .target(
             name: .htmlElementsRendering,
             dependencies: [
@@ -117,6 +140,9 @@ let package = Package(
                 .htmlStandardElements,
             ]
         ),
+
+        // MARK: - Umbrella
+
         .target(
             name: .htmlRendering,
             dependencies: [
@@ -125,35 +151,48 @@ let package = Package(
                 .htmlElementsRendering,
             ]
         ),
+
+        // MARK: - Test Support
+
         .target(
-            name: .htmlRenderableTestSupport,
+            name: "HTML Rendering Core Test Support",
             dependencies: [
-                .htmlRenderable,
-                .renderableTestSupport,
-                .inlineSnapshotTesting,
-                .htmlStandardTestSupport,
-            ]
+                .htmlRenderingCore,
+                .w3cCSSShared,
+            ],
+            path: "Tests/Support"
         ),
+
+        // MARK: - Tests
+
         .testTarget(
-            name: .htmlRenderable.tests,
+            name: .htmlRenderingCore.tests,
             dependencies: [
-                .htmlRenderable,
-                .htmlRenderableTestSupport
-            ]
+                .htmlRenderingCore,
+                .target(name: .htmlRendering),
+                .target(name: "HTML Rendering Core Test Support"),
+            ],
+            path: "Tests/HTML Rendering Core Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
 )
 
-extension String {
-    var tests: Self { self + " Tests" }
-}
-
-for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
-    let existing = target.swiftSettings ?? []
-    target.swiftSettings = existing + [
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
+    let ecosystem: [SwiftSetting] = [
+        .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportsByDefault")
+        .enableUpcomingFeature("MemberImportVisibility"),
+        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+        .enableExperimentalFeature("LifetimeDependence"),
+        .enableExperimentalFeature("Lifetimes"),
+        .enableExperimentalFeature("SuppressedAssociatedTypes"),
+        .enableUpcomingFeature("InferIsolatedConformances"),
+        .enableUpcomingFeature("LifetimeDependence"),
     ]
+
+    let package: [SwiftSetting] = []
+
+    target.swiftSettings = (target.swiftSettings ?? []) + ecosystem + package
 }
