@@ -84,7 +84,7 @@ Five library products. The umbrella `HTML Rendering` is the default import; the 
 ## Community
 
 <!-- BEGIN: discussion -->
-*Discussion thread will be created at first public flip.*
+*Discussion thread will be created at first public release.*
 <!-- END: discussion -->
 
 ## License
