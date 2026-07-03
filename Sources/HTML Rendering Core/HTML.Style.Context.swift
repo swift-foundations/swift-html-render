@@ -49,7 +49,7 @@ extension HTML.Element.Style {
         public let pseudo: HTML.Pseudo?
 
         /// The default empty context.
-        public static let `default` = Context(atRule: nil, selector: nil, pseudo: nil)
+        public static let `default` = Self(atRule: nil, selector: nil, pseudo: nil)
 
         /// TaskLocal storage for the current style context.
         ///
@@ -117,8 +117,8 @@ extension HTML.Element.Style {
         ///
         /// - Parameter other: The context to merge with (its values take precedence).
         /// - Returns: A new context with merged values.
-        public func merging(with other: Context) -> Context {
-            Context(
+        public func merging(with other: Self) -> Self {
+            Self(
                 atRule: other.atRule ?? self.atRule,
                 selector: other.selector ?? self.selector,
                 pseudo: combinePseudo(self.pseudo, other.pseudo)

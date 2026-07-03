@@ -24,14 +24,17 @@ extension HTML_Standard.Input {
         case .button(let button):
             input
                 .value(button.value)
+
         case .checkbox(let checkbox):
             input
                 .value(checkbox.value)
                 .checked(checkbox.checked)
                 .required(checkbox.required)
+
         case .color(let color):
             input
                 .value(color.value)
+
         case .date(let date):
             input
                 .value(date.value)
@@ -39,6 +42,7 @@ extension HTML_Standard.Input {
                 .max(date.max)
                 .step(date.step)
                 .required(date.required)
+
         case .datetimeLocal(let datetimeLocal):
             input
                 .value(datetimeLocal.value)
@@ -46,6 +50,7 @@ extension HTML_Standard.Input {
                 .max(datetimeLocal.max)
                 .step(datetimeLocal.step)
                 .required(datetimeLocal.required)
+
         case .email(let email):
             input
                 .value(email.value)
@@ -57,15 +62,18 @@ extension HTML_Standard.Input {
                 .placeholder(email.placeholder)
                 .readonly(email.readonly)
                 .size(email.size)
+
         case .file(let file):
             input
                 .accept(file.accept)
                 .capture(file.capture)
                 .multiple(file.multiple)
                 .required(file.required)
+
         case .hidden(let hidden):
             input
                 .value(hidden.value)
+
         case .image(let image):
             input
                 .alt(image.alt)
@@ -78,6 +86,7 @@ extension HTML_Standard.Input {
                 .formMethod(image.form.method)
                 .formNovalidate(image.form.novalidate)
                 .formTarget(image.form.target)
+
         case .month(let month):
             input
                 .value(month.value)
@@ -87,6 +96,7 @@ extension HTML_Standard.Input {
                 .readonly(month.readonly)
                 .step(month.step)
                 .required(month.required)
+
         case .number(let number):
             input
                 .value(number.value)
@@ -96,6 +106,7 @@ extension HTML_Standard.Input {
                 .readonly(number.readonly)
                 .step(number.step)
                 .required(number.required)
+
         case .password(let password):
             input
                 .value(password.value)
@@ -107,11 +118,13 @@ extension HTML_Standard.Input {
                 .size(password.size)
                 .autocomplete(password.autocomplete)
                 .required(password.required)
+
         case .radio(let radio):
             input
                 .value(radio.value)
                 .checked(radio.checked)
                 .required(radio.required)
+
         case .range(let range):
             input
                 .value(range.value)
@@ -119,10 +132,12 @@ extension HTML_Standard.Input {
                 .max(range.max)
                 .step(range.step)
                 .list(range.list)
+
         case .reset(let reset):
             input
                 .value(reset.value)
                 .required(reset.required)
+
         case .search(let search):
             input
                 .value(search.value)
@@ -135,6 +150,7 @@ extension HTML_Standard.Input {
                 .size(search.size)
                 .spellcheck(search.spellcheck)
                 .required(search.required)
+
         case .submit(let submit):
             input
                 .formAction(submit.formaction)
@@ -144,6 +160,7 @@ extension HTML_Standard.Input {
                 .formTarget(submit.formtarget)
                 .value(submit.value)
                 .required(submit.required)
+
         case .tel(let tel):
             input
                 .value(tel.value)
@@ -155,6 +172,7 @@ extension HTML_Standard.Input {
                 .readonly(tel.readonly)
                 .size(tel.size)
                 .required(tel.required)
+
         case .text(let text):
             input
                 .value(text.value)
@@ -167,6 +185,7 @@ extension HTML_Standard.Input {
                 .size(text.size)
                 .spellcheck(text.spellcheck)
                 .required(text.required)
+
         case .time(let time):
             input
                 .value(time.value)
@@ -176,6 +195,7 @@ extension HTML_Standard.Input {
                 .readonly(time.readonly)
                 .step(time.step)
                 .required(time.required)
+
         case .url(let url):
             input
                 .value(url.value)
@@ -188,6 +208,7 @@ extension HTML_Standard.Input {
                 .size(url.size)
                 .spellcheck(url.spellcheck)
                 .required(url.required)
+
         case .week(let week):
             input
                 .value(week.value)
@@ -197,6 +218,7 @@ extension HTML_Standard.Input {
                 .readonly(week.readonly)
                 .step(week.step)
                 .required(week.required)
+
         case .datetime:
             input
         }

@@ -71,8 +71,8 @@ extension HTML.Context {
     /// - Parameter configuration: The rendering configuration. Defaults to current task-local value.
     public init(_ configuration: Configuration = .current) {
         self.bytes = ContiguousArray<UInt8>()
-        self.attributes = HTML.Context.Attributes()
-        self.styles = HTML.Context.Styles()
+        self.attributes = Self.Attributes()
+        self.styles = Self.Styles()
         self.configuration = configuration
         self.currentIndentation = []
         self.styleCounter = 0
@@ -90,10 +90,13 @@ extension HTML.Context {
             switch byte {
             case .ascii.ampersand:
                 bytes.append(contentsOf: [UInt8].html.ampersand)
+
             case .ascii.lessThanSign:
                 bytes.append(contentsOf: [UInt8].html.lessThan)
+
             case .ascii.greaterThanSign:
                 bytes.append(contentsOf: [UInt8].html.greaterThan)
+
             default:
                 bytes.append(byte)
             }
@@ -380,14 +383,19 @@ extension HTML.Context {
             switch byte {
             case .ascii.dquote:
                 bytes.append(contentsOf: [UInt8].html.doubleQuotationMark)
+
             case .ascii.apostrophe:
                 bytes.append(contentsOf: [UInt8].html.apostrophe)
+
             case .ascii.ampersand:
                 bytes.append(contentsOf: [UInt8].html.ampersand)
+
             case .ascii.lessThanSign:
                 bytes.append(contentsOf: [UInt8].html.lessThan)
+
             case .ascii.greaterThanSign:
                 bytes.append(contentsOf: [UInt8].html.greaterThan)
+
             default:
                 bytes.append(byte)
             }
@@ -430,6 +438,7 @@ extension HTML.Context {
         case "area", "base", "br", "col", "embed", "hr", "img",
             "input", "link", "meta", "param", "source", "track", "wbr":
             true
+
         default:
             false
         }

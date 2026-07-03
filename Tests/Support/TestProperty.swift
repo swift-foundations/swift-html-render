@@ -15,8 +15,8 @@ public struct TestProperty: W3C_CSS_Shared.Property, GlobalConvertible {
         self.value = value
     }
 
-    public static func global(_ global: Global) -> TestProperty {
-        TestProperty("", global.rawValue)
+    public static func global(_ global: Global) -> Self {
+        Self("", global.rawValue)
     }
 
     public var description: String {

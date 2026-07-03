@@ -146,9 +146,11 @@ struct `AnyHTML Tests` {
             case "header":
                 let h1 = tag("h1") { HTML.Text("Header") }
                 return .init(h1)
+
             case "paragraph":
                 let p = tag("p") { HTML.Text("Paragraph") }
                 return .init(p)
+
             default:
                 let text = HTML.Text("Default")
                 return .init(text)

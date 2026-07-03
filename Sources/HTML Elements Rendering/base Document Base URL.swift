@@ -17,8 +17,10 @@ extension HTML_Standard_Elements.Base {
         switch self.configuration {
         case .href(let href):
             element.href(href)
+
         case .target(let target):
             element.target(target)
+
         case .both(let href, let target):
             element
                 .href(href)

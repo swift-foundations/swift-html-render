@@ -49,10 +49,12 @@ extension HTML.Element.Tag where Content: HTML.View {
         case "body": return WHATWG_HTML.Body.self
         case "title": return WHATWG_HTML.Title.self
         case "base": return WHATWG_HTML.Base.self
+
         // Metadata (4.2)
         case "meta": return WHATWG_HTML.Meta.self
         case "link": return WHATWG_HTML.Link.self
         case "style": return WHATWG_HTML.Style.self
+
         // Sections (4.3)
         case "article": return WHATWG_HTML.Article.self
         case "section": return WHATWG_HTML.Section.self
@@ -68,6 +70,7 @@ extension HTML.Element.Tag where Content: HTML.View {
         case "h5": return WHATWG_HTML.H5.self
         case "h6": return WHATWG_HTML.H6.self
         case "hgroup": return WHATWG_HTML.HeadingGroup.self
+
         // Grouping Content (4.4)
         case "p": return WHATWG_HTML.Paragraph.self
         case "hr": return WHATWG_HTML.ThematicBreak.self
@@ -84,6 +87,7 @@ extension HTML.Element.Tag where Content: HTML.View {
         case "main": return WHATWG_HTML.Main.self
         case "search": return WHATWG_HTML.Search.self
         case "div": return WHATWG_HTML.ContentDivision.self
+
         // Text-level Semantics (4.5)
         case "a": return WHATWG_HTML.Anchor.self
         case "em": return WHATWG_HTML.Emphasis.self
@@ -116,9 +120,11 @@ extension HTML.Element.Tag where Content: HTML.View {
         case "br": return WHATWG_HTML.BR.self
         case "wbr": return WHATWG_HTML.LineBreakOpportunity.self
         case "mark": return WHATWG_HTML.Mark.self
+
         // Edits (4.7)
         case "ins": return WHATWG_HTML.InsertedText.self
         case "del": return WHATWG_HTML.Del.self
+
         // Embedded Content (4.8)
         case "picture": return WHATWG_HTML.Picture.self
         case "source": return WHATWG_HTML.Source.self
@@ -133,6 +139,7 @@ extension HTML.Element.Tag where Content: HTML.View {
         case "area": return WHATWG_HTML.Area.self
         case "canvas": return WHATWG_HTML.Canvas.self
         case "fencedframe": return WHATWG_HTML.FencedFrame.self
+
         // Tabular Data (4.9)
         case "table": return WHATWG_HTML.Table.self
         case "caption": return WHATWG_HTML.Caption.self
@@ -144,6 +151,7 @@ extension HTML.Element.Tag where Content: HTML.View {
         case "tr": return WHATWG_HTML.TableRow.self
         case "th": return WHATWG_HTML.TableHeader.self
         case "td": return WHATWG_HTML.TableDataCell.self
+
         // Forms (4.10)
         case "form": return WHATWG_HTML.Form.self
         case "label": return WHATWG_HTML.Label.self
@@ -159,16 +167,19 @@ extension HTML.Element.Tag where Content: HTML.View {
         case "meter": return WHATWG_HTML.Meter.self
         case "fieldset": return WHATWG_HTML.FieldSet.self
         case "legend": return WHATWG_HTML.Legend.self
+
         // Interactive Elements (4.11)
         case "details": return WHATWG_HTML.Details.self
         case "summary": return WHATWG_HTML.DisclosureSummary.self
         case "dialog": return WHATWG_HTML.Dialog.self
         case "menu": return WHATWG_HTML.Menu.self
+
         // Scripting (4.12)
         case "script": return WHATWG_HTML.Script.self
         case "noscript": return WHATWG_HTML.Noscript.self
         case "template": return WHATWG_HTML.ContentTemplate.self
         case "slot": return WHATWG_HTML.WebComponentSlot.self
+
         // Obsolete
         case "font": return WHATWG_HTML.Font.self
         case "center": return WHATWG_HTML.Center.self

@@ -245,5 +245,5 @@ extension `Snapshot Tests` {
 
 enum AtRule2 {
     case rule(String)
-    indirect case nested(String, AtRule2)
+    indirect case nested(String, Self)
 }

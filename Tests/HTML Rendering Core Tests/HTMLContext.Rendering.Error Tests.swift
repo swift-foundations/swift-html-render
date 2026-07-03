@@ -83,6 +83,7 @@ extension HTML.Context.Configuration.Error.Test.Unit {
         switch result {
         case .success:
             #expect(Bool(false), "Expected failure")
+
         case .failure(let error):
             #expect(error.message == "Rendering failed")
         }

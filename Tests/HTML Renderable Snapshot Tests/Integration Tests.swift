@@ -254,7 +254,7 @@ struct `Integration Tests` {
 
             var body: some HTML.View {
                 tag("div") {
-                    if let user = user {
+                    if let user {
                         tag("h1") { HTML.Text("Welcome, \(user.name)") }
                         if user.isAdmin {
                             tag("span") { HTML.Text("Admin") }
