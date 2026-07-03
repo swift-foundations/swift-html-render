@@ -348,8 +348,8 @@ struct `Integration Tests` {
             }
         }
 
-        let rendered: String = HTML.Context.Configuration.$current.withValue(.pretty) {
-            try! String(document)
+        let rendered: String = try HTML.Context.Configuration.$current.withValue(.pretty) {
+            try String(document)
         }
 
         #expect(rendered.contains("\n"))

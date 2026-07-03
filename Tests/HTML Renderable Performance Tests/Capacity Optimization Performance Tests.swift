@@ -19,10 +19,10 @@ extension `Performance Tests` {
         // MARK: - Without Capacity Reservation (Baseline)
 
         @Test(.timed(threshold: .seconds(3)))
-        func `baseline - no capacity reservation 10K renders`() {
+        func `baseline - no capacity reservation 10K renders`() throws {
             HTML.Context.Configuration.$current.withValue(.default) {
                 for _ in 0..<10_000 {
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("div")
                                 .attribute("id", "container")
@@ -34,10 +34,10 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .seconds(3)))
-        func `baseline - large document no reservation 1K renders`() {
+        func `baseline - large document no reservation 1K renders`() throws {
             HTML.Context.Configuration.$current.withValue(.default) {
                 for _ in 0..<1_000 {
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("div") {
                                 for i in 0..<20 {
@@ -56,10 +56,10 @@ extension `Performance Tests` {
         // MARK: - With Capacity Reservation (Optimized)
 
         @Test(.timed(threshold: .seconds(3)))
-        func `optimized - 4KB capacity reservation 10K renders`() {
+        func `optimized - 4KB capacity reservation 10K renders`() throws {
             HTML.Context.Configuration.$current.withValue(.optimized) {
                 for _ in 0..<10_000 {
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("div")
                                 .attribute("id", "container")
@@ -71,10 +71,10 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .seconds(3)))
-        func `optimized - 4KB capacity large document 1K renders`() {
+        func `optimized - 4KB capacity large document 1K renders`() throws {
             HTML.Context.Configuration.$current.withValue(.optimized) {
                 for _ in 0..<1_000 {
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("div") {
                                 for i in 0..<20 {
@@ -93,7 +93,7 @@ extension `Performance Tests` {
         // MARK: - Custom Capacity Sizes
 
         @Test(.timed(threshold: .milliseconds(300)))
-        func `small capacity - 512 bytes for small docs 1K renders`() {
+        func `small capacity - 512 bytes for small docs 1K renders`() throws {
             let config = HTML.Context.Configuration(
                 forceImportant: false,
                 indentation: [],
@@ -102,7 +102,7 @@ extension `Performance Tests` {
             )
             HTML.Context.Configuration.$current.withValue(config) {
                 for _ in 0..<1_000 {
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("p") { "Hello, World!" }
                         }
@@ -112,7 +112,7 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .seconds(3)))
-        func `large capacity - 16KB for large docs 1K renders`() {
+        func `large capacity - 16KB for large docs 1K renders`() throws {
             let config = HTML.Context.Configuration(
                 forceImportant: false,
                 indentation: [],
@@ -121,7 +121,7 @@ extension `Performance Tests` {
             )
             HTML.Context.Configuration.$current.withValue(config) {
                 for _ in 0..<1_000 {
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("div") {
                                 for i in 0..<50 {

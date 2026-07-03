@@ -149,8 +149,8 @@ struct `HTML.Context.Configuration Tests` {
             }
         }
 
-        let rendered: String = HTML.Context.Configuration.$current.withValue(.pretty) {
-            try! String(html)
+        let rendered: String = try HTML.Context.Configuration.$current.withValue(.pretty) {
+            try String(html)
         }
 
         // Pretty should have newlines and indentation

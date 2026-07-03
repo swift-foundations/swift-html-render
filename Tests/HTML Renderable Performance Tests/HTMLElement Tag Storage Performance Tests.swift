@@ -43,8 +43,11 @@ extension `Performance Tests` {
         func `inline tag creation 100K`() {
             for _ in 0..<100_000 {
                 let t = InlineTag<String>(
-                    tagName: "div", isBlock: true, isVoid: false,
-                    isPreElement: false, content: "Hello"
+                    tagName: "div",
+                    isBlock: true,
+                    isVoid: false,
+                    isPreElement: false,
+                    content: "Hello"
                 )
                 blackHole(t)
             }
@@ -65,8 +68,11 @@ extension `Performance Tests` {
         @Test(.timed(iterations: 3))
         func `inline tag copy 100K`() {
             let source = InlineTag<String>(
-                tagName: "div", isBlock: true, isVoid: false,
-                isPreElement: false, content: "Hello"
+                tagName: "div",
+                isBlock: true,
+                isVoid: false,
+                isPreElement: false,
+                content: "Hello"
             )
             for _ in 0..<100_000 {
                 let copy = source
@@ -90,7 +96,9 @@ extension `Performance Tests` {
         @Test(.timed(iterations: 3))
         func `inline tag copy with large content 100K`() {
             let source = InlineTag<(String, String, String, String, String, String)>(
-                tagName: "table", isBlock: true, isVoid: false,
+                tagName: "table",
+                isBlock: true,
+                isVoid: false,
                 isPreElement: false,
                 content: ("Row 1", "Row 2", "Row 3", "Row 4", "Row 5", "Row 6")
             )
@@ -119,9 +127,9 @@ extension `Performance Tests` {
         // MARK: - Full Document Rendering (end-to-end throughput)
 
         @Test(.timed(iterations: 3))
-        func `small document 1K renders`() {
+        func `small document 1K renders`() throws {
             for _ in 0..<1_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div") {
                             tag("h1") { "Title" }
@@ -134,9 +142,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(iterations: 3))
-        func `table document 100 renders - 6 rows`() {
+        func `table document 100 renders - 6 rows`() throws {
             for _ in 0..<100 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("table") {
                             tag("tbody") {
@@ -154,9 +162,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(iterations: 3))
-        func `table document 100 renders - 20 rows`() {
+        func `table document 100 renders - 20 rows`() throws {
             for _ in 0..<100 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("table") {
                             tag("tbody") {
@@ -174,9 +182,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(iterations: 3))
-        func `nested sections 50 renders - register-like`() {
+        func `nested sections 50 renders - register-like`() throws {
             for _ in 0..<50 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("section") {
                             tag("h1") { "GEGEVENS PER AANDEELHOUDER" }
@@ -184,7 +192,10 @@ extension `Performance Tests` {
 
                             tag("table") {
                                 tag("tbody") {
-                                    for label in ["naam", "adres", "e-mailadres", "geboren te", "KvK-nummer", "wijziging"] {
+                                    for label in [
+                                        "naam", "adres", "e-mailadres", "geboren te", "KvK-nummer",
+                                        "wijziging",
+                                    ] {
                                         tag("tr") {
                                             tag("td") { label }
                                             tag("td") { ": " }
@@ -197,7 +208,10 @@ extension `Performance Tests` {
 
                             tag("table") {
                                 tag("tbody") {
-                                    for label in ["rechtsfeit", "notaris", "aantal", "nominaal", "nummers", "gestort"] {
+                                    for label in [
+                                        "rechtsfeit", "notaris", "aantal", "nominaal", "nummers",
+                                        "gestort",
+                                    ] {
                                         tag("tr") {
                                             tag("td") { label }
                                             tag("td") { ": " }
@@ -208,7 +222,10 @@ extension `Performance Tests` {
 
                             tag("table") {
                                 tag("tbody") {
-                                    for label in ["datum verkrijging", "datum erkenning", "datum inschrijving"] {
+                                    for label in [
+                                        "datum verkrijging", "datum erkenning",
+                                        "datum inschrijving",
+                                    ] {
                                         tag("tr") {
                                             tag("td") { label }
                                             tag("td") { ": " }
@@ -223,7 +240,10 @@ extension `Performance Tests` {
 
                             tag("table") {
                                 tag("tbody") {
-                                    for label in ["rechtsfeit", "notaris", "datum", "aantal", "nominaal", "nummers"] {
+                                    for label in [
+                                        "rechtsfeit", "notaris", "datum", "aantal", "nominaal",
+                                        "nummers",
+                                    ] {
                                         tag("tr") {
                                             tag("td") { label }
                                             tag("td") { ": " }
@@ -234,7 +254,9 @@ extension `Performance Tests` {
 
                             tag("table") {
                                 tag("tbody") {
-                                    for label in ["gehouden na mutatie", "aantal", "nominaal", "nummers"] {
+                                    for label in [
+                                        "gehouden na mutatie", "aantal", "nominaal", "nummers",
+                                    ] {
                                         tag("tr") {
                                             tag("td") { label }
                                             tag("td") { ": " }
@@ -260,9 +282,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(iterations: 3))
-        func `wide flat document 50 renders - 100 elements`() {
+        func `wide flat document 50 renders - 100 elements`() throws {
             for _ in 0..<50 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div") {
                             for i in 0..<100 {

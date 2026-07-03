@@ -18,9 +18,9 @@ extension `Performance Tests` {
         // MARK: - Fast Path Tests (No Escaping Needed)
 
         @Test(.timed(threshold: .seconds(4)))
-        func `fast path - simple attributes 10K renders`() {
+        func `fast path - simple attributes 10K renders`() throws {
             for _ in 0..<10_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div")
                             .attribute("id", "simple-id")
@@ -32,9 +32,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .milliseconds(400)))
-        func `fast path - many simple attributes 1K renders`() {
+        func `fast path - many simple attributes 1K renders`() throws {
             for _ in 0..<1_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("input")
                             .attribute("type", "text")
@@ -49,9 +49,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .milliseconds(600)))
-        func `fast path - large document simple attributes`() {
+        func `fast path - large document simple attributes`() throws {
             for _ in 0..<100 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div") {
                             for i in 0..<100 {
@@ -69,9 +69,9 @@ extension `Performance Tests` {
         // MARK: - Slow Path Tests (Escaping Required)
 
         @Test(.timed(threshold: .seconds(3)))
-        func `slow path - attributes with quotes 10K renders`() {
+        func `slow path - attributes with quotes 10K renders`() throws {
             for _ in 0..<10_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div")
                             .attribute("data-message", "He said \"Hello\"")
@@ -82,9 +82,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .seconds(4)))
-        func `slow path - attributes with HTML entities 10K renders`() {
+        func `slow path - attributes with HTML entities 10K renders`() throws {
             for _ in 0..<10_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("a")
                             .attribute("href", "/search?q=foo&bar=baz")
@@ -95,9 +95,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .milliseconds(1800)))
-        func `slow path - complex escaping 5K renders`() {
+        func `slow path - complex escaping 5K renders`() throws {
             for _ in 0..<5_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div")
                             .attribute("data-complex", "<tag attr=\"value\" & 'quotes'>")
@@ -110,11 +110,11 @@ extension `Performance Tests` {
         // MARK: - Mixed Workload Tests
 
         @Test(.timed(threshold: .milliseconds(3500)))
-        func `mixed - 80 percent fast path 20 percent slow path`() {
+        func `mixed - 80 percent fast path 20 percent slow path`() throws {
             for i in 0..<10_000 {
                 if i % 5 < 4 {
                     // Fast path: 80% of operations
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("div")
                                 .attribute("id", "simple-id")
@@ -123,7 +123,7 @@ extension `Performance Tests` {
                     )
                 } else {
                     // Slow path: 20% of operations
-                    _ = try! String(
+                    _ = try String(
                         HTML.Document {
                             tag("div")
                                 .attribute("data-message", "He said \"Hello\"")
@@ -136,9 +136,9 @@ extension `Performance Tests` {
         // MARK: - Baseline Comparison Tests
 
         @Test(.timed(threshold: .seconds(4)))
-        func `baseline - element without attributes 10K renders`() {
+        func `baseline - element without attributes 10K renders`() throws {
             for _ in 0..<10_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div") {
                             tag("p") { "Hello World" }
@@ -149,9 +149,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .milliseconds(3500)))
-        func `baseline - empty element with single attribute 10K renders`() {
+        func `baseline - empty element with single attribute 10K renders`() throws {
             for _ in 0..<10_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("div").attribute("id", "test")
                     }
@@ -162,9 +162,9 @@ extension `Performance Tests` {
         // MARK: - Real-World Scenario Tests
 
         @Test(.timed(threshold: .milliseconds(600)))
-        func `real-world - form with mixed attributes 1K renders`() {
+        func `real-world - form with mixed attributes 1K renders`() throws {
             for _ in 0..<1_000 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("form") {
                             tag("input")
@@ -188,9 +188,9 @@ extension `Performance Tests` {
         }
 
         @Test(.timed(threshold: .seconds(1)))
-        func `real-world - data table with URLs 500 renders`() {
+        func `real-world - data table with URLs 500 renders`() throws {
             for _ in 0..<500 {
-                _ = try! String(
+                _ = try String(
                     HTML.Document {
                         tag("table") {
                             for i in 0..<50 {

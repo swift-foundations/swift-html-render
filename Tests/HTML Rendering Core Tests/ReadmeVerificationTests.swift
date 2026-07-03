@@ -3,12 +3,11 @@
 //  swift-html-rendering
 //
 
-@_spi(DynamicHTML) import HTML_Rendering_Core
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
-@testable import HTML_Rendering_Core
+@_spi(DynamicHTML) @testable import HTML_Rendering_Core
 
 // MARK: - Test Suite
 
@@ -23,9 +22,9 @@ struct `README Verification Tests` {
 extension `README Verification Tests`.Unit {
 
     @Test
-    func `tag function`() {
+    func `tag function`() throws {
         let element = tag("p") { "Paragraph text" }
-        let html = try! String(element)
+        let html = try String(element)
 
         #expect(html.contains("Paragraph text"))
         #expect(html.contains("<p>"))
@@ -59,28 +58,28 @@ extension `README Verification Tests`.Unit {
     }
 
     @Test
-    func `attribute method`() {
+    func `attribute method`() throws {
         let element = tag("a") { "Link" }
             .attribute("href", "https://example.com")
             .attribute("target", "_blank")
 
-        let html = try! String(element)
+        let html = try String(element)
         #expect(html.contains("href=\"https://example.com\""))
         #expect(html.contains("target=\"_blank\""))
     }
 
     @Test
-    func `inline style method`() {
+    func `inline style method`() throws {
         let element = tag("div") { "Styled" }
             .inlineStyle("color", "red")
             .inlineStyle("font-size", "16px")
 
-        let html = try! String(element)
+        let html = try String(element)
         #expect(html.contains("Styled"))
     }
 
     @Test
-    func `string interpolation in HTML content`() {
+    func `string interpolation in HTML content`() throws {
         struct Interpolated: HTML.View {
             let value: String
             var body: some HTML.View {
@@ -88,12 +87,12 @@ extension `README Verification Tests`.Unit {
             }
         }
 
-        let html = try! String(Interpolated(value: "test123"))
+        let html = try String(Interpolated(value: "test123"))
         #expect(html.contains("Value: test123"))
     }
 
     @Test
-    func `HTML protocol conformance`() {
+    func `HTML protocol conformance`() throws {
         struct CustomComponent: HTML.View {
             var body: some HTML.View {
                 tag("div") { "Content" }
@@ -101,7 +100,7 @@ extension `README Verification Tests`.Unit {
         }
 
         let component = CustomComponent()
-        let html = try! String(component)
+        let html = try String(component)
 
         #expect(html.contains("Content"))
         #expect(html.contains("<div>"))
@@ -131,7 +130,7 @@ extension `README Verification Tests`.Integration {
     }
 
     @Test
-    func `Swift-HTML integration - PointFreeHTML APIs`() {
+    func `Swift-HTML integration - PointFreeHTML APIs`() throws {
         struct StyledComponent: HTML.View {
             var body: some HTML.View {
                 tag("div") {
@@ -145,7 +144,7 @@ extension `README Verification Tests`.Integration {
         }
 
         let component = StyledComponent()
-        let html = try! String(component)
+        let html = try String(component)
 
         #expect(html.contains("Styled Heading"))
         #expect(html.contains("href=\"#\""))
@@ -169,7 +168,7 @@ extension `README Verification Tests`.Integration {
     }
 
     @Test
-    func `HTMLBuilder result builder`() {
+    func `HTMLBuilder result builder`() throws {
         struct MultiElement: HTML.View {
             var body: some HTML.View {
                 tag("div") {
@@ -179,7 +178,7 @@ extension `README Verification Tests`.Integration {
             }
         }
 
-        let html = try! String(MultiElement())
+        let html = try String(MultiElement())
         #expect(html.contains("Title"))
         #expect(html.contains("Paragraph"))
         #expect(html.contains("<h1>"))
@@ -187,7 +186,7 @@ extension `README Verification Tests`.Integration {
     }
 
     @Test
-    func `nested components`() {
+    func `nested components`() throws {
         struct Inner: HTML.View {
             var body: some HTML.View {
                 tag("span") { "Inner" }
@@ -202,7 +201,7 @@ extension `README Verification Tests`.Integration {
             }
         }
 
-        let html = try! String(Outer())
+        let html = try String(Outer())
         #expect(html.contains("Inner"))
         #expect(html.contains("<div>"))
         #expect(html.contains("<span>"))
