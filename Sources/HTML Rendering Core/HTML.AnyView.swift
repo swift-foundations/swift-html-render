@@ -9,56 +9,56 @@ public import Render_Primitives
 public import WHATWG_HTML_Shared
 
 extension HTML {
+    // WHY: Category D — structural Sendable workaround.
+    // WHY: The render thunk closure is not structurally Sendable-inferable.
+    // WHY: No caller invariant to uphold — the thunk only reads immutable state.
+    // WHEN TO REMOVE: When the compiler gains structural Sendable inference for
+    // WHEN TO REMOVE: stored function values captured from Sendable inputs.
+    // TRACKING: unsafe-audit-findings.md Category D; SP-5.
     /// Type-erased wrapper for any HTML content.
     ///
     /// `HTML.AnyView` allows you to work with heterogeneous HTML types
     /// by erasing their specific type while preserving their rendering behavior.
-    // WHY: Category D — structural Sendable workaround.
-    // WHY: `any HTML.View` existential blocks structural Sendable inference.
-    // WHY: No caller invariant to uphold — data is structurally safe.
-    // WHEN TO REMOVE: When compiler gains structural Sendable inference through
-    // WHEN TO REMOVE: existential types, or when HTML.View refines Sendable.
-    // TRACKING: unsafe-audit-findings.md Category D; SP-5.
+    ///
+    /// `HTML.View` refines the move-only `Render.View` (`~Copyable`) and carries a
+    /// recursive `Body: HTML.View` constraint. The `any HTML.View` existential of
+    /// such a protocol is (a) a design smell — boxing a move-only view into a
+    /// Copyable existential forces `@unchecked Sendable` — and (b) a non-canonical
+    /// type that the Windows Swift 6.3.3 (+Asserts) debug-info mangler asserts on
+    /// (isActuallyCanonicalOrNull, AST/Type.h). The ecosystem therefore composes
+    /// through this concrete eraser plus generics and NEVER through `any HTML.View`.
     public struct AnyView: HTML.View, @unchecked Sendable {
-        public let base: any HTML.View
+        let renderInto: (inout Render.Context) -> Void
 
-        public init<T: HTML.View>(_ base: T) {
-            self.base = base
+        private init(renderInto: @escaping (inout Render.Context) -> Void) {
+            self.renderInto = renderInto
         }
 
-        /// Creates a type-erased HTML wrapper from an existential HTML.View.
-        public init(_ base: any HTML.View) {
+        /// Erases a concrete `HTML.View`. Re-wrapping an `AnyView` is idempotent.
+        public init<T: HTML.View>(_ base: T) {
             if let anyView = base as? HTML.AnyView {
                 self = anyView
             } else {
-                self.base = base
+                self.renderInto = { context in T._render(base, context: &context) }
             }
         }
 
         public typealias Body = Never
-        public var body: Never { fatalError() }
+        public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
-        /// Renders by opening the existential and delegating to the concrete type's `_render`.
+        /// Renders by replaying the erased view's render thunk.
         public static func _render(
-            _ view: borrowing HTML.AnyView, context: inout Render.Context
+            _ view: borrowing HTML.AnyView,
+            context: inout Render.Context
         ) {
-            _openAndRender(view.base, context: &context)
-        }
-
-        /// Opens the existential and calls the concrete type's `_render`.
-        private static func _openAndRender<V: HTML.View>(
-            _ base: V, context: inout Render.Context
-        ) {
-            V._render(base, context: &context)
+            view.renderInto(&context)
         }
     }
 }
 
 extension HTML.AnyView {
     /// Creates a type-erased HTML wrapper from a builder closure.
-    public init(
-        @HTML.Builder _ closure: () -> any HTML.View
-    ) {
+    public init<Content: HTML.View>(@HTML.Builder _ closure: () -> Content) {
         self.init(closure())
     }
 }
