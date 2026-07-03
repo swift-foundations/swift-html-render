@@ -5,9 +5,9 @@
 //  Created by Point-Free, Inc
 //
 
-import Render_Primitives
 import Dictionary_Ordered_Primitives
 import Ownership_Mutable_Primitives
+import Render_Primitives
 public import WHATWG_HTML_Shared
 
 extension HTML {

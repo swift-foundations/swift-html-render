@@ -7,7 +7,6 @@
 
 import HTML_Rendering_Core
 import HTML_Standard_Attributes
-
 private import WHATWG_HTML_ScriptAttributes
 
 extension HTML.View {

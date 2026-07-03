@@ -6,8 +6,8 @@
 //
 
 import ASCII
-import Dictionary_Primitives
 public import Dictionary_Ordered_Primitives
+import Dictionary_Primitives
 public import Render_Primitives
 public import WHATWG_HTML_Shared
 
@@ -100,7 +100,11 @@ extension HTML.Context {
         }
     }
 
-    public static func _pushBlock(_ context: inout Self, role: Render.Semantic.Block?, style: Render.Style) {
+    public static func _pushBlock(
+        _ context: inout Self,
+        role: Render.Semantic.Block?,
+        style: Render.Style
+    ) {
         let tag = tagName(forBlock: role)
         let isVoid = isVoidTag(tag)
         let isPreElement = tag == "pre"
@@ -128,14 +132,16 @@ extension HTML.Context {
             context.currentIndentation += context.configuration.indentation
         }
 
-        context.stateStack.append(SavedState(
-            tag: tag,
-            isVoid: false,
-            isBlock: true,
-            isPreElement: isPreElement,
-            savedAttributes: savedAttributes,
-            savedIndentation: savedIndentation
-        ))
+        context.stateStack.append(
+            SavedState(
+                tag: tag,
+                isVoid: false,
+                isBlock: true,
+                isPreElement: isPreElement,
+                savedAttributes: savedAttributes,
+                savedIndentation: savedIndentation
+            )
+        )
     }
 
     public static func _popBlock(_ context: inout Self) {
@@ -152,7 +158,11 @@ extension HTML.Context {
         context.writeClosingTag(state.tag)
     }
 
-    public static func _pushInline(_ context: inout Self, role: Render.Semantic.Inline?, style: Render.Style) {
+    public static func _pushInline(
+        _ context: inout Self,
+        role: Render.Semantic.Inline?,
+        style: Render.Style
+    ) {
         let tag = tagName(forInline: role)
 
         context.writeOpeningTag(tag)
@@ -161,14 +171,16 @@ extension HTML.Context {
         let savedIndentation = context.currentIndentation
         context.attributes.removeAll()
 
-        context.stateStack.append(SavedState(
-            tag: tag,
-            isVoid: false,
-            isBlock: false,
-            isPreElement: false,
-            savedAttributes: savedAttributes,
-            savedIndentation: savedIndentation
-        ))
+        context.stateStack.append(
+            SavedState(
+                tag: tag,
+                isVoid: false,
+                isBlock: false,
+                isPreElement: false,
+                savedAttributes: savedAttributes,
+                savedIndentation: savedIndentation
+            )
+        )
     }
 
     public static func _popInline(_ context: inout Self) {
@@ -199,14 +211,16 @@ extension HTML.Context {
             context.currentIndentation += context.configuration.indentation
         }
 
-        context.stateStack.append(SavedState(
-            tag: tag,
-            isVoid: false,
-            isBlock: true,
-            isPreElement: false,
-            savedAttributes: savedAttributes,
-            savedIndentation: savedIndentation
-        ))
+        context.stateStack.append(
+            SavedState(
+                tag: tag,
+                isVoid: false,
+                isBlock: true,
+                isPreElement: false,
+                savedAttributes: savedAttributes,
+                savedIndentation: savedIndentation
+            )
+        )
     }
 
     public static func _popList(_ context: inout Self) {
@@ -233,14 +247,16 @@ extension HTML.Context {
             context.currentIndentation += context.configuration.indentation
         }
 
-        context.stateStack.append(SavedState(
-            tag: "li",
-            isVoid: false,
-            isBlock: true,
-            isPreElement: false,
-            savedAttributes: savedAttributes,
-            savedIndentation: savedIndentation
-        ))
+        context.stateStack.append(
+            SavedState(
+                tag: "li",
+                isVoid: false,
+                isBlock: true,
+                isPreElement: false,
+                savedAttributes: savedAttributes,
+                savedIndentation: savedIndentation
+            )
+        )
     }
 
     public static func _popItem(_ context: inout Self) {
@@ -294,14 +310,16 @@ extension HTML.Context {
         let savedIndentation = context.currentIndentation
         context.attributes.removeAll()
 
-        context.stateStack.append(SavedState(
-            tag: "a",
-            isVoid: false,
-            isBlock: false,
-            isPreElement: false,
-            savedAttributes: savedAttributes,
-            savedIndentation: savedIndentation
-        ))
+        context.stateStack.append(
+            SavedState(
+                tag: "a",
+                isVoid: false,
+                isBlock: false,
+                isPreElement: false,
+                savedAttributes: savedAttributes,
+                savedIndentation: savedIndentation
+            )
+        )
     }
 
     public static func _popLink(_ context: inout Self) {
@@ -410,7 +428,7 @@ extension HTML.Context {
     static func isVoidTag(_ tag: String) -> Bool {
         switch tag {
         case "area", "base", "br", "col", "embed", "hr", "img",
-             "input", "link", "meta", "param", "source", "track", "wbr":
+            "input", "link", "meta", "param", "source", "track", "wbr":
             true
         default:
             false
@@ -436,14 +454,16 @@ extension HTML.Context {
     }
 
     public static func _pushAttributes(_ context: inout Self) {
-        context.stateStack.append(SavedState(
-            tag: "",
-            isVoid: false,
-            isBlock: false,
-            isPreElement: false,
-            savedAttributes: context.attributes,
-            savedIndentation: context.currentIndentation
-        ))
+        context.stateStack.append(
+            SavedState(
+                tag: "",
+                isVoid: false,
+                isBlock: false,
+                isPreElement: false,
+                savedAttributes: context.attributes,
+                savedIndentation: context.currentIndentation
+            )
+        )
     }
 
     public static func _popAttributes(_ context: inout Self) {
@@ -484,14 +504,16 @@ extension HTML.Context {
         if isVoid {
             // Void elements still push to the state stack so the balanced
             // _popElement call doesn't steal the parent's entry.
-            context.stateStack.append(SavedState(
-                tag: tagName,
-                isVoid: true,
-                isBlock: isBlock,
-                isPreElement: isPreElement,
-                savedAttributes: savedAttributes,
-                savedIndentation: savedIndentation
-            ))
+            context.stateStack.append(
+                SavedState(
+                    tag: tagName,
+                    isVoid: true,
+                    isBlock: isBlock,
+                    isPreElement: isPreElement,
+                    savedAttributes: savedAttributes,
+                    savedIndentation: savedIndentation
+                )
+            )
             return
         }
 
@@ -499,14 +521,16 @@ extension HTML.Context {
             context.currentIndentation += context.configuration.indentation
         }
 
-        context.stateStack.append(SavedState(
-            tag: tagName,
-            isVoid: false,
-            isBlock: isBlock,
-            isPreElement: isPreElement,
-            savedAttributes: savedAttributes,
-            savedIndentation: savedIndentation
-        ))
+        context.stateStack.append(
+            SavedState(
+                tag: tagName,
+                isVoid: false,
+                isBlock: isBlock,
+                isPreElement: isPreElement,
+                savedAttributes: savedAttributes,
+                savedIndentation: savedIndentation
+            )
+        )
     }
 
     public static func _popElement(_ context: inout Self, isBlock: Bool) {

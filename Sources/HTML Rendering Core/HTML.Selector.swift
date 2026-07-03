@@ -81,7 +81,8 @@ extension HTML {
     /// let navHeader: HTML.Selector = ("div" as HTML.Selector).withClass("nav").withId("header")
     /// ```
     public struct Selector: RawRepresentable, Hashable, Sendable, ExpressibleByStringLiteral,
-        ExpressibleByStringInterpolation {
+        ExpressibleByStringInterpolation
+    {
         /// The raw CSS selector string.
         public var rawValue: String
 

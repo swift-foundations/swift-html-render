@@ -1,5 +1,5 @@
-import Render_Primitives
 public import Ownership_Mutable_Primitives
+import Render_Primitives
 public import WHATWG_HTML_Shared
 
 extension Render.Context {
@@ -26,7 +26,15 @@ extension Render.Context {
                 item: { HTML.Context._pushItem(&state.value) },
                 link: { HTML.Context._pushLink(&state.value, destination: $0) },
                 attributes: { HTML.Context._pushAttributes(&state.value) },
-                element: { HTML.Context._pushElement(&state.value, tagName: $0, isBlock: $1, isVoid: $2, isPreElement: $3) },
+                element: {
+                    HTML.Context._pushElement(
+                        &state.value,
+                        tagName: $0,
+                        isBlock: $1,
+                        isVoid: $2,
+                        isPreElement: $3
+                    )
+                },
                 // A style scope isolates the class attribute it accumulates so an
                 // element's generated classes don't leak to the next sibling. That's
                 // exactly the attribute save/restore, so reuse it (the default

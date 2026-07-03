@@ -5,8 +5,8 @@
 //  Created by Point-Free, Inc
 //
 
-public import Render_Primitives
 import Dictionary_Ordered_Primitives
+public import Render_Primitives
 public import WHATWG_HTML_Shared
 
 /// A protocol representing an HTML element or component that can be rendered.

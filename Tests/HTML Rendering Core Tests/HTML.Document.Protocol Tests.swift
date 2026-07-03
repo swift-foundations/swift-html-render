@@ -37,7 +37,8 @@ struct `HTML.__DocumentProtocol._render Tests` {
         #expect(output.contains("BODY_MARKER"), "body children must render through _render")
 
         if let headIdx = output.range(of: "HEAD_MARKER")?.lowerBound,
-           let bodyIdx = output.range(of: "BODY_MARKER")?.lowerBound {
+            let bodyIdx = output.range(of: "BODY_MARKER")?.lowerBound
+        {
             #expect(headIdx < bodyIdx, "head must render before body in document order")
         }
     }

@@ -84,7 +84,8 @@ extension HTML {
     ///     .inlineStyle("opacity", "0.5", pseudo: ":not(:enabled)")
     /// ```
     public struct Pseudo: RawRepresentable, Hashable, Sendable, ExpressibleByStringLiteral,
-        ExpressibleByStringInterpolation {
+        ExpressibleByStringInterpolation
+    {
         /// The CSS pseudo-class or pseudo-element selector.
         public var rawValue: String
 

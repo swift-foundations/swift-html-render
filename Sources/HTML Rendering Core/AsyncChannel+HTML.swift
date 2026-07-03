@@ -5,10 +5,10 @@
 //  Created by Coen ten Thije Boonkkamp on 26/11/2025.
 //
 
-import Render_Primitives
-public import Async_Primitive
 public import Async_Channel_Primitives
+public import Async_Primitive
 import Ownership_Mutable_Primitives
+import Render_Primitives
 public import WHATWG_HTML_Shared
 
 extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {

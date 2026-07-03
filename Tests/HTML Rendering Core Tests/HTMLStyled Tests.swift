@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 25/11/2025.
 //
 
-@_spi(DynamicHTML) import HTML_Rendering_Core
 import HTML_Rendering
+@_spi(DynamicHTML) import HTML_Rendering_Core
 import HTML_Standard
 import Testing
 

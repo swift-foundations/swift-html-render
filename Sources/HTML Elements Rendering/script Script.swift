@@ -22,7 +22,8 @@ extension HTML_Standard_Elements.Script {
             if scalar == "<",
                 script.unicodeScalars[index...].starts(with: "<!--".unicodeScalars)
                     || script.unicodeScalars[index...].starts(with: "<script".unicodeScalars)
-                    || script.unicodeScalars[index...].starts(with: "</script".unicodeScalars) {
+                    || script.unicodeScalars[index...].starts(with: "</script".unicodeScalars)
+            {
                 escaped.unicodeScalars.append(contentsOf: #"\x3C"#.unicodeScalars)
             } else {
                 escaped.unicodeScalars.append(scalar)
