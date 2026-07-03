@@ -5,12 +5,11 @@
 //  Created by Coen ten Thije Boonkkamp on 20/07/2025.
 //
 
-@_spi(DynamicHTML) import HTML_Rendering_Core
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
-@testable import HTML_Rendering_Core
+@_spi(DynamicHTML) @testable import HTML_Rendering_Core
 
 // MARK: - Test Suite
 

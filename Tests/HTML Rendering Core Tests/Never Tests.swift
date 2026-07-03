@@ -5,7 +5,6 @@
 //  Created by Coen ten Thije Boonkkamp on 25/11/2025.
 //
 
-import HTML_Rendering_Core
 import Testing
 
 @testable import HTML_Rendering_Core
@@ -40,7 +39,8 @@ extension NeverHTMLTests.Unit {
             var body: Never { fatalError("body should not be called") }
 
             static func _render(
-                _ view: borrowing Self, context: inout Render.Context
+                _ view: borrowing Self,
+                context: inout Render.Context
             ) {
                 context.write(raw: Array("Custom".utf8))
             }

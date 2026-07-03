@@ -5,7 +5,6 @@
 //  Created by Coen ten Thije Boonkkamp on 25/11/2025.
 //
 
-import HTML_Rendering_Core
 import Testing
 
 @testable import HTML_Rendering_Core

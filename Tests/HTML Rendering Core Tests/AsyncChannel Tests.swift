@@ -6,7 +6,6 @@
 //
 
 import Async_Channel_Primitives
-import HTML_Rendering_Core
 import HTML_Rendering
 import HTML_Standard
 import Render_Primitives
@@ -123,7 +122,10 @@ extension `AsyncChannel Tests`.Unit {
         }
 
         var allBytes: [UInt8] = []
-        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: 4096, configuration: .email) { StyledHTML() }
+        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(
+            chunkSize: 4096,
+            configuration: .email
+        ) { StyledHTML() }
         for try await chunk in channel.receiver.elements {
             allBytes.append(contentsOf: chunk)
         }
@@ -144,7 +146,8 @@ extension `AsyncChannel Tests`.Unit {
         }
 
         var allBytes: [UInt8] = []
-        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: 4096, configuration: nil) { SpanHTML() }
+        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: 4096, configuration: nil)
+        { SpanHTML() }
         for try await chunk in channel.receiver.elements {
             allBytes.append(contentsOf: chunk)
         }
@@ -189,7 +192,9 @@ extension `AsyncChannel Tests`.EdgeCase {
         var chunksReceived = 0
         var producerSuspended = false
 
-        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: chunkSize) { StreamingHTML() }
+        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: chunkSize) {
+            StreamingHTML()
+        }
 
         for try await chunk in channel.receiver.elements {
             chunksReceived += 1
@@ -224,7 +229,9 @@ extension `AsyncChannel Tests`.EdgeCase {
         var totalBytes = 0
         var chunkCount = 0
 
-        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: chunkSize) { VeryLargeHTML() }
+        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: chunkSize) {
+            VeryLargeHTML()
+        }
         for try await chunk in channel.receiver.elements {
             chunkCount += 1
             totalBytes += chunk.count
@@ -334,7 +341,9 @@ extension `AsyncChannel Tests`.Integration {
 
         var chunkCount = 0
 
-        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: 1000) { LargeContentHTML() }
+        let channel = Async.Channel<ArraySlice<UInt8>>.Bounded(chunkSize: 1000) {
+            LargeContentHTML()
+        }
         await state.markProducerStarted()
         for try await _ in channel.receiver.elements {
             chunkCount += 1

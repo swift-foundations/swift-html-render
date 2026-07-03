@@ -5,12 +5,11 @@
 //  Created by Coen ten Thije Boonkkamp on 25/11/2025.
 //
 
-@_spi(DynamicHTML) import HTML_Rendering_Core
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
-@testable import HTML_Rendering_Core
+@_spi(DynamicHTML) @testable import HTML_Rendering_Core
 
 // MARK: - Test Suite
 
@@ -139,7 +138,9 @@ extension HTML.Context.Configuration.Error.Test.EdgeCase {
 
     @Test
     func `message preserves Unicode`() {
-        let error = HTML.Context.Configuration.Error(message: "Error: \u{65E5}\u{672C}\u{8A9E} \u{1F6AB}")
+        let error = HTML.Context.Configuration.Error(
+            message: "Error: \u{65E5}\u{672C}\u{8A9E} \u{1F6AB}"
+        )
         #expect(error.message.contains("\u{65E5}\u{672C}\u{8A9E}"))
         #expect(error.message.contains("\u{1F6AB}"))
     }
