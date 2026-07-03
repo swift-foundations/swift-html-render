@@ -41,11 +41,11 @@ extension HTML {
         /// single type can satisfy `Body: HTML.View` and `Body == Never`
         /// simultaneously. Both stamps are needed — a single stamp leaves
         /// one protocol's `Body` to unify with the other's.
-        @_implements(Render.View,Body)
+        @_implements(Render.View, Body)
         public typealias _RenderingBody = Body
 
         #if canImport(SwiftUI)
-            @_implements(SwiftUI.View,Body)
+            @_implements(SwiftUI.View, Body)
             public typealias _SwiftUIBody = Never
         #endif
 
