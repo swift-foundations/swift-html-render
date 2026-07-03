@@ -32,9 +32,6 @@ extension HTML {
     /// }
     /// ```
     public struct Document<Body: HTML.View, Head: HTML.View>: HTML.__DocumentProtocol {
-        // swift-format normalizes `@_implements` attribute-argument commas without a
-        // following space, which conflicts with SwiftLint's `comma` rule.
-        // swiftlint:disable comma
         /// Split the unified `Body` associated type between the two
         /// protocols with per-protocol `@_implements` stamps:
         /// `Render.View.Body = Body` (the generic parameter) and
@@ -51,7 +48,6 @@ extension HTML {
             @_implements(SwiftUI.View,Body)
             public typealias _SwiftUIBody = Never
         #endif
-        // swiftlint:enable comma
 
         public let head: Head
         public let body: Body
