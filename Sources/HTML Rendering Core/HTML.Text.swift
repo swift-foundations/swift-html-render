@@ -24,11 +24,12 @@ extension HTML {
         }
 
         public typealias Body = Never
-        public var body: Never { fatalError() }
+        public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
         /// Renders the text content via the context's text method.
         public static func _render(
-            _ view: borrowing Self, context: inout Render.Context
+            _ view: borrowing Self,
+            context: inout Render.Context
         ) {
             context.text(view.text)
         }

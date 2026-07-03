@@ -5,8 +5,8 @@
 //  Created by Coen ten Thije Boonkkamp on 25/11/2025.
 //
 
-import Dictionary_Primitives
 public import Dictionary_Ordered_Primitives
+import Dictionary_Primitives
 public import Render_Primitives
 public import WHATWG_HTML_Shared
 
@@ -41,12 +41,13 @@ extension HTML {
         }
 
         public typealias Body = Never
-        public var body: Never { fatalError() }
+        public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
         /// Renders content, setting attributes on the context when supported.
         /// In foreign contexts, content renders but attributes are lost.
         public static func _render(
-            _ view: borrowing Self, context: inout Render.Context
+            _ view: borrowing Self,
+            context: inout Render.Context
         ) {
             context.open(push: .attributes, pop: .attributes)
             view.attributes.forEach { key, value in

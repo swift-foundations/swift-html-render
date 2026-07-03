@@ -204,7 +204,9 @@ extension HTML.Element.Tag where Content: HTML.View {
         @HTML.Builder content: () -> Content? = { Never?.none }
     ) {
         if let elementType = Self.elementType(for: tag) {
-            self.isBlock = !elementType.categories.contains(WHATWG_HTML.Element.Content.Category.phrasing)
+            self.isBlock = !elementType.categories.contains(
+                WHATWG_HTML.Element.Content.Category.phrasing
+            )
             self.isVoid = elementType.content.model == WHATWG_HTML.Element.Content.Model.nothing
         } else {
             self.isBlock = true
@@ -220,7 +222,7 @@ extension HTML.Element.Tag where Content: HTML.View {
 
 extension HTML.Element.Tag: Render.View where Content: HTML.View {
     public typealias Body = Never
-    public var body: Never { fatalError() }
+    public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
     /// Renders this HTML element through the `_render` path.
     ///
@@ -229,12 +231,15 @@ extension HTML.Element.Tag: Render.View where Content: HTML.View {
     /// Non-HTML contexts get the default implementation that delegates to
     /// `pushBlock`/`pushInline` with no semantic role.
     public static func _render(
-        _ view: borrowing Self, context: inout Render.Context
+        _ view: borrowing Self,
+        context: inout Render.Context
     ) {
         context.open(
             push: .element(
-                tagName: view.tagName, isBlock: view.isBlock,
-                isVoid: view.isVoid, isPreElement: view.isPreElement
+                tagName: view.tagName,
+                isBlock: view.isBlock,
+                isVoid: view.isVoid,
+                isPreElement: view.isPreElement
             ),
             pop: .element(isBlock: view.isBlock)
         )

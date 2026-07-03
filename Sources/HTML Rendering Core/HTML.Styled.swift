@@ -60,7 +60,7 @@ extension HTML {
 
 extension HTML.Styled: Render.View where Content: HTML.View {
     public typealias Body = Never
-    public var body: Never { fatalError() }
+    public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
     /// Renders styled content through the generic context path.
     ///
@@ -68,7 +68,8 @@ extension HTML.Styled: Render.View where Content: HTML.View {
     /// properties directly (e.g., PDF.HTML.Context). Falls back to
     /// `register(style:...)` for contexts that use CSS class names (e.g., HTML.Context).
     public static func _render(
-        _ view: borrowing Self, context: inout Render.Context
+        _ view: borrowing Self,
+        context: inout Render.Context
     ) {
         context.open(push: .style, pop: .style)
         var handled = false
