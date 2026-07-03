@@ -1,11 +1,11 @@
-# ``HTML_Attributes_Rendering``
+# ``HTML_Rendering``
 
 @Metadata {
-    @DisplayName("HTML Attributes Rendering")
+    @DisplayName("HTML Rendering")
     @TitleHeading("Swift Foundations")
 }
 
-HTML Attributes Rendering — umbrella catalog placeholder. Replace this line with a one-sentence
+HTML Rendering — umbrella catalog placeholder. Replace this line with a one-sentence
 description of what the package provides.
 
 ## Topics

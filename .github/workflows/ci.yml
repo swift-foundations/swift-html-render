@@ -21,6 +21,21 @@ jobs:
 
   # DocC umbrella-catalog pipeline per [DOC-019a] — see
   # swift-foundations/.github/.github/workflows/swift-docs.yml
+  #
+  # Explicit overrides: the repo-name-derived default (swift-html-render ->
+  # HTML_Render) does not match this package's actual umbrella module
+  # (HTML_Rendering, the @_exported re-export target at Sources/HTML
+  # Rendering/) — the package layout deviates from the naive kebab->Title
+  # convention (singular repo name, plural umbrella module). Without these
+  # overrides, "Derive umbrella metadata" computes UMBRELLA_MODULE=HTML_Render,
+  # which has no matching symbol graph and fails the build with
+  # "no symbol graph found for umbrella module".
   docs:
     uses: swift-foundations/.github/.github/workflows/swift-docs.yml@main
+    with:
+      umbrella-module: HTML_Rendering
+      umbrella-display-name: "HTML Rendering"
+      umbrella-bundle-id: "swift-html-render.HTML-Rendering"
+      umbrella-docc-path: "Sources/HTML Rendering/HTML Rendering.docc"
+      exclude-modules: "HTML_Rendering_Core_Test_Support"
     secrets: inherit
