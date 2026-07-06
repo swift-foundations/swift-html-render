@@ -21,8 +21,11 @@
 
         @MainActor
         fileprivate func loadHTML(into webView: WKWebView) {
-            let html =
-                (try? String(self)) ?? """
+            let html: String
+            do throws(HTML.Context.Configuration.Error) {
+                html = try String(self)
+            } catch {
+                html = """
                     <!doctype html>
                     <html>
                     <body style="font-family: system-ui; color: #c00; padding: 20px;">
@@ -30,6 +33,7 @@
                     </body>
                     </html>
                     """
+            }
             webView.loadHTMLString(html, baseURL: nil)
         }
     }

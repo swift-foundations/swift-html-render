@@ -452,7 +452,7 @@ extension HTML.Pseudo {
     ///
     /// - Parameter n: The nth-child pattern (number, keyword, or formula).
     /// - Returns: A pseudo-selector for the nth child.
-    public static func nthChild(_ n: any CustomStringConvertible) -> Self {
+    public static func nthChild(_ n: some CustomStringConvertible) -> Self {
         ":nth-child(\(n))"
     }
 
@@ -465,7 +465,7 @@ extension HTML.Pseudo {
     ///
     /// - Parameter n: The nth-last-child pattern.
     /// - Returns: A pseudo-selector for the nth child from the end.
-    public static func nthLastChild(_ n: any CustomStringConvertible) -> Self {
+    public static func nthLastChild(_ n: some CustomStringConvertible) -> Self {
         ":nth-last-child(\(n))"
     }
 
@@ -478,7 +478,7 @@ extension HTML.Pseudo {
     ///
     /// - Parameter n: The nth-of-type pattern.
     /// - Returns: A pseudo-selector for the nth element of its type.
-    public static func nthOfType(_ n: any CustomStringConvertible) -> Self {
+    public static func nthOfType(_ n: some CustomStringConvertible) -> Self {
         ":nth-of-type(\(n))"
     }
 
@@ -491,7 +491,7 @@ extension HTML.Pseudo {
     ///
     /// - Parameter n: The nth-last-of-type pattern.
     /// - Returns: A pseudo-selector for the nth element of its type from the end.
-    public static func nthLastOfType(_ n: any CustomStringConvertible) -> Self {
+    public static func nthLastOfType(_ n: some CustomStringConvertible) -> Self {
         ":nth-last-of-type(\(n))"
     }
 
@@ -507,7 +507,7 @@ extension HTML.Pseudo {
     ///
     /// - Parameter s: A selector list or compound selector.
     /// - Returns: A pseudo-selector that matches any of the provided selectors.
-    public static func `is`(_ s: any CustomStringConvertible) -> Self {
+    public static func `is`(_ s: some CustomStringConvertible) -> Self {
         ":is(\(s))"
     }
 

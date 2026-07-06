@@ -40,8 +40,11 @@ extension HTML.Element {
 extension HTML.Element.Tag where Content: HTML.View {
     // MARK: - Element Type Lookup
 
+    // Heterogeneous type lookup: each tag name below resolves to a distinct
+    // concrete WHATWG_HTML.Element conformer selected at runtime by the
+    // switch; no single `some ... .Type` can express the union.
     /// Returns the element type for a given tag name.
-    private static func elementType(for tag: String) -> (any WHATWG_HTML.Element.`Protocol`.Type)? {
+    private static func elementType(for tag: String) -> (any WHATWG_HTML.Element.`Protocol`.Type)? {  // swiftlint:disable:this no_any_protocol_existential
         switch tag {
         // Document (4.1)
         case "html": return WHATWG_HTML.HtmlRoot.self

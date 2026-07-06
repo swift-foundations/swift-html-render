@@ -40,7 +40,12 @@ extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
             var offset = 0
             while offset < allBytes.count {
                 let end = min(offset + chunkSize, allBytes.count)
-                try? await sender.send(ArraySlice(allBytes[offset..<end]))
+                do throws(Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Error) {
+                    try await sender.send(ArraySlice(allBytes[offset..<end]))
+                } catch {
+                    // Preserve try?'s fire-and-forget semantics: a failed send
+                    // (e.g. the channel already closed) does not abort the loop.
+                }
                 offset = end
             }
             sender.close()
@@ -71,7 +76,12 @@ extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
             var offset = 0
             while offset < allBytes.count {
                 let end = min(offset + chunkSize, allBytes.count)
-                try? await sender.send(ArraySlice(allBytes[offset..<end]))
+                do throws(Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Error) {
+                    try await sender.send(ArraySlice(allBytes[offset..<end]))
+                } catch {
+                    // Preserve try?'s fire-and-forget semantics: a failed send
+                    // (e.g. the channel already closed) does not abort the loop.
+                }
                 offset = end
             }
             sender.close()
