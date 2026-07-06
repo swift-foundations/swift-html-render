@@ -39,7 +39,7 @@ extension Target.Dependency {
         .product(name: "Dictionary Primitives", package: "swift-dictionary-primitives")
     }
     static var sharedPrimitive: Self {
-        .product(name: "Shared Primitive", package: "swift-shared-primitives")
+        .product(name: "Ownership Shared Primitive", package: "swift-ownership-shared-primitives")
     }
     static var hashIndexedPrimitive: Self {
         .product(name: "Hash Indexed Primitive", package: "swift-hash-table-primitives")
@@ -87,7 +87,7 @@ let package = Package(
         .package(url: "https://github.com/swift-w3c/swift-w3c-css.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-dictionary-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-dictionary-ordered-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-shared-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ownership-shared-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-hash-table-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-column-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-hash-primitives.git", branch: "main"),
