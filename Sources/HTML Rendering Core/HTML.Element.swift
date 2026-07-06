@@ -43,8 +43,9 @@ extension HTML.Element.Tag where Content: HTML.View {
     // Heterogeneous type lookup: each tag name below resolves to a distinct
     // concrete WHATWG_HTML.Element conformer selected at runtime by the
     // switch; no single `some ... .Type` can express the union.
+    // swiftlint:disable no_any_protocol_existential
     /// Returns the element type for a given tag name.
-    private static func elementType(for tag: String) -> (any WHATWG_HTML.Element.`Protocol`.Type)? {  // swiftlint:disable:this no_any_protocol_existential
+    private static func elementType(for tag: String) -> (any WHATWG_HTML.Element.`Protocol`.Type)? {
         switch tag {
         // Document (4.1)
         case "html": return WHATWG_HTML.HtmlRoot.self
@@ -197,6 +198,7 @@ extension HTML.Element.Tag where Content: HTML.View {
         default: return nil
         }
     }
+    // swiftlint:enable no_any_protocol_existential
 
     // MARK: - Initializers
 
