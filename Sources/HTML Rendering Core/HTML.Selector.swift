@@ -88,7 +88,7 @@ extension HTML {
 
         /// Creates a selector with the specified CSS selector string.
         ///
-        /// - Parameter rawValue: The CSS selector string (e.g., "div", ".class", "#id").
+        /// - Parameter rawValue: The CSS selector string (such as "div", ".class", "#id").
         public init(rawValue: String) {
             self.rawValue = rawValue
         }

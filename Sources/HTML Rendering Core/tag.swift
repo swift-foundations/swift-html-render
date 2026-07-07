@@ -13,7 +13,7 @@ public import WHATWG_HTML_Shared
 ///
 /// This function allows creating HTML elements dynamically from string tag names.
 /// It's exposed via SPI because in most cases you should prefer the typed element
-/// functions like `div()`, `span()`, etc. for better type safety.
+/// functions like `div()`, `span()` and similar for better type safety.
 ///
 /// - Parameters:
 ///   - tagName: The name of the HTML tag.

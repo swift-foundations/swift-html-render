@@ -37,7 +37,7 @@ extension HTML.__DocumentProtocol {
     /// full document structure (with `<!doctype html>`, `<html>`, `<head>`,
     /// `<body>` wrapper tags) is produced by `_renderHTMLDocument`, called
     /// directly by HTML output entry points. Through the generic rendering
-    /// path used by non-HTML contexts (e.g. PDF), head and body content
+    /// path used by non-HTML contexts (such as PDF), head and body content
     /// are emitted in document order — head first — so consumers can read
     /// `<style>` blocks, metadata, and other head content for cascade
     /// application or document-level configuration.

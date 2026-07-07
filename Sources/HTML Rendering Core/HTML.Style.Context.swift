@@ -39,7 +39,7 @@ extension HTML.Element.Style {
     /// }
     /// ```
     public struct Context: Sendable, Hashable {
-        /// Optional at-rule (e.g., media query).
+        /// Optional at-rule (such as media query).
         public let atRule: HTML.AtRule?
 
         /// Optional CSS selector prefix.
@@ -64,7 +64,7 @@ extension HTML.Element.Style {
         /// Creates a style context with the specified modifiers.
         ///
         /// - Parameters:
-        ///   - atRule: Optional at-rule (e.g., media query).
+        ///   - atRule: Optional at-rule (such as media query).
         ///   - selector: Optional CSS selector prefix.
         ///   - pseudo: Optional pseudo-class or pseudo-element.
         public init(
@@ -127,7 +127,7 @@ extension HTML.Element.Style {
 
         /// Combines two pseudo-selectors.
         ///
-        /// When both contexts have pseudo values, they're combined (e.g., `:hover:focus`).
+        /// When both contexts have pseudo values, they're combined (such as `:hover:focus`).
         /// - Parameters:
         ///   - lhs: The first pseudo value.
         ///   - rhs: The second pseudo value.

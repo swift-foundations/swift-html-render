@@ -91,7 +91,7 @@ extension HTML {
 
         /// Creates a pseudo-selector with the specified CSS selector string.
         ///
-        /// - Parameter rawValue: The CSS pseudo-selector string (e.g., ":hover", "::before").
+        /// - Parameter rawValue: The CSS pseudo-selector string (such as ":hover", "::before").
         public init(rawValue: String) {
             self.rawValue = rawValue
         }
@@ -201,7 +201,7 @@ extension HTML.Pseudo {
 
     // MARK: Interactive States
 
-    /// `:active` targets elements during activation (e.g., mouse click).
+    /// `:active` targets elements during activation (such as mouse click).
     ///
     /// ```swift
     /// // Using string literal (most common)

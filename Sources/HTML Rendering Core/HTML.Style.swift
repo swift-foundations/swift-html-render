@@ -26,10 +26,10 @@ extension HTML.Element {
     /// HTML.Element.Style(declaration: "color:red")
     /// ```
     public struct Style: Hashable, Sendable {
-        /// The CSS declaration string (e.g., "color:red")
+        /// The CSS declaration string (such as "color:red")
         public let declaration: String
 
-        /// Optional at-rule (e.g., @media query)
+        /// Optional at-rule (such as @media query)
         public let atRule: HTML.AtRule?
 
         /// Optional CSS selector prefix
@@ -44,7 +44,7 @@ extension HTML.Element {
         ///
         /// - Parameters:
         ///   - property: The typed CSS property value.
-        ///   - atRule: Optional at-rule (e.g., media query).
+        ///   - atRule: Optional at-rule (such as media query).
         ///   - selector: Optional selector prefix.
         ///   - pseudo: Optional pseudo-class or pseudo-element.
         public init<P: W3C_CSS_Shared.Property>(
@@ -64,8 +64,8 @@ extension HTML.Element {
         /// Use this when you need to bypass the typed property system.
         ///
         /// - Parameters:
-        ///   - declaration: The CSS declaration string (e.g., "color:red").
-        ///   - atRule: Optional at-rule (e.g., media query).
+        ///   - declaration: The CSS declaration string (such as "color:red").
+        ///   - atRule: Optional at-rule (such as media query).
         ///   - selector: Optional selector prefix.
         ///   - pseudo: Optional pseudo-class or pseudo-element.
         public init(

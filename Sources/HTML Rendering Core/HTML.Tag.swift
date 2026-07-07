@@ -33,7 +33,7 @@ extension HTML {
     /// ```
     ///
     /// This struct is primarily used through the predefined tag variables like `div`, `span`,
-    /// `h1`, etc., but can also be used directly with custom tag names.
+    /// `h1` and similar, but can also be used directly with custom tag names.
     public struct Tag {
         /// The name of the HTML tag.
         public let rawValue: String

@@ -583,7 +583,7 @@ extension HTML.Context {
     /// Push a style to the context and get its class name.
     ///
     /// Same style always returns same class name within a render context.
-    /// Class names are descriptive and sequential: `color-0`, `margin-1`, etc.
+    /// Class names are descriptive and sequential: `color-0`, `margin-1`, and similar.
     public mutating func pushStyle(
         _ style: HTML.Element.Style
     ) -> String {

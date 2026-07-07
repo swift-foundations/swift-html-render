@@ -29,7 +29,7 @@ extension HTML {
         /// The style metadata for HTML rendering.
         public let style: HTML.Element.Style?
 
-        /// Optional at-rule (e.g., media query).
+        /// Optional at-rule (such as media query).
         public let atRule: HTML.AtRule?
 
         /// Optional CSS selector prefix.
@@ -65,8 +65,8 @@ extension HTML.Styled: Render.View where Content: HTML.View {
     /// Renders styled content through the generic context path.
     ///
     /// First attempts `apply(inlineStyle:)` for contexts that handle typed CSS
-    /// properties directly (e.g., PDF.HTML.Context). Falls back to
-    /// `register(style:...)` for contexts that use CSS class names (e.g., HTML.Context).
+    /// properties directly (such as PDF.HTML.Context). Falls back to
+    /// `register(style:...)` for contexts that use CSS class names (such as HTML.Context).
     public static func _render(
         _ view: borrowing Self,
         context: inout Render.Context
