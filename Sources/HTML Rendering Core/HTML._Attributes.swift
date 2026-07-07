@@ -44,6 +44,7 @@ extension HTML {
         public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
         /// Renders content, setting attributes on the context when supported.
+        ///
         /// In foreign contexts, content renders but attributes are lost.
         public static func _render(
             _ view: borrowing Self,

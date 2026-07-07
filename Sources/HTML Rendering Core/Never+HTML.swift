@@ -9,5 +9,6 @@ public import Render_Primitives
 public import WHATWG_HTML_Shared
 
 /// Never already conforms to Render.View (from L1).
+///
 /// Add HTML.View conformance for the type system.
 extension Never: HTML.View {}

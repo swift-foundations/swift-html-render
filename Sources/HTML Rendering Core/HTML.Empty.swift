@@ -14,5 +14,6 @@ extension HTML {
 }
 
 /// Render.Empty already conforms to Render.View (from L1).
+///
 /// Add HTML.View conformance so it can appear in HTML builder blocks.
 extension Render.Empty: HTML.View {}

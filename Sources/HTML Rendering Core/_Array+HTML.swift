@@ -9,5 +9,6 @@ public import Render_Primitives
 public import WHATWG_HTML_Shared
 
 /// Array already conforms to Render.View when Element conforms (from L1).
+///
 /// Add HTML.View conformance.
 extension Array: HTML.View where Element: HTML.View {}

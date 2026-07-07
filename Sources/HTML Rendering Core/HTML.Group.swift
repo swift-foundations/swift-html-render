@@ -13,5 +13,6 @@ extension HTML {
 }
 
 /// Group already conforms to Render.View when Content conforms (from L1).
+///
 /// Add HTML.View conformance.
 extension Render.Group: HTML.View where Content: HTML.View {}

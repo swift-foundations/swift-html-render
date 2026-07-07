@@ -19,6 +19,7 @@ import Tests_Performance
 // MARK: - Inline Baseline
 
 /// Mirrors the original `HTML.Element.Tag` layout with inline storage.
+///
 /// Used as a measurement control — not connected to the rendering pipeline.
 private struct InlineTag<Content> {
     let tagName: String

@@ -141,6 +141,7 @@ extension HTML.Pseudo {
 // MARK: - Pseudo-Elements
 extension HTML.Pseudo {
     /// Pseudo-elements target specific parts of elements and create virtual elements.
+    ///
     /// They use double colon (::) syntax and are used for styling generated content
     /// or specific portions of element content.
 
