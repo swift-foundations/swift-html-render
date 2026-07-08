@@ -48,18 +48,20 @@ extension HTML {
 
         // MARK: - Block/inline state stack
 
-        /// State saved by pushBlock/pushInline for restoration by pop.
-        struct SavedState {
-            let tag: String
-            let isVoid: Bool
-            let isBlock: Bool
-            let isPreElement: Bool
-            let savedAttributes: HTML.Context.Attributes
-            let savedIndentation: [UInt8]
-        }
-
         /// Stack of saved states for nested elements.
         var stateStack: [SavedState]
+    }
+}
+
+extension HTML.Context {
+    /// State saved by pushBlock/pushInline for restoration by pop.
+    struct SavedState {
+        let tag: String
+        let isVoid: Bool
+        let isBlock: Bool
+        let isPreElement: Bool
+        let savedAttributes: HTML.Context.Attributes
+        let savedIndentation: [UInt8]
     }
 }
 

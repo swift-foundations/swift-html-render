@@ -79,17 +79,19 @@ extension HTML.Element {
             self.selector = selector
             self.pseudo = pseudo
         }
+    }
+}
 
-        /// The CSS property name extracted from the declaration.
-        ///
-        /// For "color:red", returns "color".
-        /// Used for generating descriptive class names.
-        public var propertyName: String {
-            if let colonIndex = declaration.firstIndex(of: ":") {
-                return String(declaration[..<colonIndex])
-            }
-            return declaration
+extension HTML.Element.Style {
+    /// The CSS property name extracted from the declaration.
+    ///
+    /// For "color:red", returns "color".
+    /// Used for generating descriptive class names.
+    public var propertyName: String {
+        if let colonIndex = declaration.firstIndex(of: ":") {
+            return String(declaration[..<colonIndex])
         }
+        return declaration
     }
 }
 

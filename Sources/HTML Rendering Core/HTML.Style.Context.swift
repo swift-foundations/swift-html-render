@@ -48,19 +48,6 @@ extension HTML.Element.Style {
         /// Optional pseudo-class or pseudo-element.
         public let pseudo: HTML.Pseudo?
 
-        /// The default empty context.
-        public static let `default` = Self(atRule: nil, selector: nil, pseudo: nil)
-
-        /// TaskLocal storage for the current style context.
-        ///
-        /// Use `$current.withValue(_:operation:)` to set context for a scope:
-        /// ```swift
-        /// HTML.Element.Style.Context.$current.withValue(.init(atRule: .dark)) {
-        ///     // All styles in this scope get the dark media query
-        /// }
-        /// ```
-        @TaskLocal public static var current: Context = .default
-
         /// Creates a style context with the specified modifiers.
         ///
         /// - Parameters:
@@ -103,42 +90,59 @@ extension HTML.Element.Style {
             self.selector = selector
             self.pseudo = nil
         }
+    }
+}
 
-        // MARK: - Composition
+extension HTML.Element.Style.Context {
+    /// The default empty context.
+    public static let `default` = Self(atRule: nil, selector: nil, pseudo: nil)
 
-        /// Merges this context with another, with the other taking precedence for non-nil values.
-        ///
-        /// This enables nested contexts to accumulate:
-        /// ```swift
-        /// .dark {           // atRule = .dark
-        ///     .hover { ... }  // atRule = .dark, pseudo = :hover (merged)
-        /// }
-        /// ```
-        ///
-        /// - Parameter other: The context to merge with (its values take precedence).
-        /// - Returns: A new context with merged values.
-        public func merging(with other: Self) -> Self {
-            Self(
-                atRule: other.atRule ?? self.atRule,
-                selector: other.selector ?? self.selector,
-                pseudo: combinePseudo(self.pseudo, other.pseudo)
-            )
-        }
+    /// TaskLocal storage for the current style context.
+    ///
+    /// Use `$current.withValue(_:operation:)` to set context for a scope:
+    /// ```swift
+    /// HTML.Element.Style.Context.$current.withValue(.init(atRule: .dark)) {
+    ///     // All styles in this scope get the dark media query
+    /// }
+    /// ```
+    @TaskLocal public static var current: Self = .default
+}
 
-        /// Combines two pseudo-selectors.
-        ///
-        /// When both contexts have pseudo values, they're combined (such as `:hover:focus`).
-        /// - Parameters:
-        ///   - lhs: The first pseudo value.
-        ///   - rhs: The second pseudo value.
-        /// - Returns: The combined pseudo value, or the non-nil one if only one exists.
-        private func combinePseudo(_ lhs: HTML.Pseudo?, _ rhs: HTML.Pseudo?) -> HTML.Pseudo? {
-            switch (lhs, rhs) {
-            case (nil, nil): return nil
-            case (let p?, nil): return p
-            case (nil, let p?): return p
-            case (let l?, let r?): return l + r
-            }
+// MARK: - Composition
+
+extension HTML.Element.Style.Context {
+    /// Merges this context with another, with the other taking precedence for non-nil values.
+    ///
+    /// This enables nested contexts to accumulate:
+    /// ```swift
+    /// .dark {           // atRule = .dark
+    ///     .hover { ... }  // atRule = .dark, pseudo = :hover (merged)
+    /// }
+    /// ```
+    ///
+    /// - Parameter other: The context to merge with (its values take precedence).
+    /// - Returns: A new context with merged values.
+    public func merging(with other: Self) -> Self {
+        Self(
+            atRule: other.atRule ?? self.atRule,
+            selector: other.selector ?? self.selector,
+            pseudo: combinePseudo(self.pseudo, other.pseudo)
+        )
+    }
+
+    /// Combines two pseudo-selectors.
+    ///
+    /// When both contexts have pseudo values, they're combined (such as `:hover:focus`).
+    /// - Parameters:
+    ///   - lhs: The first pseudo value.
+    ///   - rhs: The second pseudo value.
+    /// - Returns: The combined pseudo value, or the non-nil one if only one exists.
+    private func combinePseudo(_ lhs: HTML.Pseudo?, _ rhs: HTML.Pseudo?) -> HTML.Pseudo? {
+        switch (lhs, rhs) {
+        case (nil, nil): return nil
+        case (let p?, nil): return p
+        case (nil, let p?): return p
+        case (let l?, let r?): return l + r
         }
     }
 }

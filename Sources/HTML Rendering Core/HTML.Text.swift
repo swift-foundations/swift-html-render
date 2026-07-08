@@ -22,22 +22,24 @@ extension HTML {
         public init(_ text: String) {
             self.text = text
         }
+    }
+}
 
-        public typealias Body = Never
-        public var body: Never { fatalError("Body is Never and must not be accessed.") }
+extension HTML.Text {
+    public typealias Body = Never
+    public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
-        /// Renders the text content via the context's text method.
-        public static func _render(
-            _ view: borrowing Self,
-            context: inout Render.Context
-        ) {
-            context.text(view.text)
-        }
+    /// Renders the text content via the context's text method.
+    public static func _render(
+        _ view: borrowing Self,
+        context: inout Render.Context
+    ) {
+        context.text(view.text)
+    }
 
-        /// Concatenates two HTML text components.
-        public static func + (lhs: Self, rhs: Self) -> Self {
-            HTML.Text(lhs.text + rhs.text)
-        }
+    /// Concatenates two HTML text components.
+    public static func + (lhs: Self, rhs: Self) -> Self {
+        HTML.Text(lhs.text + rhs.text)
     }
 }
 

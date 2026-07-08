@@ -30,18 +30,20 @@ extension HTML {
         public init(_ bytes: [UInt8]) {
             self.bytes = bytes
         }
+    }
+}
 
-        public typealias Body = Never
-        public var body: Never { fatalError("Body is Never and must not be accessed.") }
+extension HTML.Raw {
+    public typealias Body = Never
+    public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
-        /// Renders raw bytes directly to the buffer via `writeRawBytes`.
-        ///
-        /// No-op for foreign contexts (raw HTML has no semantic equivalent).
-        public static func _render(
-            _ view: borrowing Self,
-            context: inout Render.Context
-        ) {
-            context.write(raw: view.bytes)
-        }
+    /// Renders raw bytes directly to the buffer via `writeRawBytes`.
+    ///
+    /// No-op for foreign contexts (raw HTML has no semantic equivalent).
+    public static func _render(
+        _ view: borrowing Self,
+        context: inout Render.Context
+    ) {
+        context.write(raw: view.bytes)
     }
 }

@@ -42,17 +42,19 @@ extension HTML {
                 self.renderInto = { context in T._render(base, context: &context) }
             }
         }
+    }
+}
 
-        public typealias Body = Never
-        public var body: Never { fatalError("Body is Never and must not be accessed.") }
+extension HTML.AnyView {
+    public typealias Body = Never
+    public var body: Never { fatalError("Body is Never and must not be accessed.") }
 
-        /// Renders by replaying the erased view's render thunk.
-        public static func _render(
-            _ view: borrowing HTML.AnyView,
-            context: inout Render.Context
-        ) {
-            view.renderInto(&context)
-        }
+    /// Renders by replaying the erased view's render thunk.
+    public static func _render(
+        _ view: borrowing HTML.AnyView,
+        context: inout Render.Context
+    ) {
+        view.renderInto(&context)
     }
 }
 

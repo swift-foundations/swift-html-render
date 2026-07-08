@@ -53,7 +53,7 @@ extension HTML.View {
 /// Provides a default `description` implementation for HTML types that also conform to `CustomStringConvertible`.
 extension CustomStringConvertible where Self: HTML.View {
     public var description: String {
-        do {
+        do throws(HTML.Context.Configuration.Error) {
             return try String(self)
         } catch {
             return ""
