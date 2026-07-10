@@ -44,7 +44,18 @@ extension HTML {
         @_implements(Render.View,Body)
         public typealias _RenderingBody = Body
 
-        #if canImport(SwiftUI)
+        // The `SwiftUI.View.Body = Never` split is only meaningful where
+        // `HTML.Document` actually conforms to `SwiftUI.View`. That conformance
+        // is declared in `HTML.Document+ViewRepresentable.swift` under
+        // `canImport(SwiftUI) && canImport(WebKit)` for `os(macOS)`/`os(iOS)`.
+        // On the other Apple platforms (tvOS, watchOS, visionOS) there is no
+        // `SwiftUI.View` conformance — tvOS/watchOS lack WebKit, and visionOS
+        // matches no `os(...)` branch — so emitting the
+        // `@_implements(SwiftUI.View,Body)` stamp there references a protocol
+        // the type does not conform to and breaks compilation ("containing type
+        // Document does not conform to protocol View"). This gate MUST mirror
+        // the conformance gate exactly.
+        #if canImport(SwiftUI) && canImport(WebKit) && (os(macOS) || os(iOS))
             @_implements(SwiftUI.View,Body)
             public typealias _SwiftUIBody = Never
         #endif
