@@ -16,7 +16,7 @@ import Testing
 @Suite
 struct `String Extensions Tests` {
     @Suite struct Unit {}
-    @Suite struct EdgeCase {}
+    @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
 

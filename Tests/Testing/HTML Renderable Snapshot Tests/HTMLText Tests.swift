@@ -156,7 +156,7 @@ struct `HTML.Text Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLTextSnapshotTests {
+    struct `HTMLText Snapshot Tests` {
         @Test
         func `HTML.Text basic rendering snapshot`() {
             snapshot(as: .html) {

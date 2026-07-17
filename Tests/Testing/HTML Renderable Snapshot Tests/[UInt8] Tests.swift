@@ -154,7 +154,7 @@ struct `[UInt8] Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct UInt8ArraySnapshotTests {
+    struct `UInt8 Array Snapshot Tests` {
         @Test
         func `[UInt8] document rendering snapshot`() {
             snapshot(as: .html) {

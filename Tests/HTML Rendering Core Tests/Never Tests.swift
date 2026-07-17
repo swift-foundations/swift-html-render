@@ -13,8 +13,8 @@ import Testing
 
 // MARK: - Test Suite
 
-@Suite("Never + HTML.View")
-struct NeverHTMLTests {
+@Suite
+struct Test {
     @Suite struct Unit {}
     @Suite struct Integration {}
 }

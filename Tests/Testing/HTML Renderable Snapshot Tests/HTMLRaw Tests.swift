@@ -89,7 +89,7 @@ struct `HTML.Raw Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLRawSnapshotTests {
+    struct `HTMLRaw Snapshot Tests` {
         @Test
         func `HTML.Raw embedded content snapshot`() {
             snapshot(as: .html) {

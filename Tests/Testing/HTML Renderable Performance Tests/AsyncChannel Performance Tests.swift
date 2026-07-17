@@ -8,7 +8,7 @@ import Testing
 
 extension `Performance Tests` {
     @Suite
-    struct AsyncChannelPerformance {
+    struct `Async Channel Performance` {
         @Test(
             .disabled("Performance test - enable manually")
         )

@@ -9,12 +9,12 @@
 // import HTML_Snapshot_Test_Support
 // import Testing
 //
-// @Suite("ContiguousArray<UInt8> Tests")
+// @Suite
 // struct ContiguousArrayUInt8Tests {
 //
 //    // MARK: - Initialization
 //
-//    @Test("ContiguousArray init from HTML")
+//    @Test
 //    func initFromHTML() throws {
 //        let html = tag("div") {
 //            HTML.Text("Content")
@@ -26,14 +26,14 @@
 //        #expect(string.contains("</div>"))
 //    }
 //
-//    @Test("ContiguousArray init from empty HTML")
+//    @Test
 //    func initFromEmptyHTML() throws {
 //        let html = Empty()
 //        let bytes = ContiguousArray<UInt8>(html)
 //        #expect(bytes.isEmpty)
 //    }
 //
-//    @Test("ContiguousArray init from HTML.Text")
+//    @Test
 //    func initFromHTMLText() throws {
 //        let html = HTML.Text("Hello, World!")
 //        let bytes = ContiguousArray<UInt8>(html)
@@ -43,7 +43,7 @@
 //
 //    // MARK: - Complex HTML
 //
-//    @Test("ContiguousArray with nested elements")
+//    @Test
 //    func nestedElements() throws {
 //        let html = tag("article") {
 //            tag("header") {
@@ -69,7 +69,7 @@
 //        #expect(string.contains("Paragraph 2"))
 //    }
 //
-//    @Test("ContiguousArray with attributes")
+//    @Test
 //    func withAttributes() throws {
 //        let html = tag("a") {
 //            HTML.Text("Link")
@@ -85,7 +85,7 @@
 //
 //    // MARK: - Document Rendering
 //
-//    @Test("ContiguousArray from HTMLDocument")
+//    @Test
 //    func fromHTMLDocument() throws {
 //        let document = HTML.Document {
 //            tag("p") {
@@ -106,7 +106,7 @@
 //
 //    // MARK: - Escaping
 //
-//    @Test("ContiguousArray properly escapes content")
+//    @Test
 //    func properlyEscapes() throws {
 //        let html = tag("div") {
 //            HTML.Text("Special chars: < > & \"test\"")
@@ -118,7 +118,7 @@
 //        #expect(string.contains("&amp;"))
 //    }
 //
-//    @Test("ContiguousArray escapes attribute values")
+//    @Test
 //    func escapesAttributeValues() throws {
 //        let html = tag("input")
 //            .attribute("value", "Say \"Hello\" & <bye>")
@@ -132,7 +132,7 @@
 //
 //    // MARK: - Configuration
 //
-//    @Test("ContiguousArray uses task-local configuration")
+//    @Test
 //    func usesTaskLocalConfiguration() throws {
 //        let html = tag("div") {
 //            HTML.Text("Content")
@@ -148,7 +148,7 @@
 //
 //    // MARK: - Performance Characteristics
 //
-//    @Test("ContiguousArray is efficient for large documents")
+//    @Test
 //    func efficientForLargeDocuments() throws {
 //        // Create a moderately large document
 //        let html = Group {
@@ -173,7 +173,7 @@
 //
 //    // MARK: - Unicode Support
 //
-//    @Test("ContiguousArray preserves Unicode")
+//    @Test
 //    func preservesUnicode() throws {
 //        let html = tag("p") {
 //            HTML.Text("Unicode: 中文 日本語 한국어 🌍")
@@ -192,7 +192,7 @@
 // extension `Snapshot Tests` {
 //    @Suite
 //    struct ContiguousArraySnapshotTests {
-//        @Test("ContiguousArray document rendering snapshot")
+//        @Test
 //        func documentRenderingSnapshot() {
 //            assertInlineSnapshot(
 //                of: HTML.Document {

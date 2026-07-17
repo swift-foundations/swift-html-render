@@ -176,7 +176,7 @@ struct `HTML.Context.Configuration Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLContextRenderingSnapshotTests {
+    struct `HTMLContext Rendering Snapshot Tests` {
         @Test
         func `Configuration.pretty rendering snapshot`() {
             HTML.Context.Configuration.$current.withValue(.pretty) {

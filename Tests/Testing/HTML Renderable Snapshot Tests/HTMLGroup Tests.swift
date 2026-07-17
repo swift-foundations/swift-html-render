@@ -113,7 +113,7 @@ struct `Group Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct GroupSnapshotTests {
+    struct `Group Snapshot Tests` {
         @Test
         func `Group transparent container snapshot`() {
             snapshot(as: .html) {

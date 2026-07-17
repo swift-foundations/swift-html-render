@@ -14,7 +14,7 @@ import Testing
 @Suite
 struct `HTMLBuilder Tests` {
     @Suite struct Unit {}
-    @Suite struct EdgeCase {}
+    @Suite struct `Edge Case` {}
 }
 
 // MARK: - Unit

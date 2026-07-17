@@ -263,7 +263,7 @@ struct `Document Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct DocumentSnapshotTests {
+    struct `Document Snapshot Tests` {
         @Test
         func `Full document snapshot`() {
             snapshot(as: .html) {

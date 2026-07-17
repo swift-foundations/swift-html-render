@@ -411,7 +411,7 @@ struct `Integration Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct IntegrationSnapshotTests {
+    struct `Integration Snapshot Tests` {
         @Test
         func `Full page integration snapshot`() {
             snapshot(as: .html) {

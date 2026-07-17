@@ -17,7 +17,7 @@ extension HTML.Context.Configuration.Error {
     @Suite
     struct Test {
         @Suite struct Unit {}
-        @Suite struct EdgeCase {}
+        @Suite struct `Edge Case` {}
         @Suite struct Integration {}
     }
 }

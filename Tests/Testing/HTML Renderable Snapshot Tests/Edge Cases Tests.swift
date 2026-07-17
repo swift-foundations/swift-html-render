@@ -340,7 +340,7 @@ struct `Edge Cases Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct EdgeCasesSnapshotTests {
+    struct `Edge Cases Snapshot Tests` {
         @Test
         func `Complex edge case snapshot`() {
             snapshot(as: .html) {

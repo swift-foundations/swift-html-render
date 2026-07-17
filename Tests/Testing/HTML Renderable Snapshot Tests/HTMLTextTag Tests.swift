@@ -155,7 +155,7 @@ struct `HTML.Tag.Text Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLTextTagSnapshotTests {
+    struct `HTMLText Tag Snapshot Tests` {
         @Test
         func `HTML.Tag.Text in form snapshot`() {
             let option = tag("option")

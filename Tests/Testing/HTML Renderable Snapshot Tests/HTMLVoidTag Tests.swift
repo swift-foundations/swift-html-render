@@ -204,7 +204,7 @@ struct `HTMLVoidTag Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLVoidTagSnapshotTests {
+    struct `HTMLVoid Tag Snapshot Tests` {
         @Test
         func `HTMLVoidTag form elements snapshot`() {
             let input = tag("input")

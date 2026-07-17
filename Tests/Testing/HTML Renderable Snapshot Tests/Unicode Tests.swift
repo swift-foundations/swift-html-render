@@ -321,7 +321,7 @@ struct `Unicode Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct UnicodeSnapshotTests {
+    struct `Unicode Snapshot Tests` {
         @Test
         func `Multilingual page snapshot`() {
             snapshot(as: .html) {

@@ -171,7 +171,7 @@ struct `AnyHTML Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct AnyHTMLSnapshotTests {
+    struct `Any HTMLSnapshot Tests` {
         @Test
         func `AnyHTML type erasure snapshot`() {
             let h1 = tag("h1") { HTML.Text("Title") }

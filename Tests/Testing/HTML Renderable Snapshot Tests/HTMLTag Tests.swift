@@ -90,7 +90,7 @@ struct `HTML.Tag Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLTagSnapshotTests {
+    struct `HTMLTag Snapshot Tests` {
         @Test
         func `HTML.Tag semantic structure snapshot`() {
             snapshot(as: .html) {

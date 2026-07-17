@@ -244,7 +244,7 @@ struct `_Conditional Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct _ConditionalSnapshotTests {
+    struct ` Conditional Snapshot Tests` {
         @Test
         func `_Conditional true branch snapshot`() {
             struct ConditionalPage: HTML.View {

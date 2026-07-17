@@ -178,7 +178,7 @@ struct `HTML.Context Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLContextSnapshotTests {
+    struct `HTMLContext Snapshot Tests` {
         @Test
         func `HTML.Context stylesheet rendering snapshot`() {
             // This tests the stylesheet generation through actual rendering

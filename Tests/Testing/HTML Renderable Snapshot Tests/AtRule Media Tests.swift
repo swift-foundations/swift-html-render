@@ -74,7 +74,7 @@ struct `AtRule media Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct AtRuleSnapshotTests {
+    struct `At Rule Snapshot Tests` {
         @Test
         func `AtRule media snapshot - mobile styles`() {
             snapshot(as: .html) {

@@ -446,7 +446,7 @@ struct `Selector Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct SelectorSnapshotTests {
+    struct `Selector Snapshot Tests` {
         @Test
         func `HTML align-content with prefix renders properly`() {
             snapshot(as: .html) {

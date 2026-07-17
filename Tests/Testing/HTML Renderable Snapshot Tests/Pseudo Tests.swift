@@ -143,7 +143,7 @@ struct `Pseudo Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct PseudoSnapshotTests {
+    struct `Pseudo Snapshot Tests` {
         @Test
         func `HTML align-content with prefix renders properly`() {
             snapshot(as: .html) {

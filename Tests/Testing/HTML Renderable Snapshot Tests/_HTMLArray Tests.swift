@@ -162,7 +162,7 @@ struct `_Array Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct _ArraySnapshotTests {
+    struct ` Array Snapshot Tests` {
         @Test
         func `_Array list rendering snapshot`() {
             snapshot(as: .html) {

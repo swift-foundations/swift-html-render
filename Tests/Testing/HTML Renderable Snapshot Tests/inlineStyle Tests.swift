@@ -83,7 +83,7 @@ struct `inlineStyle Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct inlineStyleSnapshotTests {
+    struct `inline Style Snapshot Tests` {
         @Test
         func `Basic inline style snapshot`() {
             snapshot(as: .html) {

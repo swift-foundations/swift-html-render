@@ -115,7 +115,7 @@ struct `Array Map Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLArrayMapSnapshotTests {
+    struct `HTMLArray Map Snapshot Tests` {
         @Test
         func `Array map list generation snapshot`() {
             let items = ["Home", "About", "Services", "Contact"]

@@ -213,7 +213,7 @@ struct `_Tuple Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct _TupleSnapshotTests {
+    struct ` Tuple Snapshot Tests` {
         @Test
         func `_Tuple page layout snapshot`() {
             snapshot(as: .html) {

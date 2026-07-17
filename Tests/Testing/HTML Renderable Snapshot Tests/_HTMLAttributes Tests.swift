@@ -77,7 +77,7 @@ struct `_HTMLAttributes Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct AttributeTests {
+    struct `Attribute Tests` {
 
         // MARK: - Snapshot Tests
         @Test

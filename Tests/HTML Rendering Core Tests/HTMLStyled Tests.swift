@@ -14,10 +14,10 @@ import Testing
 
 // MARK: - Test Suite
 
-@Suite("HTML.Styled")
-struct HTMLStyledTests {
+@Suite
+struct Test {
     @Suite struct Unit {}
-    @Suite struct EdgeCase {}
+    @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
 

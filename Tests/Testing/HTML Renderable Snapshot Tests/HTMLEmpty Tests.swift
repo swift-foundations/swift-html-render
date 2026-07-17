@@ -77,7 +77,7 @@ struct `Empty Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct EmptySnapshotTests {
+    struct `Empty Snapshot Tests` {
         @Test
         func `Empty in conditional content snapshot`() {
             let showContent = false

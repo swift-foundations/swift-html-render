@@ -15,7 +15,7 @@ import Testing
 @Suite
 struct `RangeReplaceableCollection UInt8 HTML Tests` {
     @Suite struct Unit {}
-    @Suite struct EdgeCase {}
+    @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
 

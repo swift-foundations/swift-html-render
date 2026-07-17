@@ -178,7 +178,7 @@ struct `Optional Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct OptionalSnapshotTests {
+    struct `Optional Snapshot Tests` {
         @Test
         func `Optional content snapshot`() {
             struct OptionalList: HTML.View {

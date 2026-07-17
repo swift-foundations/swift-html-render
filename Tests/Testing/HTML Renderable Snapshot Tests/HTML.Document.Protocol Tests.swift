@@ -42,7 +42,7 @@ struct `HTML.Document.Protocol Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct HTMLDocumentProtocolSnapshotTests {
+    struct `HTMLDocument Protocol Snapshot Tests` {
         @Test
         func `Complete HTML document snapshot`() {
             snapshot(as: .html) {

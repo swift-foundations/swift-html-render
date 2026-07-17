@@ -78,7 +78,7 @@ struct `Doctype Tests` {
 
 extension `Snapshot Tests` {
     @Suite
-    struct DoctypeSnapshotTests {
+    struct `Doctype Snapshot Tests` {
         @Test
         func `Doctype in complete document snapshot`() {
             snapshot(as: .html) {
