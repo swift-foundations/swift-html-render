@@ -603,15 +603,33 @@ extension HTML.Context {
 
 extension HTML.Context {
     /// Generates a CSS stylesheet from the collected styles as bytes.
+    ///
+    /// Emission order: the unscoped (nil-`atRule`) group is emitted first,
+    /// followed by `@media` (and other at-rule) groups in first-registration
+    /// order — the order in which distinct `atRule` values were first seen
+    /// while iterating the insertion-ordered `styles` map. This keeps output
+    /// byte-identical across renders and processes: grouping through a plain
+    /// `Dictionary` alone would leak that dictionary's per-instance,
+    /// hash-seed-dependent iteration order into the emitted at-rule order
+    /// (F-102).
     public func stylesheetBytes(baseIndentation: [UInt8] = []) -> ContiguousArray<UInt8> {
-        // Group styles by atRule
+        // Group styles by atRule. `grouped`'s own Dictionary iteration order
+        // is not deterministic (per-instance hash seed), so `groupOrder`
+        // tracks first-registration order separately; emission below reads
+        // from `groupOrder`, never from `Array(grouped)`.
         var grouped: [HTML.AtRule?: [(style: HTML.Element.Style, className: String)]] = [:]
+        var groupOrder: [HTML.AtRule?] = []
         styles.forEach { style, className in
+            if grouped[style.atRule] == nil {
+                groupOrder.append(style.atRule)
+            }
             grouped[style.atRule, default: []].append((style, className))
         }
 
         var sheet = ContiguousArray<UInt8>()
-        let sortedGroups = Array(grouped).sorted(by: { $0.key == nil ? $1.key != nil : false })
+        let sortedGroups = groupOrder
+            .map { (key: $0, value: grouped[$0]!) }
+            .sorted(by: { $0.key == nil ? $1.key != nil : false })
 
         for (atRule, stylesForAtRule) in sortedGroups {
             if let atRule {

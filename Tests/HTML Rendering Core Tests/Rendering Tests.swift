@@ -87,6 +87,139 @@ extension `Rendering Tests`.Unit {
         #expect(stylesheet.contains("color:red"))
         #expect(stylesheet.contains("font-size:16px"))
     }
+
+    /// F-102 regression (deterministic discriminator): `stylesheetBytes` groups
+    /// styles by `atRule` before emission. Grouping through a plain `Dictionary`
+    /// leaks that dictionary's per-instance, hash-seed-dependent iteration order
+    /// into the emitted @media block order. This asserts the documented
+    /// contract instead: the unscoped (nil-`atRule`) group first, then @media
+    /// groups in first-registration order. Pre-fix this fails with probability
+    /// 1 - 1/6! per process (six distinct @media groups registered below).
+    @Test
+    func `stylesheet emits at-rule groups in first-registration order`() {
+        func registerAll(into context: inout HTML.Context) {
+            _ = context.register(style: "color:#000", atRule: nil, selector: nil, pseudo: nil)
+            _ = context.register(
+                style: "color:#fff",
+                atRule: "@media (prefers-color-scheme: dark)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:1rem",
+                atRule: "@media only screen and (min-width: 768px) and (max-width: 1024px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:2rem",
+                atRule: "@media only screen and (min-width: 832px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:3rem",
+                atRule: "@media only screen and (max-width: 831px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:4rem",
+                atRule: "@media only screen and (min-width: 1200px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "color:red",
+                atRule: "@media print",
+                selector: nil,
+                pseudo: nil
+            )
+        }
+
+        var context = HTML.Context()
+        registerAll(into: &context)
+        let sheet = context.stylesheet
+
+        var order: [String] = []
+        var searchStart = sheet.startIndex
+        while let mediaRange = sheet[searchStart...].firstRange(of: "@media") {
+            guard let braceIndex = sheet[mediaRange.lowerBound...].firstIndex(of: "{") else { break }
+            order.append(String(sheet[mediaRange.lowerBound...braceIndex]))
+            searchStart = sheet.index(after: braceIndex)
+        }
+
+        let expected = [
+            "@media (prefers-color-scheme: dark){",
+            "@media only screen and (min-width: 768px) and (max-width: 1024px){",
+            "@media only screen and (min-width: 832px){",
+            "@media only screen and (max-width: 831px){",
+            "@media only screen and (min-width: 1200px){",
+            "@media print{",
+        ]
+        #expect(order == expected, "media groups emitted in \(order) rather than registration order")
+    }
+
+    /// F-102 regression (consumer-level guarantee): rendering the same
+    /// registrations many times, in fresh contexts, must produce
+    /// byte-identical stylesheets every time — this is the property the
+    /// RepoTraffic consumer repro actually depends on (hash-stable HTML across
+    /// consecutive renders in the same server process). Paired with the
+    /// registration-order assertion above rather than relied on alone: a
+    /// Dictionary-backed grouping can be process-lucky and stay stable for many
+    /// iterations before shuffling (observed empirically: 1 of 3 probe runs
+    /// stayed stable across 200 in-process renders while the other 2 produced
+    /// 5-6 distinct byte outputs).
+    @Test
+    func `repeated stylesheet renders are byte-identical across 200 iterations`() {
+        func renderOnce() -> String {
+            var context = HTML.Context()
+            _ = context.register(style: "color:#000", atRule: nil, selector: nil, pseudo: nil)
+            _ = context.register(
+                style: "color:#fff",
+                atRule: "@media (prefers-color-scheme: dark)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:1rem",
+                atRule: "@media only screen and (min-width: 768px) and (max-width: 1024px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:2rem",
+                atRule: "@media only screen and (min-width: 832px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:3rem",
+                atRule: "@media only screen and (max-width: 831px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "font-size:4rem",
+                atRule: "@media only screen and (min-width: 1200px)",
+                selector: nil,
+                pseudo: nil
+            )
+            _ = context.register(
+                style: "color:red",
+                atRule: "@media print",
+                selector: nil,
+                pseudo: nil
+            )
+            return context.stylesheet
+        }
+
+        var distinct: Swift.Set<String> = []
+        for _ in 0..<200 {
+            distinct.insert(renderOnce())
+        }
+        #expect(distinct.count == 1, "in-process renders produced \(distinct.count) distinct outputs")
+    }
 }
 
 // MARK: - EdgeCase
