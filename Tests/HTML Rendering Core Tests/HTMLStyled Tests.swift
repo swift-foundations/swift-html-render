@@ -15,7 +15,7 @@ import Testing
 // MARK: - Test Suite
 
 @Suite
-struct Test {
+struct HTMLStyledTests {
     @Suite struct Unit {}
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
@@ -166,7 +166,7 @@ extension HTMLStyledTests.Unit {
 
 // MARK: - EdgeCase
 
-extension HTMLStyledTests.EdgeCase {
+extension HTMLStyledTests.`Edge Case` {
 
     @Test
     func `empty style value`() throws {

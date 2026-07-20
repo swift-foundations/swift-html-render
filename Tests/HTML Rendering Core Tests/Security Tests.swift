@@ -135,7 +135,7 @@ extension `Security Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `Security Tests`.EdgeCase {
+extension `Security Tests`.`Edge Case` {
 
     @Test
     func `style expression injection`() throws {

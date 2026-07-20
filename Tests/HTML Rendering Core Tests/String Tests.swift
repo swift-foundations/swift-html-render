@@ -44,7 +44,7 @@ extension `String Extensions Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `String Extensions Tests`.EdgeCase {
+extension `String Extensions Tests`.`Edge Case` {
 
     @Test
     func `String from empty HTML`() throws {

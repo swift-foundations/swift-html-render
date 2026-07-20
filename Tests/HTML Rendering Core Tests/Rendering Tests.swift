@@ -91,7 +91,7 @@ extension `Rendering Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `Rendering Tests`.EdgeCase {
+extension `Rendering Tests`.`Edge Case` {
 
     @Test
     func `empty content rendering`() throws {

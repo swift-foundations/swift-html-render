@@ -159,7 +159,7 @@ extension `AsyncChannel Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `AsyncChannel Tests`.EdgeCase {
+extension `AsyncChannel Tests`.`Edge Case` {
 
     @Test
     func `empty content`() async throws {

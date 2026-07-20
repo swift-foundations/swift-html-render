@@ -109,7 +109,7 @@ extension `CustomStringConvertible Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `CustomStringConvertible Tests`.EdgeCase {
+extension `CustomStringConvertible Tests`.`Edge Case` {
 
     @Test
     func `description with empty content`() {

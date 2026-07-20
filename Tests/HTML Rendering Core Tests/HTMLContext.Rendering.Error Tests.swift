@@ -108,7 +108,7 @@ extension HTML.Context.Configuration.Error.Test.Unit {
 
 // MARK: - EdgeCase
 
-extension HTML.Context.Configuration.Error.Test.EdgeCase {
+extension HTML.Context.Configuration.Error.Test.`Edge Case` {
 
     @Test
     func `empty message`() {

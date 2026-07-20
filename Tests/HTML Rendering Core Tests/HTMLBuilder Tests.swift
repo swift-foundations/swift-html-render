@@ -84,7 +84,7 @@ extension `HTMLBuilder Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `HTMLBuilder Tests`.EdgeCase {
+extension `HTMLBuilder Tests`.`Edge Case` {
 
     @Test
     func `conditional rendering - true branch`() throws {

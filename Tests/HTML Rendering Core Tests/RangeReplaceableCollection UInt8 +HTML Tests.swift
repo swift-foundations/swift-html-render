@@ -110,7 +110,7 @@ extension `RangeReplaceableCollection UInt8 HTML Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `RangeReplaceableCollection UInt8 HTML Tests`.EdgeCase {
+extension `RangeReplaceableCollection UInt8 HTML Tests`.`Edge Case` {
 
     @Test
     func `Array UInt8 renders empty HTML`() {

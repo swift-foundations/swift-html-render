@@ -138,7 +138,7 @@ extension `Async Tests`.Unit {
 
 // MARK: - EdgeCase
 
-extension `Async Tests`.EdgeCase {
+extension `Async Tests`.`Edge Case` {
 
     @Test
     func `async with empty content`() async {

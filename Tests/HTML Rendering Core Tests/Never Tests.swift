@@ -14,7 +14,7 @@ import Testing
 // MARK: - Test Suite
 
 @Suite
-struct Test {
+struct NeverHTMLTests {
     @Suite struct Unit {}
     @Suite struct Integration {}
 }
