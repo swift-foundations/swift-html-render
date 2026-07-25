@@ -1,0 +1,8 @@
+version: 1
+builder:
+  configs:
+  - documentation_targets:
+    - HTML Rendering Core
+    - HTML Attributes Rendering
+    - HTML Elements Rendering
+    - HTML Rendering
