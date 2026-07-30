@@ -144,7 +144,9 @@ extension `Rendering Tests`.Unit {
         var order: [String] = []
         var searchStart = sheet.startIndex
         while let mediaRange = sheet[searchStart...].firstRange(of: "@media") {
-            guard let braceIndex = sheet[mediaRange.lowerBound...].firstIndex(of: "{") else { break }
+            guard let braceIndex = sheet[mediaRange.lowerBound...].firstIndex(of: "{") else {
+                break
+            }
             order.append(String(sheet[mediaRange.lowerBound...braceIndex]))
             searchStart = sheet.index(after: braceIndex)
         }
@@ -157,7 +159,10 @@ extension `Rendering Tests`.Unit {
             "@media only screen and (min-width: 1200px){",
             "@media print{",
         ]
-        #expect(order == expected, "media groups emitted in \(order) rather than registration order")
+        #expect(
+            order == expected,
+            "media groups emitted in \(order) rather than registration order"
+        )
     }
 
     /// F-102 regression (consumer-level guarantee): rendering the same
@@ -218,7 +223,10 @@ extension `Rendering Tests`.Unit {
         for _ in 0..<200 {
             distinct.insert(renderOnce())
         }
-        #expect(distinct.count == 1, "in-process renders produced \(distinct.count) distinct outputs")
+        #expect(
+            distinct.count == 1,
+            "in-process renders produced \(distinct.count) distinct outputs"
+        )
     }
 }
 

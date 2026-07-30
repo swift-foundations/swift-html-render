@@ -627,7 +627,8 @@ extension HTML.Context {
         }
 
         var sheet = ContiguousArray<UInt8>()
-        let sortedGroups = groupOrder
+        let sortedGroups =
+            groupOrder
             .map { (key: $0, value: grouped[$0]!) }
             .sorted(by: { $0.key == nil ? $1.key != nil : false })
 
