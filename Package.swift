@@ -7,6 +7,7 @@ extension String {
     static let htmlAttributesRendering: Self = "HTML Attributes Rendering"
     static let htmlElementsRendering: Self = "HTML Elements Rendering"
     static let htmlRendering: Self = "HTML Rendering"
+    static let htmlSnapshotTestSupport: Self = "HTML Snapshot Test Support"
     var tests: Self { self + " Tests" }
 }
 
@@ -14,6 +15,9 @@ extension Target.Dependency {
     static var htmlRenderingCore: Self { .target(name: .htmlRenderingCore) }
     static var htmlAttributesRendering: Self { .target(name: .htmlAttributesRendering) }
     static var htmlElementsRendering: Self { .target(name: .htmlElementsRendering) }
+    static var htmlRenderingCoreTestSupport: Self {
+        .target(name: "HTML Rendering Core Test Support")
+    }
 }
 
 extension Target.Dependency {
@@ -31,6 +35,15 @@ extension Target.Dependency {
     }
     static var htmlStandardElements: Self {
         .product(name: "HTML Standard Elements", package: "swift-html-standard")
+    }
+    static var htmlStandardTestSupport: Self {
+        .product(name: "HTML Standard Test Support", package: "swift-html-standard")
+    }
+    static var whatwgHTMLShared: Self {
+        .product(name: "WHATWG HTML Shared", package: "swift-whatwg-html")
+    }
+    static var testSnapshotPrimitives: Self {
+        .product(name: "Test Snapshot Primitives", package: "swift-test-primitives")
     }
     static var w3cCSSShared: Self {
         .product(name: "W3C CSS Shared", package: "swift-w3c-css")
@@ -79,12 +92,15 @@ let package = Package(
         .library(name: .htmlElementsRendering, targets: [.htmlElementsRendering]),
         .library(name: .htmlRendering, targets: [.htmlRendering]),
         .library(name: "HTML Rendering Core Test Support", targets: ["HTML Rendering Core Test Support"]),
+        .library(name: .htmlSnapshotTestSupport, targets: [.htmlSnapshotTestSupport]),
     ],
     dependencies: [
         .package(url: "https://github.com/swift-primitives/swift-render-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-ascii.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-html-standard.git", branch: "main"),
+        .package(url: "https://github.com/swift-whatwg/swift-whatwg-html.git", branch: "main"),
         .package(url: "https://github.com/swift-w3c/swift-w3c-css.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-test-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-dictionary-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-dictionary-ordered-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-ownership-shared-primitives.git", branch: "main"),
@@ -161,6 +177,18 @@ let package = Package(
                 .w3cCSSShared,
             ],
             path: "Tests/Support"
+        ),
+
+        .target(
+            name: .htmlSnapshotTestSupport,
+            dependencies: [
+                .htmlRenderingCore,
+                .htmlRenderingCoreTestSupport,
+                .htmlStandardTestSupport,
+                .testSnapshotPrimitives,
+                .whatwgHTMLShared,
+            ],
+            path: "Tests/Testing/Snapshot Support"
         ),
 
         // MARK: - Tests
