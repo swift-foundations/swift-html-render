@@ -7,7 +7,8 @@ public import HTML_Rendering_Core
 public import Test_Snapshot_Primitives
 public import WHATWG_HTML_Shared
 
-extension Test_Primitives_Core.Test.Snapshot.Strategy where Value: HTML.Document.`Protocol`, Format == String {
+extension Test_Primitives_Core.Test.Snapshot.Strategy
+where Value: HTML.Document.`Protocol`, Format == String {
     public static var html: Self {
         .html()
     }
