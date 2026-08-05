@@ -23,7 +23,6 @@ jobs:
   ci:
     uses: swift-foundations/.github/.github/workflows/swift-ci.yml@main
     with:
-      integrated-docs: true
       docs-umbrella-module: HTML_Rendering
       docs-umbrella-display-name: HTML Rendering
       docs-umbrella-bundle-id: swift-html-render.HTML-Rendering
