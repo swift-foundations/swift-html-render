@@ -7,6 +7,9 @@ on:
   pull_request:
     branches:
       - main
+  merge_group:
+    types:
+      - checks_requested
   workflow_dispatch:
 
 permissions:
@@ -22,10 +25,3 @@ jobs:
     if: ${{ !github.event.repository.private }}
     name: ci / matrix
     uses: swift-institute/.github/.github/workflows/swift-ci.yml@main
-    with:
-      lint-bundle: institute
-      docs-umbrella-module: HTML_Rendering
-      docs-umbrella-display-name: HTML Rendering
-      docs-umbrella-bundle-id: swift-html-render.HTML-Rendering
-      docs-umbrella-docc-path: Sources/HTML Rendering/HTML Rendering.docc
-      docs-exclude-modules: HTML_Rendering_Core_Test_Support
