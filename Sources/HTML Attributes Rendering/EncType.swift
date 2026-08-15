@@ -9,6 +9,7 @@ import HTML_Rendering_Core
 import HTML_Standard_Attributes
 
 extension HTML.View {
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     /// Add an EncType attribute to specify the form data encoding type
     @discardableResult
     package func EncType(
