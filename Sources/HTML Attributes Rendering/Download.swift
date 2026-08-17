@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the disableremoteplayback attribute on an element
     @discardableResult
     package func download(
-        _ value: HTML.Attribute.Download?
+        _ value: HTML.Download.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Download.attribute, value?.description)
+        self.attribute(HTML.Download.Attribute.attribute, value?.description)
     }
 }

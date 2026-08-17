@@ -8,50 +8,50 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML.Element.H1 {
+extension HTML.H1.Element {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
-    ) -> HTML.Element.Tag<Content> {
-        HTML.Element.Tag(for: Self.self) { content() }
+    ) -> HTML.Tag.Element<Content> {
+        HTML.Tag.Element(for: Self.self) { content() }
     }
 }
 
-extension HTML.Element.H2 {
+extension HTML.H2.Element {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
-    ) -> HTML.Element.Tag<Content> {
-        HTML.Element.Tag(for: Self.self) { content() }
+    ) -> HTML.Tag.Element<Content> {
+        HTML.Tag.Element(for: Self.self) { content() }
     }
 }
 
-extension HTML.Element.H3 {
+extension HTML.H3.Element {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
-    ) -> HTML.Element.Tag<Content> {
-        HTML.Element.Tag(for: Self.self) { content() }
+    ) -> HTML.Tag.Element<Content> {
+        HTML.Tag.Element(for: Self.self) { content() }
     }
 }
 
-extension HTML.Element.H4 {
+extension HTML.H4.Element {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
-    ) -> HTML.Element.Tag<Content> {
-        HTML.Element.Tag(for: Self.self) { content() }
+    ) -> HTML.Tag.Element<Content> {
+        HTML.Tag.Element(for: Self.self) { content() }
     }
 }
 
-extension HTML.Element.H5 {
+extension HTML.H5.Element {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
-    ) -> HTML.Element.Tag<Content> {
-        HTML.Element.Tag(for: Self.self) { content() }
+    ) -> HTML.Tag.Element<Content> {
+        HTML.Tag.Element(for: Self.self) { content() }
     }
 }
 
-extension HTML.Element.H6 {
+extension HTML.H6.Element {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
-    ) -> HTML.Element.Tag<Content> {
-        HTML.Element.Tag(for: Self.self) { content() }
+    ) -> HTML.Tag.Element<Content> {
+        HTML.Tag.Element(for: Self.self) { content() }
     }
 }

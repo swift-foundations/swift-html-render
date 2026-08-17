@@ -12,24 +12,24 @@ extension HTML.View {
     /// Add an accept attribute to specify which file types are allowed
     @discardableResult
     package func accept(
-        _ value: HTML.Attribute.Accept?
+        _ value: HTML.Accept.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Accept.attribute, value?.description)
+        self.attribute(HTML.Accept.Attribute.attribute, value?.description)
     }
 
     /// Add an accept attribute with multiple file types
     @discardableResult
     package func accept(
-        _ fileTypes: HTML.Attribute.Accept.FileType?...
+        _ fileTypes: HTML.Accept.Attribute.FileType?...
     ) -> HTML._Attributes<Self> {
-        self.accept(HTML.Attribute.Accept(fileTypes.compactMap { $0 }))
+        self.accept(HTML.Accept.Attribute(fileTypes.compactMap { $0 }))
     }
 
     /// Add an accept attribute with multiple file types
     @discardableResult
     package func accept(
-        _ fileTypes: [HTML.Attribute.Accept.FileType?]
+        _ fileTypes: [HTML.Accept.Attribute.FileType?]
     ) -> HTML._Attributes<Self> {
-        self.accept(HTML.Attribute.Accept(fileTypes.compactMap { $0 }))
+        self.accept(HTML.Accept.Attribute(fileTypes.compactMap { $0 }))
     }
 }

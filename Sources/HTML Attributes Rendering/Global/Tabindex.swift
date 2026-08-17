@@ -14,26 +14,26 @@ extension HTML.View {
     public func tabindex(
         _ value: Int
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Tabindex.attribute, String(value))
+        self.attribute(HTML.Tabindex.Attribute.attribute, String(value))
     }
 
     /// Sets the tabindex attribute using a Tabindex struct
     @discardableResult
     public func tabindex(
-        _ attribute: HTML.Attribute.Tabindex
+        _ attribute: HTML.Tabindex.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Tabindex.attribute, attribute.description)
+        self.attribute(HTML.Tabindex.Attribute.attribute, attribute.description)
     }
 
     /// Makes the element not focusable via keyboard but focusable programmatically
     @discardableResult
     public func notTabbable() -> HTML._Attributes<Self> {
-        self.tabindex(HTML.Attribute.Tabindex.notTabbable)
+        self.tabindex(HTML.Tabindex.Attribute.notTabbable)
     }
 
     /// Makes the element focusable in the natural document order
     @discardableResult
     public func tabbableInDocumentOrder() -> HTML._Attributes<Self> {
-        self.tabindex(HTML.Attribute.Tabindex.inDocumentOrder)
+        self.tabindex(HTML.Tabindex.Attribute.inDocumentOrder)
     }
 }

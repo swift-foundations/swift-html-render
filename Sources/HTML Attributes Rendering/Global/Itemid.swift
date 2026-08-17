@@ -15,16 +15,16 @@ extension HTML.View {
         _ identifier: String
     ) -> HTML._Attributes<Self> {
         self.attribute(
-            HTML.Attribute.Itemid.attribute,
-            HTML.Attribute.Itemid(identifier).description
+            HTML.Itemid.Attribute.attribute,
+            HTML.Itemid.Attribute(identifier).description
         )
     }
 
     /// Sets the itemid attribute using an Itemid struct
     @discardableResult
     public func itemid(
-        _ value: HTML.Attribute.Itemid
+        _ value: HTML.Itemid.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Itemid.attribute, value.description)
+        self.attribute(HTML.Itemid.Attribute.attribute, value.description)
     }
 }

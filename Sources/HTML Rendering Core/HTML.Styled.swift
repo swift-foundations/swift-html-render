@@ -27,7 +27,7 @@ extension HTML {
         public let property: P?
 
         /// The style metadata for HTML rendering.
-        public let style: HTML.Style?
+        public let style: HTML.Style.Rule?
 
         /// Optional at-rule (such as media query).
         public let atRule: HTML.AtRule?
@@ -49,7 +49,7 @@ extension HTML {
             self.content = Render.Indirect(content)
             self.property = property
             self.style = property.map {
-                HTML.Style($0, atRule: atRule, selector: selector, pseudo: pseudo)
+                HTML.Style.Rule($0, atRule: atRule, selector: selector, pseudo: pseudo)
             }
             self.atRule = atRule
             self.selector = selector
@@ -101,7 +101,7 @@ extension HTML.View {
     public func inlineStyle<P: W3C_CSS_Shared.Property>(
         _ property: P?
     ) -> HTML.Styled<Self, P> {
-        let ctx = HTML.Style.Context.current
+        let ctx = HTML.Style.Rule.Context.current
         return HTML.Styled(
             self,
             property,

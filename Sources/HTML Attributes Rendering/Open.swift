@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the open attribute on an element
     @discardableResult
     package func open(
-        _ value: HTML.Attribute.Open?
+        _ value: HTML.Open.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

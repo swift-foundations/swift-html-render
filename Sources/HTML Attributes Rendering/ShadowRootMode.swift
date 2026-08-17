@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the shadowrootmode attribute on an element
     @discardableResult
     package func shadowRootMode(
-        _ value: HTML.Attribute.ShadowRootMode?
+        _ value: HTML.ShadowRootMode.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.ShadowRootMode.attribute, value?.description)
+        self.attribute(HTML.ShadowRootMode.Attribute.attribute, value?.description)
     }
 }

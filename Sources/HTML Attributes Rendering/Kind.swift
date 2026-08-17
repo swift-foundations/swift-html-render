@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the kind attribute on an element
     @discardableResult
     package func kind(
-        _ value: HTML.Attribute.Kind?
+        _ value: HTML.Kind.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Kind.attribute, value?.description)
+        self.attribute(HTML.Kind.Attribute.attribute, value?.description)
     }
 }

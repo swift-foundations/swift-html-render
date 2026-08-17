@@ -1,5 +1,5 @@
 //
-//  HTML.Style.Context.swift
+//  HTML.Style.Rule.Context.swift
 //  swift-html-rendering
 //
 //  TaskLocal-based context for CSS styling.
@@ -7,7 +7,7 @@
 
 public import WHATWG_HTML_Shared
 
-extension HTML.Style {
+extension HTML.Style.Rule {
     /// Context for CSS styling that captures at-rule, selector, and pseudo state.
     ///
     /// This context is propagated via Swift's TaskLocal mechanism, enabling
@@ -17,7 +17,7 @@ extension HTML.Style {
     ///
     /// Set context for a scope:
     /// ```swift
-    /// HTML.Style.Context.$current.withValue(.init(atRule: .dark)) {
+    /// HTML.Style.Rule.Context.$current.withValue(.init(atRule: .dark)) {
     ///     div.css.color(.red)  // Applies color with @media dark
     /// }
     /// ```
@@ -93,7 +93,7 @@ extension HTML.Style {
     }
 }
 
-extension HTML.Style.Context {
+extension HTML.Style.Rule.Context {
     /// The default empty context.
     public static let `default` = Self(atRule: nil, selector: nil, pseudo: nil)
 
@@ -101,7 +101,7 @@ extension HTML.Style.Context {
     ///
     /// Use `$current.withValue(_:operation:)` to set context for a scope:
     /// ```swift
-    /// HTML.Style.Context.$current.withValue(.init(atRule: .dark)) {
+    /// HTML.Style.Rule.Context.$current.withValue(.init(atRule: .dark)) {
     ///     // All styles in this scope get the dark media query
     /// }
     /// ```
@@ -110,7 +110,7 @@ extension HTML.Style.Context {
 
 // MARK: - Composition
 
-extension HTML.Style.Context {
+extension HTML.Style.Rule.Context {
     /// Merges this context with another, with the other taking precedence for non-nil values.
     ///
     /// This enables nested contexts to accumulate:

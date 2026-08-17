@@ -8,11 +8,11 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension WHATWG.HTML.Element.Time {
+extension WHATWG.HTML.Time.Element {
     public func callAsFunction(
         @HTML.Builder _ content: () -> some HTML.View
     ) -> some HTML.View {
-        HTML.Element.Tag(for: Self.self) { content() }
+        HTML.Tag.Element(for: Self.self) { content() }
             .dateTime(self.datetime)
     }
 }

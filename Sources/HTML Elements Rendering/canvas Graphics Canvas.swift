@@ -8,11 +8,11 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML.Element.Canvas {
+extension HTML.Canvas.Element {
     public func callAsFunction(
         @HTML.Builder _ content: () -> some HTML.View
     ) -> some HTML.View {
-        HTML.Element.Tag(for: Self.self) { content() }
+        HTML.Tag.Element(for: Self.self) { content() }
             .width(self.width)
             .height(self.height)
     }

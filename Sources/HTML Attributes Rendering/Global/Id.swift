@@ -14,14 +14,14 @@ extension HTML.View {
     public func id(
         _ id: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Id.attribute, id)
+        self.attribute(HTML.Id.Attribute.attribute, id)
     }
 
     /// Sets the ID attribute using an Id struct
     @discardableResult
     public func id(
-        _ id: HTML.Attribute.Id?
+        _ id: HTML.Id.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Id.attribute, id?.description)
+        self.attribute(HTML.Id.Attribute.attribute, id?.description)
     }
 }

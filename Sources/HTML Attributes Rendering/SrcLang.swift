@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the step attribute on an element
     @discardableResult
     package func srcLang(
-        _ value: HTML.Attribute.SrcLang?
+        _ value: HTML.SrcLang.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.SrcLang.attribute, value?.description)
+        self.attribute(HTML.SrcLang.Attribute.attribute, value?.description)
     }
 }

@@ -12,8 +12,8 @@ extension HTML.View {
 
     @discardableResult
     package func capture(
-        _ value: HTML.Attribute.Capture?
+        _ value: HTML.Capture.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Capture.attribute, value?.description)
+        self.attribute(HTML.Capture.Attribute.attribute, value?.description)
     }
 }

@@ -10,14 +10,14 @@ import HTML_Standard_Attributes
 
 extension HTML.View {
     public var autofocus: HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Autofocus.attribute)
+        self.attribute(HTML.Autofocus.Attribute.attribute)
     }
 }
 
 extension HTML.View {
     @discardableResult
     public func autofocus(
-        _ value: HTML.Attribute.Autofocus?
+        _ value: HTML.Autofocus.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

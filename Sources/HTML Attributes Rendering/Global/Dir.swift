@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the text direction for an HTML element
     @discardableResult
     public func dir(
-        _ value: HTML.Attribute.Dir
+        _ value: HTML.Dir.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Dir.attribute, value.description)
+        self.attribute(HTML.Dir.Attribute.attribute, value.description)
     }
 }

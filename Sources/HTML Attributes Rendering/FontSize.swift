@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the size attribute on a font element
     @discardableResult
     package func size(
-        _ value: HTML.Attribute.FontSize?
+        _ value: HTML.Font.Size.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.FontSize.attribute, value?.description)
+        self.attribute(HTML.Font.Size.Attribute.attribute, value?.description)
     }
 }

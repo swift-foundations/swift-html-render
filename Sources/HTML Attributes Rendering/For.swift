@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the for attribute on an element
     @discardableResult
     package func `for`(
-        _ value: HTML.Attribute.For?
+        _ value: HTML.For.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.For.attribute, value?.description)
+        self.attribute(HTML.For.Attribute.attribute, value?.description)
     }
 }

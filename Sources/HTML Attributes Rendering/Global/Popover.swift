@@ -12,15 +12,15 @@ extension HTML.View {
     /// Sets the popover attribute as a boolean (equivalent to popover="auto")
     @discardableResult
     public func popover() -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Popover.attribute, "")
+        self.attribute(HTML.Popover.Attribute.attribute, "")
     }
 
     /// Sets the popover attribute with a specific type
     @discardableResult
     public func popover(
-        _ type: HTML.Attribute.Popover
+        _ type: HTML.Popover.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Popover.attribute, type.description)
+        self.attribute(HTML.Popover.Attribute.attribute, type.description)
     }
 
     /// Sets the popover attribute with a value
@@ -28,7 +28,7 @@ extension HTML.View {
     public func popover(
         _ value: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Popover.attribute, value)
+        self.attribute(HTML.Popover.Attribute.attribute, value)
     }
 }
 
@@ -38,15 +38,15 @@ extension HTML.View {
     public func popovertarget(
         _ id: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.PopoverTarget.attribute, id)
+        self.attribute(HTML.PopoverTarget.Attribute.attribute, id)
     }
 
     /// Sets the popovertarget attribute using a PopoverTarget struct
     @discardableResult
     public func popovertarget(
-        _ attribute: HTML.Attribute.PopoverTarget?
+        _ attribute: HTML.PopoverTarget.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.PopoverTarget.attribute, attribute?.description)
+        self.attribute(HTML.PopoverTarget.Attribute.attribute, attribute?.description)
     }
 }
 
@@ -54,8 +54,8 @@ extension HTML.View {
     /// Sets the popovertargetaction attribute with an action
     @discardableResult
     public func popovertargetaction(
-        _ action: HTML.Attribute.PopoverTargetAction?
+        _ action: HTML.PopoverTargetAction.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.PopoverTargetAction.attribute, action?.description)
+        self.attribute(HTML.PopoverTargetAction.Attribute.attribute, action?.description)
     }
 }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the behavior attribute on an element
     @discardableResult
     package func behavior(
-        _ value: HTML.Attribute.Behavior?
+        _ value: HTML.Behavior.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Behavior.attribute, value?.description)
+        self.attribute(HTML.Behavior.Attribute.attribute, value?.description)
     }
 }

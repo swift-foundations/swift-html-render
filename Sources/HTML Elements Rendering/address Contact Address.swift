@@ -10,10 +10,10 @@ import HTML_Standard_Elements
 
 // extension Address: HTMLElementNoAttributes {}
 
-extension HTML.Element.Address {
+extension HTML.Address.Element {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
-    ) -> HTML.Element.Tag<Content> {
-        HTML.Element.Tag(for: Self.self) { content() }
+    ) -> HTML.Tag.Element<Content> {
+        HTML.Tag.Element(for: Self.self) { content() }
     }
 }

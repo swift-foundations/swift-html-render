@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the alt attribute on an element
     @discardableResult
     package func alt(
-        _ value: HTML.Attribute.Alt?
+        _ value: HTML.Alt.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Alt.attribute, value?.description)
+        self.attribute(HTML.Alt.Attribute.attribute, value?.description)
     }
 }

@@ -12,8 +12,8 @@ extension HTML.View {
     /// Add a method attribute to specify the HTTP method for form submission
     @discardableResult
     package func method(
-        _ value: HTML.Attribute.Method?
+        _ value: HTML.Method.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Method.attribute, value?.description)
+        self.attribute(HTML.Method.Attribute.attribute, value?.description)
     }
 }

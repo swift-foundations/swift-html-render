@@ -14,7 +14,7 @@ extension HTML.View {
     /// Sets the async attribute on an element
     @discardableResult
     package func async(
-        _ value: WHATWG.HTML.Attribute.Async?
+        _ value: WHATWG.HTML.Async.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

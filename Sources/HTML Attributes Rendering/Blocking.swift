@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the blocking attribute on an element
     @discardableResult
     package func blocking(
-        _ value: HTML.Attribute.Blocking?
+        _ value: HTML.Blocking.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Blocking.attribute, value?.description)
+        self.attribute(HTML.Blocking.Attribute.attribute, value?.description)
     }
 }

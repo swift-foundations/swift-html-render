@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the preload attribute on an element
     @discardableResult
     package func preload(
-        _ value: HTML.Attribute.Preload?
+        _ value: HTML.Preload.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Preload.attribute, value?.description)
+        self.attribute(HTML.Preload.Attribute.attribute, value?.description)
     }
 }

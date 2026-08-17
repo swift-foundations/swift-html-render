@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the media attribute on an element
     @discardableResult
     package func media(
-        _ value: HTML.Attribute.Media?
+        _ value: HTML.Media.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Media.attribute, value?.description)
+        self.attribute(HTML.Media.Attribute.attribute, value?.description)
     }
 }

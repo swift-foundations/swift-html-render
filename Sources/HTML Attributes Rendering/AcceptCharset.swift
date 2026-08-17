@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the accept-charset attribute on an element
     @discardableResult
     package func acceptCharset(
-        _ value: HTML.Attribute.AcceptCharset?
+        _ value: HTML.AcceptCharset.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.AcceptCharset.attribute, value?.description)
+        self.attribute(HTML.AcceptCharset.Attribute.attribute, value?.description)
     }
 }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the content attribute on an element
     @discardableResult
     package func content(
-        _ value: HTML.Attribute.Content?
+        _ value: HTML.Content.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Content.attribute, value?.description)
+        self.attribute(HTML.Content.Attribute.attribute, value?.description)
     }
 }

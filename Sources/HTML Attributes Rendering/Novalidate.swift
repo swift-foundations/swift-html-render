@@ -11,13 +11,13 @@ import HTML_Standard_Attributes
 extension HTML.View {
     /// Add the novalidate attribute to disable browser validation for a form
     package var novalidate: HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Novalidate.attribute)
+        self.attribute(HTML.Novalidate.Attribute.attribute)
     }
 
     /// Conditionally adds the required attribute to the element
     @HTML.Builder
     package func novalidate(
-        _ value: HTML.Attribute.Novalidate?
+        _ value: HTML.Novalidate.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the charset attribute on an element
     @discardableResult
     package func charset(
-        _ value: HTML.Attribute.CharSet?
+        _ value: HTML.CharSet.Attribute?
     ) -> HTML._Attributes<Self> {
         self.attribute("charset", value?.description)
     }

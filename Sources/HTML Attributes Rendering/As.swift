@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the as attribute on an element
     @discardableResult
     package func `as`(
-        _ value: HTML.Attribute.As?
+        _ value: HTML.As.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.As.attribute, value?.rawValue)
+        self.attribute(HTML.As.Attribute.attribute, value?.rawValue)
     }
 }

@@ -10,12 +10,12 @@ import HTML_Attributes_Rendering
 public import HTML_Standard
 import HTML_Standard_Elements
 
-extension HTML.Element.Input: HTML.View {}
+extension HTML.Input.Element: HTML.View {}
 
-extension HTML.Element.Input {
+extension HTML.Input.Element {
     @HTML.Builder
     public var body: some HTML.View {
-        let input = HTML.Element.Tag(for: Self.self) { HTML.Empty() }
+        let input = HTML.Tag.Element(for: Self.self) { HTML.Empty() }
             .name(name)
             .disabled(self.disabled)
             .attribute("type", self.type.label)

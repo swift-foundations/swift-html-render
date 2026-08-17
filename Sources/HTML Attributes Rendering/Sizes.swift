@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the sizes attribute on an element
     @discardableResult
     package func sizes(
-        _ value: HTML.Attribute.Sizes?
+        _ value: HTML.Sizes.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Sizes.attribute, value?.description)
+        self.attribute(HTML.Sizes.Attribute.attribute, value?.description)
     }
 }

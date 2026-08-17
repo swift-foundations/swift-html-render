@@ -13,9 +13,9 @@ extension HTML.View {
     /// Sets the rel attribute on an element
     @discardableResult
     package func rel(
-        _ value: HTML.Attribute.Rel?
+        _ value: HTML.Rel.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Rel.attribute, value?.description)
+        self.attribute(HTML.Rel.Attribute.attribute, value?.description)
     }
 }
 
@@ -25,6 +25,6 @@ extension HTML.View {
 //    package func rel(
 //        _ values: Rel.LinkType...
 //    ) -> HTML._Attributes<Self> {
-//        self.rel(HTML.Attribute.Rel(values))
+//        self.rel(HTML.Rel.Attribute(values))
 //    }
 // }

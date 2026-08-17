@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the step attribute on an element
     @discardableResult
     package func src(
-        _ value: HTML.Attribute.Src?
+        _ value: HTML.Src.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Src.attribute, value?.description)
+        self.attribute(HTML.Src.Attribute.attribute, value?.description)
     }
 }

@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the selected attribute on an element
     @discardableResult
     package func selected(
-        _ value: HTML.Attribute.Selected?
+        _ value: HTML.Selected.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

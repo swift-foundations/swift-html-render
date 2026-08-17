@@ -11,13 +11,13 @@ import HTML_Standard_Attributes
 extension HTML.View {
     /// Sets the itemscope attribute, creating a new microdata item
     public var itemscope: HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Itemscope.attribute)
+        self.attribute(HTML.Itemscope.Attribute.attribute)
     }
 
     /// Sets the itemscope attribute using an Itemscope enum value
     @discardableResult
     public func itemscope(
-        _ value: HTML.Attribute.Itemscope?
+        _ value: HTML.Itemscope.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

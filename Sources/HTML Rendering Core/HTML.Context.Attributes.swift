@@ -24,11 +24,11 @@ extension HTML.Context {
     >
 
     /// The collected styles mapped to their generated class names: a value-semantic
-    /// (copy-on-write) insertion-ordered `HTML.Style` → `String` map.
+    /// (copy-on-write) insertion-ordered `HTML.Style.Rule` → `String` map.
     public typealias Styles = __DictionaryOrdered<
         Ownership.Shared<
-            Hash.Entry<HTML.Style, String>,
-            Hash.Indexed<Column.Heap<Hash.Entry<HTML.Style, String>>>
+            Hash.Entry<HTML.Style.Rule, String>,
+            Hash.Indexed<Column.Heap<Hash.Entry<HTML.Style.Rule, String>>>
         >
     >
 }

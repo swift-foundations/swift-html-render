@@ -8,8 +8,8 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML.Element.BR: HTML.View {
-    public var body: HTML.Element.Tag<HTML.Empty> {
-        HTML.Element.Tag(for: Self.self) { HTML.Empty() }
+extension HTML.BR.Element: HTML.View {
+    public var body: HTML.Tag.Element<HTML.Empty> {
+        HTML.Tag.Element(for: Self.self) { HTML.Empty() }
     }
 }

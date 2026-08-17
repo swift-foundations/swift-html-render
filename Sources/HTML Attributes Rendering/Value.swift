@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the value attribute on an element
     @discardableResult
     package func value<Element: CustomStringConvertible>(
-        _ value: HTML.Attribute.Value<Element>?
+        _ value: HTML.Value.Attribute<Element>?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Value<Element>.attribute, value?.description)
+        self.attribute(HTML.Value.Attribute<Element>.attribute, value?.description)
     }
 }

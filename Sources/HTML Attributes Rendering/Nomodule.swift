@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the nomodule attribute on an element
     @discardableResult
     package func nomodule(
-        _ value: HTML.Attribute.Nomodule?
+        _ value: HTML.Nomodule.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

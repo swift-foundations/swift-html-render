@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the type attribute on a link element
     @discardableResult
     package func type(
-        _ value: HTML.Attribute.LinkType?
+        _ value: HTML.Link.`Type`.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.LinkType.attribute, value?.description)
+        self.attribute(HTML.Link.`Type`.Attribute.attribute, value?.description)
     }
 }

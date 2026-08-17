@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the type attribute on a script element
     @discardableResult
     package func type(
-        _ value: HTML.Attribute.SourceType?
+        _ value: HTML.Source.`Type`.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.SourceType.attribute, value?.description)
+        self.attribute(HTML.Source.`Type`.Attribute.attribute, value?.description)
     }
 }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the optimum attribute on an element
     @discardableResult
     package func optimum(
-        _ value: HTML.Attribute.Optimum?
+        _ value: HTML.Optimum.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Optimum.attribute, value?.description)
+        self.attribute(HTML.Optimum.Attribute.attribute, value?.description)
     }
 }

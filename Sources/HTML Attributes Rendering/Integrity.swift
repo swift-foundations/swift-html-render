@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the integrity attribute on an element
     @discardableResult
     package func integrity(
-        _ value: HTML.Attribute.Integrity?
+        _ value: HTML.Integrity.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Integrity.attribute, value?.description)
+        self.attribute(HTML.Integrity.Attribute.attribute, value?.description)
     }
 }

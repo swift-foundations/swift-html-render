@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the high attribute on an element
     @discardableResult
     package func high(
-        _ value: HTML.Attribute.High?
+        _ value: HTML.High.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.High.attribute, value?.description)
+        self.attribute(HTML.High.Attribute.attribute, value?.description)
     }
 }

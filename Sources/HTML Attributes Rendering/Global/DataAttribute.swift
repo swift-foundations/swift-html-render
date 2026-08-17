@@ -14,13 +14,13 @@ extension HTML.View {
         _ name: some CustomStringConvertible,
         _ value: some CustomStringConvertible
     ) -> HTML._Attributes<Self> {
-        let attribute = HTML.Attribute.DataAttribute(name: name, value: value)
+        let attribute = HTML.Data.Attribute(name: name, value: value)
         return self.attribute(attribute.attributeName, attribute.description)
     }
 
     @discardableResult
     public func data(
-        _ value: HTML.Attribute.DataAttribute?
+        _ value: HTML.Data.Attribute?
     ) -> HTML._Attributes<Self> {
         self.attribute(value?.attributeName ?? "", value?.description)
     }

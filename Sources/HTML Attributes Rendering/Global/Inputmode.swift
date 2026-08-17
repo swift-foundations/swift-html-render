@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the inputmode attribute to hint at what type of virtual keyboard to display
     @discardableResult
     public func inputmode(
-        _ mode: HTML.Attribute.Inputmode?
+        _ mode: HTML.Inputmode.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Inputmode.attribute, mode?.description)
+        self.attribute(HTML.Inputmode.Attribute.attribute, mode?.description)
     }
 }

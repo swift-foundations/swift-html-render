@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the popovertargetaction attribute on an element
     @discardableResult
     package func popoverTargetAction(
-        _ value: HTML.Attribute.PopoverTargetAction?
+        _ value: HTML.PopoverTargetAction.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.PopoverTargetAction.attribute, value?.description)
+        self.attribute(HTML.PopoverTargetAction.Attribute.attribute, value?.description)
     }
 }

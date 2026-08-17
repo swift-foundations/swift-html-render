@@ -12,9 +12,9 @@ extension HTML.View {
     /// Sets the name attribute on an element
     @discardableResult
     package func name(
-        _ value: HTML.Attribute.Name?
+        _ value: HTML.Name.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Name.attribute, value?.description)
+        self.attribute(HTML.Name.Attribute.attribute, value?.description)
     }
 }
 
@@ -22,8 +22,8 @@ extension HTML.View {
     /// Sets the name attribute on an element
     @discardableResult
     package func name(
-        _ value: HTML.Attribute.MetaName?
+        _ value: HTML.Meta.Name.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.MetaName.attribute, value?.description)
+        self.attribute(HTML.Meta.Name.Attribute.attribute, value?.description)
     }
 }

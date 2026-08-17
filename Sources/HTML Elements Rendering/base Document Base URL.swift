@@ -8,12 +8,12 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML.Element.Base {
+extension HTML.Base.Element {
     @HTML.Builder
     public func callAsFunction(
         @HTML.Builder _ content: () -> some HTML.View
     ) -> some HTML.View {
-        let element = HTML.Element.Tag(for: Self.self) { content() }
+        let element = HTML.Tag.Element(for: Self.self) { content() }
         switch self.configuration {
         case .href(let href):
             element.href(href)

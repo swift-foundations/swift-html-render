@@ -12,9 +12,9 @@ extension HTML.View {
     /// Sets the virtualkeyboardpolicy attribute with a policy value
     @discardableResult
     public func virtualkeyboardpolicy(
-        _ policy: HTML.Attribute.Virtualkeyboardpolicy
+        _ policy: HTML.Virtualkeyboardpolicy.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Virtualkeyboardpolicy.attribute, policy.description)
+        self.attribute(HTML.Virtualkeyboardpolicy.Attribute.attribute, policy.description)
     }
 
     /// Sets the virtualkeyboardpolicy attribute to auto

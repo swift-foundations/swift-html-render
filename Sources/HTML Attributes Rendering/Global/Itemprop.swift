@@ -14,7 +14,7 @@ extension HTML.View {
     public func itemprop(
         _ propertyName: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Itemprop.attribute, propertyName)
+        self.attribute(HTML.Itemprop.Attribute.attribute, propertyName)
     }
 
     /// Sets the itemprop attribute with multiple property names
@@ -22,7 +22,7 @@ extension HTML.View {
     public func itemprop(
         _ propertyNames: [String]
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Itemprop.attribute, propertyNames.joined(separator: " "))
+        self.attribute(HTML.Itemprop.Attribute.attribute, propertyNames.joined(separator: " "))
     }
 
     /// Sets the itemprop attribute with multiple property names as variadic parameters
@@ -36,8 +36,8 @@ extension HTML.View {
     /// Sets the itemprop attribute using an Itemprop struct
     @discardableResult
     public func itemprop(
-        _ attribute: HTML.Attribute.Itemprop
+        _ attribute: HTML.Itemprop.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Itemprop.attribute, attribute.description)
+        self.attribute(HTML.Itemprop.Attribute.attribute, attribute.description)
     }
 }

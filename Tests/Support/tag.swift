@@ -12,6 +12,6 @@
 public func tag<T: HTML.View>(
     _ tagName: String,
     @HTML.Builder _ content: () -> T = { HTML.Empty() }
-) -> HTML.Element.Tag<T> {
-    HTML.Element.Tag(tag: tagName, content: content)
+) -> HTML.Tag.Element<T> {
+    HTML.Tag.Element(tag: tagName, content: content)
 }

@@ -14,7 +14,7 @@ extension HTML.View {
     public func style(
         _ css: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Style.attribute, css)
+        self.attribute(HTML.Style.Attribute.attribute, css)
     }
 
     /// Sets the style attribute with CSS declarations as key-value pairs
@@ -26,14 +26,14 @@ extension HTML.View {
             "\(key): \(value)"
         }.joined(separator: "; ")
 
-        return self.attribute(HTML.Attribute.Style.attribute, formattedDeclarations)
+        return self.attribute(HTML.Style.Attribute.attribute, formattedDeclarations)
     }
 
     /// Sets the style attribute using a Style struct
     @discardableResult
     public func style(
-        _ attribute: WHATWG.HTML.Attribute.Style
+        _ attribute: WHATWG.HTML.Style.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Style.attribute, attribute.description)
+        self.attribute(HTML.Style.Attribute.attribute, attribute.description)
     }
 }

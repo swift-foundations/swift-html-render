@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML.Element.Script {
+extension HTML.Script.Element {
     public func callAsFunction(
         _ script: () -> String = { "" }
     ) -> some HTML.View {
@@ -30,7 +30,7 @@ extension HTML.Element.Script {
             }
         }
 
-        return HTML.Element.Tag(for: Self.self) {
+        return HTML.Tag.Element(for: Self.self) {
             if script.isEmpty { HTML.Empty() } else { HTML.Raw(escaped) }
         }
         .src(self.src)
@@ -48,9 +48,9 @@ extension HTML.Element.Script {
     }
 }
 
-extension HTML.Element.Script: HTML.View {
+extension HTML.Script.Element: HTML.View {
     public var body: some HTML.View {
-        HTML.Element.Script(
+        HTML.Script.Element(
             src: self.src,
             async: self.async,
             defer: self.defer,

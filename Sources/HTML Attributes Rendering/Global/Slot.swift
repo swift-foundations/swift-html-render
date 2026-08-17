@@ -14,14 +14,14 @@ extension HTML.View {
     public func slot(
         _ name: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Slot.attribute, name)
+        self.attribute(HTML.Slot.Attribute.attribute, name)
     }
 
     /// Sets the slot attribute using a Slot struct
     @discardableResult
     public func slot(
-        _ attribute: HTML.Attribute.Slot
+        _ attribute: HTML.Slot.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Attribute.Slot.attribute, attribute.description)
+        self.attribute(HTML.Slot.Attribute.attribute, attribute.description)
     }
 }
