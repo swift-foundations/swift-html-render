@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the start attribute on an element
     @discardableResult
     package func start(
-        _ value: Start?
+        _ value: HTML.Attribute.Start?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Start.attribute, value?.description)
+        self.attribute(HTML.Attribute.Start.attribute, value?.description)
     }
 }

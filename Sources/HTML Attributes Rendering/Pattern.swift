@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the pattern attribute on an element
     @discardableResult
     package func pattern(
-        _ value: Pattern?
+        _ value: HTML.Attribute.Pattern?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Pattern.attribute, value?.description)
+        self.attribute(HTML.Attribute.Pattern.attribute, value?.description)
     }
 }

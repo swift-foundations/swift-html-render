@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the maxlength attribute on an element
     @discardableResult
     package func frameBorder(
-        _ value: FrameBorder?
+        _ value: HTML.Attribute.FrameBorder?
     ) -> HTML._Attributes<Self> {
-        self.attribute(FrameBorder.attribute, value?.description)
+        self.attribute(HTML.Attribute.FrameBorder.attribute, value?.description)
     }
 }

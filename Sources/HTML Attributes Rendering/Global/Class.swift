@@ -11,24 +11,24 @@ import HTML_Standard_Attributes
 extension HTML.View {
     @discardableResult
     public func `class`(
-        _ value: Class?
+        _ value: HTML.Attribute.Class?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Class.attribute, value?.description)
+        self.attribute(HTML.Attribute.Class.attribute, value?.description)
     }
 }
 
 // extension HTML.View {
 //    @discardableResult
 //    public func `class`(
-//        _ value: [Class?]
+//        _ value: [HTML.Attribute.Class?]
 //    ) -> HTML._Attributes<Self> {
-//        self.attribute(Class.attribute, Class(value.compactMap{ $0 }.map(\.description)).description)
+//        self.attribute(HTML.Attribute.Class.attribute, HTML.Attribute.Class(value.compactMap{ $0 }.map(\.description)).description)
 //    }
 //
 //    @discardableResult
 //    public func `class`(
-//        _ value: Class?...
+//        _ value: HTML.Attribute.Class?...
 //    ) -> HTML._Attributes<Self> {
-//        self.attribute(Class.attribute, Class(value.compactMap{ $0 }.map(\.description)).description)
+//        self.attribute(HTML.Attribute.Class.attribute, HTML.Attribute.Class(value.compactMap{ $0 }.map(\.description)).description)
 //    }
 // }

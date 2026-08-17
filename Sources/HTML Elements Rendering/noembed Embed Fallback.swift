@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension WHATWG_HTML_Obsolete.EmbedFallback {
+extension WHATWG.HTML.Element.EmbedFallback {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {

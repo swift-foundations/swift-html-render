@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the controls attribute on an element
     @discardableResult
     package func controls(
-        _ value: Controls?
+        _ value: HTML.Attribute.Controls?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

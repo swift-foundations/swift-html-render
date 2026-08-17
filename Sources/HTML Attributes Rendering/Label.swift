@@ -14,8 +14,8 @@ extension HTML.View {
     @discardableResult
     @_disfavoredOverload
     package func label(
-        _ value: HTML_Standard_Attributes.Label?
+        _ value: HTML.Attribute.Label?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Label.attribute, value?.description)
+        self.attribute(HTML.Attribute.Label.attribute, value?.description)
     }
 }

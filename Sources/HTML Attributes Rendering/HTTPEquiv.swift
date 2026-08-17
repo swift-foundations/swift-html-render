@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the httpEquiv attribute on an element
     @discardableResult
     package func httpEquiv(
-        _ value: HttpEquiv?
+        _ value: HTML.Attribute.HttpEquiv?
     ) -> HTML._Attributes<Self> {
         self.attribute("http-equiv", value?.description)
     }

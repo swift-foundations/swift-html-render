@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the hreflang attribute on an element
     @discardableResult
     package func hreflang(
-        _ value: Hreflang?
+        _ value: HTML.Attribute.Hreflang?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Hreflang.attribute, value?.description)
+        self.attribute(HTML.Attribute.Hreflang.attribute, value?.description)
     }
 }

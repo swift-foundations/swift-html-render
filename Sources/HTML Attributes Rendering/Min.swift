@@ -13,9 +13,9 @@ extension HTML.View {
     /// Sets the min attribute on an element
     @discardableResult
     package func min(
-        _ value: Min?
+        _ value: HTML.Attribute.Min?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Min.attribute, value?.description)
+        self.attribute(HTML.Attribute.Min.attribute, value?.description)
     }
 }
 
@@ -26,6 +26,6 @@ extension HTML.View {
 //        date: Date,
 //        format: Min.DateFormat = .fullDate
 //    ) -> HTML._Attributes<Self> {
-//        self.min(Min(date: date, format: format))
+//        self.min(HTML.Attribute.Min(date: date, format: format))
 //    }
 // }

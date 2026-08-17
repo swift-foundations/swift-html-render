@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the usemap attribute on an element
     @discardableResult
     package func usemap(
-        _ value: Usemap?
+        _ value: HTML.Attribute.Usemap?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Usemap.attribute, value?.description)
+        self.attribute(HTML.Attribute.Usemap.attribute, value?.description)
     }
 }

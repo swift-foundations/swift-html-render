@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the maxlength attribute on an element
     @discardableResult
     package func marginWidth(
-        _ value: MarginWidth?
+        _ value: HTML.Attribute.MarginWidth?
     ) -> HTML._Attributes<Self> {
-        self.attribute(MarginWidth.attribute, value?.description)
+        self.attribute(HTML.Attribute.MarginWidth.attribute, value?.description)
     }
 }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the xmlns attribute on an element
     @discardableResult
     package func xmlns(
-        _ value: Xmlns?
+        _ value: HTML.Attribute.Xmlns?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Xmlns.attribute, value?.description)
+        self.attribute(HTML.Attribute.Xmlns.attribute, value?.description)
     }
 }

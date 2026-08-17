@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the allowfullscreen attribute on an element
     @discardableResult
     package func allowfullscreen(
-        _ value: Allowfullscreen?
+        _ value: HTML.Attribute.Allowfullscreen?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

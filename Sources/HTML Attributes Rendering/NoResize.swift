@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the noresize attribute on an element
     @discardableResult
     package func noResize(
-        _ value: NoResize?
+        _ value: HTML.Attribute.NoResize?
     ) -> HTML._Attributes<Self> {
-        self.attribute(NoResize.attribute, value?.description)
+        self.attribute(HTML.Attribute.NoResize.attribute, value?.description)
     }
 }

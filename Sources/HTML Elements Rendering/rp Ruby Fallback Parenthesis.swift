@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.RubyParenthesis {
+extension HTML.Element.RubyParenthesis {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {

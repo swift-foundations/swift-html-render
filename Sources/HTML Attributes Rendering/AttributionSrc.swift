@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the attributionsrc attribute on an element
     @discardableResult
     package func attributionSrc(
-        _ value: AttributionSrc?
+        _ value: HTML.Attribute.AttributionSrc?
     ) -> HTML._Attributes<Self> {
-        self.attribute(AttributionSrc.attribute, value?.description)
+        self.attribute(HTML.Attribute.AttributionSrc.attribute, value?.description)
     }
 }

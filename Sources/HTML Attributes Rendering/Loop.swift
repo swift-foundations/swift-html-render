@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the loop attribute on an element
     @discardableResult
     package func loop(
-        _ value: Loop?
+        _ value: HTML.Attribute.Loop?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the wrap attribute on an element
     @discardableResult
     package func wrap(
-        _ value: TextareaWrap?
+        _ value: HTML.Attribute.TextareaWrap?
     ) -> HTML._Attributes<Self> {
-        self.attribute(TextareaWrap.attribute, value?.description)
+        self.attribute(HTML.Attribute.TextareaWrap.attribute, value?.description)
     }
 }

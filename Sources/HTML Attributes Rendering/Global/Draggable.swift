@@ -12,9 +12,9 @@ extension HTML.View {
     /// Sets whether an element is draggable
     @discardableResult
     public func draggable(
-        _ value: Draggable
+        _ value: HTML.Attribute.Draggable
     ) -> HTML._Attributes<Self> {
-        self.attribute(Draggable.attribute, value.description)
+        self.attribute(HTML.Attribute.Draggable.attribute, value.description)
     }
 
     /// Shorthand to set draggable="true"

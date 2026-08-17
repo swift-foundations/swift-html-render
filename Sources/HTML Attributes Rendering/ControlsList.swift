@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the controlslist attribute on an element
     @discardableResult
     package func controlsList(
-        _ value: ControlsList?
+        _ value: HTML.Attribute.ControlsList?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ControlsList.attribute, value?.description)
+        self.attribute(HTML.Attribute.ControlsList.attribute, value?.description)
     }
 }

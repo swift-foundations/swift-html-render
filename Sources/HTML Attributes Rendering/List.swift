@@ -14,8 +14,8 @@ extension HTML.View {
     /// Sets the list attribute on an element
     @discardableResult
     package func list(
-        _ value: WHATWG_HTML_FormAttributes.List?
+        _ value: WHATWG.HTML.Attribute.List?
     ) -> HTML._Attributes<Self> {
-        self.attribute(WHATWG_HTML_FormAttributes.List.attribute, value?.description)
+        self.attribute(WHATWG.HTML.Attribute.List.attribute, value?.description)
     }
 }

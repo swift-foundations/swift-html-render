@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the minlength attribute on an element
     @discardableResult
     package func minlength(
-        _ value: Minlength?
+        _ value: HTML.Attribute.Minlength?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Minlength.attribute, value?.description)
+        self.attribute(HTML.Attribute.Minlength.attribute, value?.description)
     }
 }

@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.Meta: HTML.View {
+extension HTML.Element.Meta: HTML.View {
     public var body: some HTML.View {
         HTML.Element.Tag(for: Self.self) { HTML.Empty() }
             .charset(self.charset)

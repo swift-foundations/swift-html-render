@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the defer attribute on an element
     @discardableResult
     package func `defer`(
-        _ value: Defer?
+        _ value: HTML.Attribute.Defer?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

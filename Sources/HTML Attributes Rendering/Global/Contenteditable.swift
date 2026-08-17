@@ -11,9 +11,9 @@ import HTML_Standard_Attributes
 extension HTML.View {
     @discardableResult
     public func contenteditable(
-        _ value: Contenteditable
+        _ value: HTML.Attribute.Contenteditable
     ) -> HTML._Attributes<Self> {
-        self.attribute(Contenteditable.attribute, value.description)
+        self.attribute(HTML.Attribute.Contenteditable.attribute, value.description)
     }
 
     public var contenteditable: HTML._Attributes<Self> {

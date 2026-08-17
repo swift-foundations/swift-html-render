@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the translate attribute using a Translate enum value
     @discardableResult
     public func translate(
-        _ attribute: Translate
+        _ attribute: HTML.Attribute.Translate
     ) -> HTML._Attributes<Self> {
-        self.attribute(Translate.attribute, attribute.description)
+        self.attribute(HTML.Attribute.Translate.attribute, attribute.description)
     }
 }

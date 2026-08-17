@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.H1 {
+extension HTML.Element.H1 {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {
@@ -16,7 +16,7 @@ extension HTML_Standard_Elements.H1 {
     }
 }
 
-extension HTML_Standard_Elements.H2 {
+extension HTML.Element.H2 {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {
@@ -24,7 +24,7 @@ extension HTML_Standard_Elements.H2 {
     }
 }
 
-extension HTML_Standard_Elements.H3 {
+extension HTML.Element.H3 {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {
@@ -32,7 +32,7 @@ extension HTML_Standard_Elements.H3 {
     }
 }
 
-extension HTML_Standard_Elements.H4 {
+extension HTML.Element.H4 {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {
@@ -40,7 +40,7 @@ extension HTML_Standard_Elements.H4 {
     }
 }
 
-extension HTML_Standard_Elements.H5 {
+extension HTML.Element.H5 {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {
@@ -48,7 +48,7 @@ extension HTML_Standard_Elements.H5 {
     }
 }
 
-extension HTML_Standard_Elements.H6 {
+extension HTML.Element.H6 {
     public func callAsFunction<Content: HTML.View>(
         @HTML.Builder _ content: () -> Content
     ) -> HTML.Element.Tag<Content> {

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the headers attribute on an element
     @discardableResult
     package func headers(
-        _ value: Headers?
+        _ value: HTML.Attribute.Headers?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Headers.attribute, value?.description)
+        self.attribute(HTML.Attribute.Headers.attribute, value?.description)
     }
 }

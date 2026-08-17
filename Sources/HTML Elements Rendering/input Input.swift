@@ -10,9 +10,9 @@ import HTML_Attributes_Rendering
 public import HTML_Standard
 import HTML_Standard_Elements
 
-extension HTML_Standard.Input: HTML.View {}
+extension HTML.Element.Input: HTML.View {}
 
-extension HTML_Standard.Input {
+extension HTML.Element.Input {
     @HTML.Builder
     public var body: some HTML.View {
         let input = HTML.Element.Tag(for: Self.self) { HTML.Empty() }

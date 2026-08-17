@@ -12,9 +12,9 @@ extension HTML.View {
     /// Sets the max attribute on an element
     @discardableResult
     package func max(
-        _ value: Max?
+        _ value: HTML.Attribute.Max?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Max.attribute, value?.description)
+        self.attribute(HTML.Attribute.Max.attribute, value?.description)
     }
 
     //    /// Sets the max attribute with a date value and format
@@ -23,6 +23,6 @@ extension HTML.View {
     //        date: Date,
     //        format: Max.DateFormat = .fullDate
     //    ) -> HTML._Attributes<Self> {
-    //        self.max(Max(date: date, format: format))
+    //        self.max(HTML.Attribute.Max(date: date, format: format))
     //    }
 }

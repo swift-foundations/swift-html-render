@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the cols attribute on an element
     @discardableResult
     package func cols(
-        _ value: Cols?
+        _ value: HTML.Attribute.Cols?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Cols.attribute, value?.description)
+        self.attribute(HTML.Attribute.Cols.attribute, value?.description)
     }
 }

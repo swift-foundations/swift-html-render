@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the disablepictureinpicture attribute on an element
     @discardableResult
     package func disablePictureInPicture(
-        _ value: DisablePictureInPicture?
+        _ value: HTML.Attribute.DisablePictureInPicture?
     ) -> HTML._Attributes<Self> {
-        self.attribute(DisablePictureInPicture.attribute, value?.description)
+        self.attribute(HTML.Attribute.DisablePictureInPicture.attribute, value?.description)
     }
 }

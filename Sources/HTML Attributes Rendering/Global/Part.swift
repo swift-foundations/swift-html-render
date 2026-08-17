@@ -14,7 +14,7 @@ extension HTML.View {
     public func part(
         _ partName: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(Part.attribute, partName)
+        self.attribute(HTML.Attribute.Part.attribute, partName)
     }
 
     /// Sets the part attribute with multiple part names
@@ -22,7 +22,7 @@ extension HTML.View {
     public func part(
         _ partNames: [String]
     ) -> HTML._Attributes<Self> {
-        self.attribute(Part.attribute, partNames.joined(separator: " "))
+        self.attribute(HTML.Attribute.Part.attribute, partNames.joined(separator: " "))
     }
 
     /// Sets the part attribute with multiple part names as variadic parameters
@@ -36,8 +36,8 @@ extension HTML.View {
     /// Sets the part attribute using a Part struct
     @discardableResult
     public func part(
-        _ attribute: Part
+        _ attribute: HTML.Attribute.Part
     ) -> HTML._Attributes<Self> {
-        self.attribute(Part.attribute, attribute.description)
+        self.attribute(HTML.Attribute.Part.attribute, attribute.description)
     }
 }

@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the maxlength attribute on an element
     @discardableResult
     package func maxlength(
-        _ value: Maxlength?
+        _ value: HTML.Attribute.Maxlength?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Maxlength.attribute, value?.description)
+        self.attribute(HTML.Attribute.Maxlength.attribute, value?.description)
     }
 }

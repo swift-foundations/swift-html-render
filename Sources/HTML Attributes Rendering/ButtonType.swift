@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the type attribute on a button element
     @discardableResult
     package func type(
-        _ value: ButtonType?
+        _ value: HTML.Attribute.ButtonType?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ButtonType.attribute, value?.rawValue)
+        self.attribute(HTML.Attribute.ButtonType.attribute, value?.rawValue)
     }
 }

@@ -14,7 +14,7 @@ extension HTML.View {
     public func title(
         _ value: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(Title.attribute, value)
+        self.attribute(HTML.Attribute.Title.attribute, value)
     }
 
     /// Sets the title attribute with multiline text
@@ -22,7 +22,7 @@ extension HTML.View {
     public func title(
         lines: [String]
     ) -> HTML._Attributes<Self> {
-        self.attribute(Title.attribute, lines.joined(separator: "\n"))
+        self.attribute(HTML.Attribute.Title.attribute, lines.joined(separator: "\n"))
     }
 
     /// Sets the title attribute with multiline text as variadic parameters
@@ -36,14 +36,14 @@ extension HTML.View {
     /// Sets the title attribute using a Title struct
     @discardableResult
     public func title(
-        _ attribute: HTML_Standard_Attributes.Title?
+        _ attribute: HTML.Attribute.Title?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Title.attribute, attribute?.description)
+        self.attribute(HTML.Attribute.Title.attribute, attribute?.description)
     }
 
     /// Sets an empty title to prevent inheriting from ancestors
     @discardableResult
     public func noTitle() -> HTML._Attributes<Self> {
-        self.title(Title.empty)
+        self.title(HTML.Attribute.Title.empty)
     }
 }

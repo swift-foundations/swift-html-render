@@ -13,8 +13,8 @@ extension HTML.View {
     /// Add an EncType attribute to specify the form data encoding type
     @discardableResult
     package func EncType(
-        _ value: EncType?
+        _ value: HTML.Attribute.EncType?
     ) -> HTML._Attributes<Self> {
-        self.attribute(WHATWG_HTML_FormAttributes.EncType.attribute, value?.description)
+        self.attribute(WHATWG.HTML.Attribute.EncType.attribute, value?.description)
     }
 }

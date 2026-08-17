@@ -12,18 +12,20 @@ extension HTML.View {
 
     @discardableResult
     package func elementtiming(
-        _ value: Elementtiming?
+        _ value: HTML.Attribute.Elementtiming?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Elementtiming.attribute, value?.description)
+        self.attribute(HTML.Attribute.Elementtiming.attribute, value?.description)
     }
 
     /// Adds element timing with a categorized identifier
     @discardableResult
     package func elementtiming(
-        category: Elementtiming.Category,
+        category: HTML.Attribute.Elementtiming.Category,
         name: String,
         separator: String = "-"
     ) -> HTML._Attributes<Self> {
-        self.elementtiming(Elementtiming(category: category, name: name, separator: separator))
+        self.elementtiming(
+            HTML.Attribute.Elementtiming(category: category, name: name, separator: separator)
+        )
     }
 }

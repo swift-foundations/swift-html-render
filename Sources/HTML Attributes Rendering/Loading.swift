@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the loading attribute on an element
     @discardableResult
     package func loading(
-        _ value: Loading?
+        _ value: HTML.Attribute.Loading?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Loading.attribute, value?.rawValue)
+        self.attribute(HTML.Attribute.Loading.attribute, value?.rawValue)
     }
 }

@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the reversed attribute on an element
     @discardableResult
     package func reversed(
-        _ value: Reversed?
+        _ value: HTML.Attribute.Reversed?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

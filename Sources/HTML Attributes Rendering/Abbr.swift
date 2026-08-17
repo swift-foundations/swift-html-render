@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the colspan attribute on an element
     @discardableResult
     package func abbr(
-        _ value: Abbr?
+        _ value: HTML.Attribute.Abbr?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Abbr.attribute, value?.description)
+        self.attribute(HTML.Attribute.Abbr.attribute, value?.description)
     }
 }

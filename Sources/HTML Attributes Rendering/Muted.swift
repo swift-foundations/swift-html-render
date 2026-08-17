@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the muted attribute on an element
     @discardableResult
     package func muted(
-        _ value: Muted?
+        _ value: HTML.Attribute.Muted?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

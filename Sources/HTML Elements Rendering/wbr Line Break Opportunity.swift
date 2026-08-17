@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.LineBreakOpportunity: HTML.View {
+extension HTML.Element.LineBreakOpportunity: HTML.View {
     public var body: HTML.Element.Tag<HTML.Empty> {
         HTML.Element.Tag(for: Self.self) { HTML.Empty() }
     }

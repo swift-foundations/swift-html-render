@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the height attribute on an element
     @discardableResult
     package func height(
-        _ value: Height?
+        _ value: HTML.Attribute.Height?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Height.attribute, value?.description)
+        self.attribute(HTML.Attribute.Height.attribute, value?.description)
     }
 }

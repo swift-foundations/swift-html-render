@@ -12,14 +12,14 @@ extension HTML.View {
     /// Sets the hidden attribute with a specific value
     @discardableResult
     public func hidden(
-        _ hidden: Hidden
+        _ hidden: HTML.Attribute.Hidden
     ) -> HTML._Attributes<Self> {
-        self.attribute(Hidden.attribute)
+        self.attribute(HTML.Attribute.Hidden.attribute)
     }
 
     /// Sets the hidden attribute without a value (equivalent to hidden="")
     @discardableResult
     public func hidden() -> HTML._Attributes<Self> {
-        self.attribute(Hidden.attribute)
+        self.attribute(HTML.Attribute.Hidden.attribute)
     }
 }

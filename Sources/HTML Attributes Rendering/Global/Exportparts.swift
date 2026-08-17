@@ -14,7 +14,7 @@ extension HTML.View {
     public func exportparts(
         _ parts: [String]
     ) -> HTML._Attributes<Self> {
-        self.attribute(Exportparts.attribute, parts.joined(separator: ", "))
+        self.attribute(HTML.Attribute.Exportparts.attribute, parts.joined(separator: ", "))
     }
 
     /// Sets the exportparts attribute with part names to export as variadic parameters
@@ -28,7 +28,7 @@ extension HTML.View {
     /// Sets the exportparts attribute with explicit part mappings
     @discardableResult
     public func exportparts(
-        _ mappings: [Exportparts.PartMapping]
+        _ mappings: [HTML.Attribute.Exportparts.PartMapping]
     ) -> HTML._Attributes<Self> {
         let value = mappings.map { mapping in
             if mapping.originalName == mapping.exposedName {
@@ -38,14 +38,14 @@ extension HTML.View {
             }
         }.joined(separator: ", ")
 
-        return self.attribute(Exportparts.attribute, value)
+        return self.attribute(HTML.Attribute.Exportparts.attribute, value)
     }
 
     /// Sets the exportparts attribute using an Exportparts struct
     @discardableResult
     public func exportparts(
-        _ attribute: Exportparts
+        _ attribute: HTML.Attribute.Exportparts
     ) -> HTML._Attributes<Self> {
-        self.attribute(Exportparts.attribute, attribute.description)
+        self.attribute(HTML.Attribute.Exportparts.attribute, attribute.description)
     }
 }

@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import WHATWG_HTML_Embedded
 
-extension WHATWG_HTML_Embedded.Area: HTML.View {
+extension WHATWG.HTML.Element.Area: HTML.View {
     public var body: some HTML.View {
         HTML.Element.Tag(for: Self.self) { HTML.Empty() }
             //        NEED TO FIX AREA domain model

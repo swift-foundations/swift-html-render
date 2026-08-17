@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.Textarea {
+extension HTML.Element.Textarea {
     public func callAsFunction(
         @HTML.Builder _ content: () -> some HTML.View = { HTML.Empty() }
     ) -> some HTML.View {

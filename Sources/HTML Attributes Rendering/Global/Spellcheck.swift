@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the spellcheck attribute using a Spellcheck enum value
     @discardableResult
     package func spellcheck(
-        _ attribute: Spellcheck?
+        _ attribute: HTML.Attribute.Spellcheck?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Spellcheck.attribute, attribute?.description)
+        self.attribute(HTML.Attribute.Spellcheck.attribute, attribute?.description)
     }
 }

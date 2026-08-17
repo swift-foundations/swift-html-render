@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the placeholder attribute on an element
     @discardableResult
     package func placeholder(
-        _ value: Placeholder?
+        _ value: HTML.Attribute.Placeholder?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Placeholder.attribute, value?.description)
+        self.attribute(HTML.Attribute.Placeholder.attribute, value?.description)
     }
 }

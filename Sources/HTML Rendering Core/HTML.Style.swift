@@ -9,7 +9,7 @@ import Render_Primitives
 public import W3C_CSS_Shared
 public import WHATWG_HTML_Shared
 
-extension HTML.Element {
+extension HTML {
     /// A CSS style declaration with optional scope modifiers.
     ///
     /// `HTML.Style` captures a CSS declaration and its context (at-rule, selector, pseudo).
@@ -23,7 +23,7 @@ extension HTML.Element {
     ///
     /// Or from raw declaration strings when needed:
     /// ```swift
-    /// HTML.Element.Style(declaration: "color:red")
+    /// HTML.Style(declaration: "color:red")
     /// ```
     public struct Style: Hashable, Sendable {
         /// The CSS declaration string (such as "color:red")
@@ -82,7 +82,7 @@ extension HTML.Element {
     }
 }
 
-extension HTML.Element.Style {
+extension HTML.Style {
     /// The CSS property name extracted from the declaration.
     ///
     /// For "color:red", returns "color".
@@ -96,7 +96,7 @@ extension HTML.Element.Style {
 }
 
 // Dictionary.Ordered key conformances
-extension HTML.Element.Style: Equation.`Protocol` {
+extension HTML.Style: Equation.`Protocol` {
     public static func == (lhs: borrowing Self, rhs: borrowing Self) -> Bool {
         lhs.declaration == rhs.declaration
             && lhs.atRule == rhs.atRule
@@ -105,7 +105,7 @@ extension HTML.Element.Style: Equation.`Protocol` {
     }
 }
 
-extension HTML.Element.Style: Hash.`Protocol` {
+extension HTML.Style: Hash.`Protocol` {
     public borrowing func hash(into hasher: inout Hasher) {
         hasher.combine(declaration)
         hasher.combine(atRule)

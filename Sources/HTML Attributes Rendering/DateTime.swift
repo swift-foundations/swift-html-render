@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the datetime attribute on an element
     @discardableResult
     package func dateTime(
-        _ value: DateTime?
+        _ value: HTML.Attribute.DateTime?
     ) -> HTML._Attributes<Self> {
-        self.attribute(DateTime.attribute, value?.description)
+        self.attribute(HTML.Attribute.DateTime.attribute, value?.description)
     }
 }

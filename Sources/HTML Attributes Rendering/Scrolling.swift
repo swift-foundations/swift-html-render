@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the scope attribute on an element
     @discardableResult
     package func scrolling(
-        _ value: Scrolling?
+        _ value: HTML.Attribute.Scrolling?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Scrolling.attribute, value?.rawValue)
+        self.attribute(HTML.Attribute.Scrolling.attribute, value?.rawValue)
     }
 }

@@ -14,7 +14,7 @@ extension HTML.View {
     public func lang(
         _ language: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(Lang.attribute, language)
+        self.attribute(HTML.Attribute.Lang.attribute, language)
     }
 
     /// Sets the lang attribute with separate components
@@ -24,14 +24,14 @@ extension HTML.View {
         script: String? = nil,
         region: String? = nil
     ) -> HTML._Attributes<Self> {
-        self.lang(Lang(language: language, script: script, region: region))
+        self.lang(HTML.Attribute.Lang(language: language, script: script, region: region))
     }
 
     /// Sets the lang attribute using a Lang struct
     @discardableResult
     public func lang(
-        _ attribute: Lang
+        _ attribute: HTML.Attribute.Lang
     ) -> HTML._Attributes<Self> {
-        self.attribute(Lang.attribute, attribute.description)
+        self.attribute(HTML.Attribute.Lang.attribute, attribute.description)
     }
 }

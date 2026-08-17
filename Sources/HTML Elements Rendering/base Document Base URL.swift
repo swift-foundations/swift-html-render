@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.Base {
+extension HTML.Element.Base {
     @HTML.Builder
     public func callAsFunction(
         @HTML.Builder _ content: () -> some HTML.View

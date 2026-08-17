@@ -101,7 +101,7 @@ struct `HTML.Context Tests` {
     @Test
     func `HTML.Context stylesheet with styles`() {
         var context = HTML.Context()
-        let style = HTML.Element.Style(declaration: "color:red")
+        let style = HTML.Style(declaration: "color:red")
         _ = context.pushStyle(style)
 
         let stylesheet = context.stylesheet
@@ -112,7 +112,7 @@ struct `HTML.Context Tests` {
     func `HTML.Context stylesheet with media query`() {
         var context = HTML.Context()
         let atRule = HTML.AtRule(rawValue: "@media (max-width: 768px)")
-        let style = HTML.Element.Style(declaration: "display:none", atRule: atRule)
+        let style = HTML.Style(declaration: "display:none", atRule: atRule)
         _ = context.pushStyle(style)
 
         let stylesheet = context.stylesheet
@@ -130,7 +130,7 @@ struct `HTML.Context Tests` {
             reservedCapacity: config.reservedCapacity
         )
         var context = HTML.Context(config)
-        let style = HTML.Element.Style(declaration: "color:blue")
+        let style = HTML.Style(declaration: "color:blue")
         _ = context.pushStyle(style)
 
         let stylesheet = context.stylesheet

@@ -11,8 +11,8 @@ import HTML_Standard_Attributes
 extension HTML.View {
     @discardableResult
     public func autocapitalize(
-        _ value: Autocapitalize?
+        _ value: HTML.Attribute.Autocapitalize?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Autocapitalize.attribute, value?.description)
+        self.attribute(HTML.Attribute.Autocapitalize.attribute, value?.description)
     }
 }

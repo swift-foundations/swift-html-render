@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the face attribute on an element
     @discardableResult
     package func face(
-        _ value: Face?
+        _ value: HTML.Attribute.Face?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Face.attribute, value?.description)
+        self.attribute(HTML.Attribute.Face.attribute, value?.description)
     }
 }

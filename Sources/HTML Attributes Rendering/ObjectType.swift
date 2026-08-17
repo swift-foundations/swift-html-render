@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the type attribute on an object element
     @discardableResult
     package func type(
-        _ value: ObjectType?
+        _ value: HTML.Attribute.ObjectType?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ObjectType.attribute, value?.description)
+        self.attribute(HTML.Attribute.ObjectType.attribute, value?.description)
     }
 }

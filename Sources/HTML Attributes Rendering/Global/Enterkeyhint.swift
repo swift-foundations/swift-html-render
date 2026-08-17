@@ -12,8 +12,8 @@ extension HTML.View {
     /// Sets the Enter key label/action hint for virtual keyboards
     @discardableResult
     public func enterkeyhint(
-        _ value: Enterkeyhint
+        _ value: HTML.Attribute.Enterkeyhint
     ) -> HTML._Attributes<Self> {
-        self.attribute(Enterkeyhint.attribute, value.description)
+        self.attribute(HTML.Attribute.Enterkeyhint.attribute, value.description)
     }
 }

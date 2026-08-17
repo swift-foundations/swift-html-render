@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.Image: HTML.View {
+extension HTML.Element.Image: HTML.View {
     public var body: some HTML.View {
         HTML.Element.Tag(for: Self.self)
             .src(self.src)

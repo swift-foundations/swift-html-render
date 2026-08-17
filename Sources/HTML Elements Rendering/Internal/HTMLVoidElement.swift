@@ -8,7 +8,7 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-// extension HTMLVoidElement where Self: HTML_Standard_Elements.HTMLElement & HTML.View {
+// extension HTMLVoidElement where Self: HTML.Element.HTMLElement & HTML.View {
 //    public var body: HTML.Element.Tag<HTML.Empty> {
 //        HTML.Element.Tag(for: Self.self) { HTML.Empty() }
 //    }
@@ -16,7 +16,7 @@ import HTML_Standard_Elements
 
 // WORKAROUND because Input and BR fail to compile when called as BR(). With this function BR()() works
 // TODO: Re-enable when HTML.VoidElement protocol is available
-// extension HTML.VoidElement where Self: HTML_Standard_Elements.HTML.Element & HTML.View {
+// extension HTML.VoidElement where Self: HTML.Element.HTML.Element & HTML.View {
 //     public func callAsFunction() -> some HTML.View {
 //         self
 //     }
