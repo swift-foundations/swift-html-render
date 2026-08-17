@@ -15,6 +15,7 @@ extension HTML.View {
     package func type(
         _ value: HTML.OrderedList.`Type`.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.OrderedList.`Type`.Attribute.attribute, value?.description)
+        typealias Value = HTML.OrderedList.`Type`.Attribute
+        return self.attribute(Value.attribute, value?.description)
     }
 }

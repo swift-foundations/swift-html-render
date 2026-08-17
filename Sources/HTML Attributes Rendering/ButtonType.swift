@@ -15,6 +15,7 @@ extension HTML.View {
     package func type(
         _ value: HTML.Button.`Type`.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Button.`Type`.Attribute.attribute, value?.rawValue)
+        typealias Value = HTML.Button.`Type`.Attribute
+        return self.attribute(Value.attribute, value?.rawValue)
     }
 }

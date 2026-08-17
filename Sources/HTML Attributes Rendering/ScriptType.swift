@@ -15,6 +15,7 @@ extension HTML.View {
     package func type(
         _ value: HTML.Script.`Type`.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(HTML.Script.`Type`.Attribute.attribute, value?.description)
+        typealias Value = HTML.Script.`Type`.Attribute
+        return self.attribute(Value.attribute, value?.description)
     }
 }
