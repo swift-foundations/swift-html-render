@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the shadowrootclonable attribute on an element
     @discardableResult
     package func shadowRootClonable(
-        _ value: ShadowRootClonable?
+        _ value: HTML.ShadowRootClonable.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ShadowRootClonable.attribute, value?.description)
+        self.attribute(HTML.ShadowRootClonable.Attribute.attribute, value?.description)
     }
 }

@@ -569,7 +569,7 @@ extension HTML.Context {
         selector: String?,
         pseudo: String?
     ) -> String? {
-        let style = HTML.Element.Style(
+        let style = HTML.Style.Rule(
             declaration: declaration,
             atRule: atRule.map { HTML.AtRule(rawValue: $0) },
             selector: selector.map { HTML.Selector(rawValue: $0) },
@@ -587,7 +587,7 @@ extension HTML.Context {
     /// Same style always returns same class name within a render context.
     /// Class names are descriptive and sequential: `color-0`, `margin-1`, and similar.
     public mutating func pushStyle(
-        _ style: HTML.Element.Style
+        _ style: HTML.Style.Rule
     ) -> String {
         if let existing = styles[style] {
             return existing
@@ -617,7 +617,7 @@ extension HTML.Context {
         // is not deterministic (per-instance hash seed), so `groupOrder`
         // tracks first-registration order separately; emission below reads
         // from `groupOrder`, never from `Array(grouped)`.
-        var grouped: [HTML.AtRule?: [(style: HTML.Element.Style, className: String)]] = [:]
+        var grouped: [HTML.AtRule?: [(style: HTML.Style.Rule, className: String)]] = [:]
         var groupOrder: [HTML.AtRule?] = []
         styles.forEach { style, className in
             if grouped[style.atRule] == nil {

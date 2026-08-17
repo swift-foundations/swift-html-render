@@ -11,13 +11,13 @@ import HTML_Standard_Attributes
 extension HTML.View {
     /// Adds the required attribute to the element
     package var required: HTML._Attributes<Self> {
-        self.attribute(Required.attribute)
+        self.attribute(HTML.Required.Attribute.attribute)
     }
 
     /// Conditionally adds the required attribute to the element
     @HTML.Builder
     package func required(
-        _ value: Required?
+        _ value: HTML.Required.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the referrerpolicy attribute on an element
     @discardableResult
     package func referrerPolicy(
-        _ value: ReferrerPolicy?
+        _ value: HTML.ReferrerPolicy.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ReferrerPolicy.attribute, value?.description)
+        self.attribute(HTML.ReferrerPolicy.Attribute.attribute, value?.description)
     }
 }

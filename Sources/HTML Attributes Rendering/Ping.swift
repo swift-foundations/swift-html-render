@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the ping attribute on an element
     @discardableResult
     package func ping(
-        _ value: Ping?
+        _ value: HTML.Ping.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Ping.attribute, value?.description)
+        self.attribute(HTML.Ping.Attribute.attribute, value?.description)
     }
 }

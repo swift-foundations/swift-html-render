@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the autoplay attribute on an element
     @discardableResult
     package func autoplay(
-        _ value: Autoplay?
+        _ value: HTML.Autoplay.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

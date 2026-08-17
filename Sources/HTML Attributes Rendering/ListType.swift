@@ -13,8 +13,9 @@ extension HTML.View {
     /// Sets the type attribute on a list element
     @discardableResult
     package func type(
-        _ value: ListType?
+        _ value: HTML.OrderedList.`Type`.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ListType.attribute, value?.description)
+        typealias Value = HTML.OrderedList.`Type`.Attribute
+        return self.attribute(Value.attribute, value?.description)
     }
 }

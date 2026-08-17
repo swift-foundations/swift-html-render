@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the width attribute on an element
     @discardableResult
     package func width(
-        _ value: Width?
+        _ value: HTML.Width.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Width.attribute, value?.description)
+        self.attribute(HTML.Width.Attribute.attribute, value?.description)
     }
 }

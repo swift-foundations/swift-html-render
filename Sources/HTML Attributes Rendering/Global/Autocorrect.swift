@@ -11,8 +11,8 @@ import HTML_Standard_Attributes
 extension HTML.View {
     @discardableResult
     public func autocorrect(
-        _ value: Autocorrect?
+        _ value: HTML.Autocorrect.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Autocorrect.attribute, value?.description)
+        self.attribute(HTML.Autocorrect.Attribute.attribute, value?.description)
     }
 }

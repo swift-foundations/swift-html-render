@@ -12,9 +12,9 @@ extension HTML.View {
     /// Add an action attribute to specify the URL for form submission
     @discardableResult
     public func action(
-        _ value: Action?
+        _ value: HTML.Action.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Action.attribute, value?.description)
+        self.attribute(HTML.Action.Attribute.attribute, value?.description)
     }
 }
 

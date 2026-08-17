@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the playsinline attribute on an element
     @discardableResult
     package func playsinline(
-        _ value: Playsinline?
+        _ value: HTML.Playsinline.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Playsinline.attribute, value?.description)
+        self.attribute(HTML.Playsinline.Attribute.attribute, value?.description)
     }
 }

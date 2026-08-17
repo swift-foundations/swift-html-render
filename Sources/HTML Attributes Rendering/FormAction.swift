@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the formaction attribute on an element
     @discardableResult
     package func formAction(
-        _ value: FormAction?
+        _ value: HTML.FormAction.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(FormAction.attribute, value?.description)
+        self.attribute(HTML.FormAction.Attribute.attribute, value?.description)
     }
 }

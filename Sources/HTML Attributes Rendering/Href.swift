@@ -12,8 +12,8 @@ extension HTML.View {
     /// Add an href attribute to specify a hyperlink destination
     @discardableResult
     public func href(
-        _ value: Href?
+        _ value: HTML.Href.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Href.attribute, value?.description)
+        self.attribute(HTML.Href.Attribute.attribute, value?.description)
     }
 }

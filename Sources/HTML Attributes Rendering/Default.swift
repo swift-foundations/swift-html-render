@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the default attribute on an element
     @discardableResult
     package func `default`(
-        _ value: Default?
+        _ value: HTML.Default.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

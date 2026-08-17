@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the ismap attribute on an element
     @discardableResult
     package func isMap(
-        _ value: Ismap?
+        _ value: HTML.Ismap.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

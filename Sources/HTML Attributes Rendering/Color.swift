@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the color attribute on an element
     @discardableResult
     package func color(
-        _ value: Color?
+        _ value: HTML.Color.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Color.attribute, value?.description)
+        self.attribute(HTML.Color.Attribute.attribute, value?.description)
     }
 }

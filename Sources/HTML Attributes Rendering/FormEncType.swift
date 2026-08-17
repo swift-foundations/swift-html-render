@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the formenctype attribute on an element
     @discardableResult
     package func formEncType(
-        _ value: FormEncType?
+        _ value: HTML.FormEncType.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(FormEncType.attribute, value?.description)
+        self.attribute(HTML.FormEncType.Attribute.attribute, value?.description)
     }
 }

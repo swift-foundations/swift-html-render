@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the scope attribute on an element
     @discardableResult
     package func scope(
-        _ value: Scope?
+        _ value: HTML.Scope.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Scope.attribute, value?.description)
+        self.attribute(HTML.Scope.Attribute.attribute, value?.description)
     }
 }

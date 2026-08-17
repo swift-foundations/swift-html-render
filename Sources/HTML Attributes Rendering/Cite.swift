@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the cite attribute on an element
     @discardableResult
     package func cite(
-        _ value: HTML_Standard_Attributes.Cite?
+        _ value: HTML.Cite.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Cite.attribute, value?.description)
+        self.attribute(HTML.Cite.Attribute.attribute, value?.description)
     }
 }
