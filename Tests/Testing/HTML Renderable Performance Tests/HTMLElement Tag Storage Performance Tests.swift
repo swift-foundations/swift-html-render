@@ -3,7 +3,7 @@
 //  swift-html-rendering
 //
 //  A/B comparison: class-backed indirect storage vs inline storage
-//  for HTML.Element.Tag<Content>.
+//  for HTML.Tag.Element<Content>.
 //
 //  Indirect storage keeps Tag at pointer size (8 bytes) regardless of content,
 //  preventing cooperative pool stack overflow during result builder expansion.
@@ -18,7 +18,7 @@ import Tests_Performance
 
 // MARK: - Inline Baseline
 
-/// Mirrors the original `HTML.Element.Tag` layout with inline storage.
+/// Mirrors the original `HTML.Tag.Element` layout with inline storage.
 ///
 /// Used as a measurement control — not connected to the rendering pipeline.
 private struct InlineTag<Content> {
@@ -57,7 +57,7 @@ extension `Performance Tests` {
         @Test(.timed(iterations: 3))
         func `indirect tag creation 100K`() {
             for _ in 0..<100_000 {
-                let t = HTML.Element.Tag<String>(
+                let t = HTML.Tag.Element<String>(
                     tag: "div"
                 ) { "Hello" }
                 blackHole(t)
@@ -83,7 +83,7 @@ extension `Performance Tests` {
 
         @Test(.timed(iterations: 3))
         func `indirect tag copy 100K`() {
-            let source = HTML.Element.Tag<String>(
+            let source = HTML.Tag.Element<String>(
                 tag: "div"
             ) { "Hello" }
             for _ in 0..<100_000 {

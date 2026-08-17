@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the compact attribute on an element
     @discardableResult
     package func compact(
-        _ value: Compact?
+        _ value: HTML.Compact.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Compact.attribute, value?.description)
+        self.attribute(HTML.Compact.Attribute.attribute, value?.description)
     }
 }

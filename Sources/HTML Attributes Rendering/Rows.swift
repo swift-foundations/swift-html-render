@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the rows attribute on an element
     @discardableResult
     package func rows(
-        _ value: Rows?
+        _ value: HTML.Rows.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Rows.attribute, value?.description)
+        self.attribute(HTML.Rows.Attribute.attribute, value?.description)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  HTML.Style.swift
+//  HTML.Style.Rule.swift
 //  swift-html-rendering
 //
 //  Created by Coen ten Thije Boonkkamp on 26/11/2025.
@@ -9,23 +9,23 @@ import Render_Primitives
 public import W3C_CSS_Shared
 public import WHATWG_HTML_Shared
 
-extension HTML.Element {
+extension HTML.Style {
     /// A CSS style declaration with optional scope modifiers.
     ///
-    /// `HTML.Style` captures a CSS declaration and its context (at-rule, selector, pseudo).
+    /// `HTML.Style.Rule` captures a CSS declaration and its context (at-rule, selector, pseudo).
     /// This is the unified representation for all styling operations.
     ///
     /// Create styles from typed CSS properties for compile-time safety:
     /// ```swift
-    /// HTML.Style(Color.red)
-    /// HTML.Style(Margin.px(10), pseudo: .hover)
+    /// HTML.Style.Rule(Color.red)
+    /// HTML.Style.Rule(Margin.px(10), pseudo: .hover)
     /// ```
     ///
     /// Or from raw declaration strings when needed:
     /// ```swift
-    /// HTML.Element.Style(declaration: "color:red")
+    /// HTML.Style.Rule(declaration: "color:red")
     /// ```
-    public struct Style: Hashable, Sendable {
+    public struct Rule: Hashable, Sendable {
         /// The CSS declaration string (such as "color:red")
         public let declaration: String
 
@@ -82,7 +82,7 @@ extension HTML.Element {
     }
 }
 
-extension HTML.Element.Style {
+extension HTML.Style.Rule {
     /// The CSS property name extracted from the declaration.
     ///
     /// For "color:red", returns "color".
@@ -96,7 +96,7 @@ extension HTML.Element.Style {
 }
 
 // Dictionary.Ordered key conformances
-extension HTML.Element.Style: Equation.`Protocol` {
+extension HTML.Style.Rule: Equation.`Protocol` {
     public static func == (lhs: borrowing Self, rhs: borrowing Self) -> Bool {
         lhs.declaration == rhs.declaration
             && lhs.atRule == rhs.atRule
@@ -105,7 +105,7 @@ extension HTML.Element.Style: Equation.`Protocol` {
     }
 }
 
-extension HTML.Element.Style: Hash.`Protocol` {
+extension HTML.Style.Rule: Hash.`Protocol` {
     public borrowing func hash(into hasher: inout Hasher) {
         hasher.combine(declaration)
         hasher.combine(atRule)

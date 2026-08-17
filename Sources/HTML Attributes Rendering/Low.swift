@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the low attribute on an element
     @discardableResult
     package func low(
-        _ value: Low?
+        _ value: HTML.Low.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Low.attribute, value?.description)
+        self.attribute(HTML.Low.Attribute.attribute, value?.description)
     }
 }

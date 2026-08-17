@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the formnovalidate attribute on an element
     @discardableResult
     package func formNovalidate(
-        _ value: FormNovalidate?
+        _ value: HTML.FormNovalidate.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

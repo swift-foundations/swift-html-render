@@ -8,9 +8,9 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.Source: HTML.View {
+extension HTML.Source.Element: HTML.View {
     public var body: some HTML.View {
-        HTML.Element.Tag(for: Self.self) { HTML.Empty() }
+        HTML.Tag.Element(for: Self.self) { HTML.Empty() }
             .type(self.type)
             .src(self.src)
             .srcset(self.srcset)

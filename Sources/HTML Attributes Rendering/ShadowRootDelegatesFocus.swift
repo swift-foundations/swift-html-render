@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the shadowrootdelegatesfocus attribute on an element
     @discardableResult
     package func shadowRootDelegatesFocus(
-        _ value: ShadowRootDelegatesFocus?
+        _ value: HTML.ShadowRootDelegatesFocus.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ShadowRootDelegatesFocus.attribute, value?.description)
+        self.attribute(HTML.ShadowRootDelegatesFocus.Attribute.attribute, value?.description)
     }
 }

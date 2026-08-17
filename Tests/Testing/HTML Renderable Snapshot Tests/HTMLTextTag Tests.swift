@@ -15,7 +15,7 @@ struct `HTML.Tag.Text Tests` {
 
     // MARK: - Initialization
     // NOTE: These tests tested the old HTML.Tag.Text type which no longer exists.
-    // The tag() function now returns HTML.Element.Tag<Empty> which doesn't have rawValue.
+    // The tag() function now returns HTML.Tag.Element<Empty> which doesn't have rawValue.
 
     //    @Test
     //    func `HTML.Tag.Text string initialization`() throws {

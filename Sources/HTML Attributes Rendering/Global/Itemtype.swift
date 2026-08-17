@@ -14,7 +14,7 @@ extension HTML.View {
     public func itemtype(
         _ value: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(Itemtype.attribute, value)
+        self.attribute(HTML.Itemtype.Attribute.attribute, value)
     }
 
     /// Sets the itemtype attribute with multiple vocabulary URLs
@@ -22,7 +22,7 @@ extension HTML.View {
     public func itemtype(
         _ values: [String]
     ) -> HTML._Attributes<Self> {
-        self.attribute(Itemtype.attribute, values.joined(separator: " "))
+        self.attribute(HTML.Itemtype.Attribute.attribute, values.joined(separator: " "))
     }
 
     /// Sets the itemtype attribute with multiple vocabulary URLs as variadic parameters
@@ -36,9 +36,9 @@ extension HTML.View {
     /// Sets the itemtype attribute using an Itemtype struct
     @discardableResult
     public func itemtype(
-        _ attribute: Itemtype
+        _ attribute: HTML.Itemtype.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(Itemtype.attribute, attribute.description)
+        self.attribute(HTML.Itemtype.Attribute.attribute, attribute.description)
     }
 
     /// Sets the itemtype attribute with a schema.org type
@@ -46,6 +46,6 @@ extension HTML.View {
     public func itemtype(
         schemaOrg type: String
     ) -> HTML._Attributes<Self> {
-        self.itemtype(Itemtype(schemaOrg: type))
+        self.itemtype(HTML.Itemtype.Attribute(schemaOrg: type))
     }
 }

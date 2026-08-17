@@ -12,8 +12,8 @@ extension HTML.View {
 
     @discardableResult
     package func autocomplete(
-        _ value: Autocomplete?
+        _ value: HTML.Autocomplete.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Autocomplete.attribute, value?.description)
+        self.attribute(HTML.Autocomplete.Attribute.attribute, value?.description)
     }
 }

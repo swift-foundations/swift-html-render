@@ -12,13 +12,13 @@ extension HTML.View {
 
     /// Adds the readonly attribute to the element
     package var readonly: HTML._Attributes<Self> {
-        self.attribute(Readonly.attribute)
+        self.attribute(HTML.Readonly.Attribute.attribute)
     }
 
     /// Conditionally adds the readonly attribute to the element
     @HTML.Builder
     package func readonly(
-        _ value: Readonly?
+        _ value: HTML.Readonly.Attribute?
     ) -> some HTML.View {
         self.attribute(boolean: value)
     }

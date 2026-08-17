@@ -12,9 +12,9 @@ extension HTML.View {
     /// Add a target attribute to a form to specify where to display the response
     @discardableResult
     package func target(
-        _ value: Target?
+        _ value: HTML.Target.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Target.attribute, value?.description)
+        self.attribute(HTML.Target.Attribute.attribute, value?.description)
     }
 }
 
@@ -22,9 +22,9 @@ extension HTML.View {
     /// Add a target attribute to a form to specify where to display the response
     @discardableResult
     package func target(
-        _ value: FormTarget?
+        _ value: HTML.FormTarget.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(FormTarget.attribute, value?.description)
+        self.attribute(HTML.FormTarget.Attribute.attribute, value?.description)
     }
 }
 
@@ -32,9 +32,9 @@ extension HTML.View {
     /// Add a target attribute to a form to specify where to display the response
     @discardableResult
     package func target(
-        form value: Target?
+        form value: HTML.Target.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Target.attribute, value?.description)
+        self.attribute(HTML.Target.Attribute.attribute, value?.description)
     }
 }
 
@@ -42,9 +42,9 @@ extension HTML.View {
     /// Add a target attribute to specify where to display the linked URL
     @discardableResult
     public func target(
-        anchor value: Target?
+        anchor value: HTML.Target.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Target.attribute, value?.description)
+        self.attribute(HTML.Target.Attribute.attribute, value?.description)
     }
 
     /// Open the link in a new tab or window

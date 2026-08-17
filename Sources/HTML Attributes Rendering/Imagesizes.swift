@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the sizes attribute on an image element
     @discardableResult
     package func sizes(
-        _ value: ImageSizes?
+        _ value: HTML.ImageSizes.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ImageSizes.attribute, value?.description)
+        self.attribute(HTML.ImageSizes.Attribute.attribute, value?.description)
     }
 }

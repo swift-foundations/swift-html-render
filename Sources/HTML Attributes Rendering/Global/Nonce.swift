@@ -12,9 +12,9 @@ extension HTML.View {
     /// Sets the nonce attribute using a Nonce struct
     @discardableResult
     public func nonce(
-        _ attribute: Nonce?
+        _ attribute: HTML.Nonce.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Nonce.attribute, attribute?.description)
+        self.attribute(HTML.Nonce.Attribute.attribute, attribute?.description)
     }
 }
 

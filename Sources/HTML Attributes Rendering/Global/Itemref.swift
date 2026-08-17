@@ -14,7 +14,7 @@ extension HTML.View {
     public func itemref(
         _ id: String
     ) -> HTML._Attributes<Self> {
-        self.attribute(Itemref.attribute, id)
+        self.attribute(HTML.Itemref.Attribute.attribute, id)
     }
 
     /// Sets the itemref attribute with multiple element IDs
@@ -22,7 +22,7 @@ extension HTML.View {
     public func itemref(
         _ ids: [String]
     ) -> HTML._Attributes<Self> {
-        self.attribute(Itemref.attribute, ids.joined(separator: " "))
+        self.attribute(HTML.Itemref.Attribute.attribute, ids.joined(separator: " "))
     }
 
     /// Sets the itemref attribute with multiple element IDs as variadic parameters
@@ -36,8 +36,8 @@ extension HTML.View {
     /// Sets the itemref attribute using an Itemref struct
     @discardableResult
     public func itemref(
-        _ attribute: Itemref
+        _ attribute: HTML.Itemref.Attribute
     ) -> HTML._Attributes<Self> {
-        self.attribute(Itemref.attribute, attribute.description)
+        self.attribute(HTML.Itemref.Attribute.attribute, attribute.description)
     }
 }

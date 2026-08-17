@@ -11,12 +11,12 @@ import HTML_Standard_Attributes
 extension HTML.View {
     /// Adds the multiple attribute to the element
     package var multiple: HTML._Attributes<Self> {
-        self.attribute(Multiple.attribute)
+        self.attribute(HTML.Multiple.Attribute.attribute)
     }
 
     /// Conditionally adds the multiple attribute to the element
     @HTML.Builder
-    package func multiple(_ value: Multiple?) -> some HTML.View {
+    package func multiple(_ value: HTML.Multiple.Attribute?) -> some HTML.View {
         self.attribute(boolean: value)
     }
 }

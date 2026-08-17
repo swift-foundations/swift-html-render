@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the srcset attribute on an image element
     @discardableResult
     package func srcset(
-        _ value: ImageSrcSet?
+        _ value: HTML.ImageSrcSet.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ImageSrcSet.attribute, value?.description)
+        self.attribute(HTML.ImageSrcSet.Attribute.attribute, value?.description)
     }
 }

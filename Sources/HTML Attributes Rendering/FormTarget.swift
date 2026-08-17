@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the formtarget attribute on an element
     @discardableResult
     package func formTarget(
-        _ value: FormTarget?
+        _ value: HTML.FormTarget.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(FormTarget.attribute, value?.description)
+        self.attribute(HTML.FormTarget.Attribute.attribute, value?.description)
     }
 }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the rowspan attribute on an element
     @discardableResult
     package func rowspan(
-        _ value: RowSpan?
+        _ value: HTML.RowSpan.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(RowSpan.attribute, value?.description)
+        self.attribute(HTML.RowSpan.Attribute.attribute, value?.description)
     }
 }

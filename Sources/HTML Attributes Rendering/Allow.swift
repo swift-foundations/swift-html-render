@@ -13,7 +13,7 @@ extension HTML.View {
     /// Sets the allow attribute on an element
     @discardableResult
     package func allow(
-        _ value: Allow?
+        _ value: HTML.Allow.Attribute?
     ) -> HTML._Attributes<Self> {
         self.attribute("allow", value?.description)
     }

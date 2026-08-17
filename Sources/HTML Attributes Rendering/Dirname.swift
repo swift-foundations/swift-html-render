@@ -11,8 +11,8 @@ import HTML_Standard_Attributes
 extension HTML.View {
     @discardableResult
     package func dirname(
-        _ value: Dirname?
+        _ value: HTML.Dirname.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Dirname.attribute, value?.description)
+        self.attribute(HTML.Dirname.Attribute.attribute, value?.description)
     }
 }

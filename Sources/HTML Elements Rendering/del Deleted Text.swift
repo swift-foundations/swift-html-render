@@ -8,11 +8,11 @@
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
-extension HTML_Standard_Elements.Del {
+extension HTML.Del.Element {
     public func callAsFunction(
         @HTML.Builder _ content: () -> some HTML.View
     ) -> some HTML.View {
-        HTML.Element.Tag(for: Self.self) { content() }
+        HTML.Tag.Element(for: Self.self) { content() }
             .cite(self.cite)
             .dateTime(self.datetime)
     }

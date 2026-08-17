@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the poster attribute on an element
     @discardableResult
     package func poster(
-        _ value: Poster?
+        _ value: HTML.Poster.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Poster.attribute, value?.description)
+        self.attribute(HTML.Poster.Attribute.attribute, value?.description)
     }
 }

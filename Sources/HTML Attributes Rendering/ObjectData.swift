@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the data attribute on an object element
     @discardableResult
     package func data(
-        _ value: ObjectData?
+        _ value: HTML.ExternalObject.Data.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(ObjectData.attribute, value?.description)
+        self.attribute(HTML.ExternalObject.Data.Attribute.attribute, value?.description)
     }
 }

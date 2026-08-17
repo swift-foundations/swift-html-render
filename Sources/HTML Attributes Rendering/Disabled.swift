@@ -11,12 +11,12 @@ import HTML_Standard_Attributes
 extension HTML.View {
     /// Adds the disabled attribute to the element
     package var disabled: HTML._Attributes<Self> {
-        self.attribute(Disabled.attribute)
+        self.attribute(HTML.Disabled.Attribute.attribute)
     }
 
     /// Conditionally adds the disabled attribute to the element
     @HTML.Builder
-    package func disabled(_ value: Disabled?) -> some HTML.View {
+    package func disabled(_ value: HTML.Disabled.Attribute?) -> some HTML.View {
         self.attribute(boolean: value)
     }
 }

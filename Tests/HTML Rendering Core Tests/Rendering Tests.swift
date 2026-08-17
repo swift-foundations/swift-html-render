@@ -80,7 +80,7 @@ extension `Rendering Tests`.Unit {
     func `stylesheet generation via context`() throws {
         var context = HTML.Context(.pretty)
 
-        let style = HTML.Element.Style(declaration: "color:red;font-size:16px")
+        let style = HTML.Style.Rule(declaration: "color:red;font-size:16px")
         _ = context.pushStyle(style)
 
         let stylesheet = context.stylesheet

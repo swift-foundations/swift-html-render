@@ -12,15 +12,15 @@ extension HTML.View {
 
     @discardableResult
     package func crossorigin(
-        _ value: Crossorigin?
+        _ value: HTML.Crossorigin.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(Crossorigin.attribute, value?.description)
+        self.attribute(HTML.Crossorigin.Attribute.attribute, value?.description)
     }
 
     //    @discardableResult
     //    package func crossorigin(
     //        _ policy: CrosPolicy
     //    ) -> HTML._Attributes<Self> {
-    //        self.crossorigin(Crossorigin(policy))
+    //        self.crossorigin(HTML.Crossorigin.Attribute(policy))
     //    }
 }

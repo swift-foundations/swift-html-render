@@ -33,7 +33,7 @@ struct `Optional Tests` {
 
     //    @Test
     //    func `Optional element renders when present`() throws {
-    //        let optionalElement: HTML.Element.Tag<HTML.Text>? = tag("div") {
+    //        let optionalElement: HTML.Tag.Element<HTML.Text>? = tag("div") {
     //            HTML.Text("Content")
     //        }
     //
@@ -44,7 +44,7 @@ struct `Optional Tests` {
     //
     //    @Test
     //    func `Optional element renders nothing when nil`() throws {
-    //        let optionalElement: HTML.Element.Tag<HTML.Text>? = nil
+    //        let optionalElement: HTML.Tag.Element<HTML.Text>? = nil
     //
     //        let rendered = try String(Group { optionalElement })
     //        #expect(rendered.isEmpty)
@@ -98,7 +98,7 @@ struct `Optional Tests` {
 
     //    @Test
     //    func `Optional with attributes when present`() throws {
-    //        let optionalElement: HTML.Element.Tag<HTML.Text>? = tag("span") {
+    //        let optionalElement: HTML.Tag.Element<HTML.Text>? = tag("span") {
     //            HTML.Text("Styled")
     //        }
     //

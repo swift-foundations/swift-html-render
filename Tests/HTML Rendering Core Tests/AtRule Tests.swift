@@ -139,7 +139,7 @@ extension HTML.AtRule.Test.Integration {
     @Test
     func `used with Style`() {
         let atRule = HTML.AtRule(rawValue: "@media print")
-        let style = HTML.Element.Style(declaration: "display:none", atRule: atRule)
+        let style = HTML.Style.Rule(declaration: "display:none", atRule: atRule)
 
         #expect(style.atRule == atRule)
         #expect(style.declaration == "display:none")

@@ -36,8 +36,8 @@ struct `HTML.Context Tests` {
     //    @Test
     //    func `HTML.Context generates deterministic class names`() {
     //        var context = HTML.Context()
-    //        let style1 = HTML.Style(property: "color", value: "red", atRule: nil, selector: nil, pseudo: nil)
-    //        let style2 = HTML.Style(property: "margin", value: "10px", atRule: nil, selector: nil, pseudo: nil)
+    //        let style1 = HTML.Style.Rule(property: "color", value: "red", atRule: nil, selector: nil, pseudo: nil)
+    //        let style2 = HTML.Style.Rule(property: "margin", value: "10px", atRule: nil, selector: nil, pseudo: nil)
     //
     //        let name1 = context.className(for: style1)
     //        let name2 = context.className(for: style2)
@@ -49,7 +49,7 @@ struct `HTML.Context Tests` {
     //    @Test
     //    func `HTML.Context returns same name for same style`() {
     //        var context = HTML.Context()
-    //        let style = HTML.Style(property: "color", value: "blue", atRule: nil, selector: nil, pseudo: nil)
+    //        let style = HTML.Style.Rule(property: "color", value: "blue", atRule: nil, selector: nil, pseudo: nil)
     //
     //        let name1 = context.className(for: style)
     //        let name2 = context.className(for: style)
@@ -61,7 +61,7 @@ struct `HTML.Context Tests` {
     //    func `HTML.Context different contexts generate independent names`() {
     //        var context1 = HTML.Context()
     //        var context2 = HTML.Context()
-    //        let style = HTML.Style(property: "color", value: "green", atRule: nil, selector: nil, pseudo: nil)
+    //        let style = HTML.Style.Rule(property: "color", value: "green", atRule: nil, selector: nil, pseudo: nil)
     //
     //        let name1 = context1.className(for: style)
     //        let name2 = context2.className(for: style)
@@ -75,9 +75,9 @@ struct `HTML.Context Tests` {
     //    func `HTML.Context classNames batch method`() {
     //        var context = HTML.Context()
     //        let styles = [
-    //            HTML.Style(property: "color", value: "red", atRule: nil, selector: nil, pseudo: nil),
-    //            HTML.Style(property: "font-size", value: "16px", atRule: nil, selector: nil, pseudo: nil),
-    //            HTML.Style(property: "padding", value: "10px", atRule: nil, selector: nil, pseudo: nil)
+    //            HTML.Style.Rule(property: "color", value: "red", atRule: nil, selector: nil, pseudo: nil),
+    //            HTML.Style.Rule(property: "font-size", value: "16px", atRule: nil, selector: nil, pseudo: nil),
+    //            HTML.Style.Rule(property: "padding", value: "10px", atRule: nil, selector: nil, pseudo: nil)
     //        ]
     //
     //        let names = context.classNames(for: styles)
@@ -101,7 +101,7 @@ struct `HTML.Context Tests` {
     @Test
     func `HTML.Context stylesheet with styles`() {
         var context = HTML.Context()
-        let style = HTML.Element.Style(declaration: "color:red")
+        let style = HTML.Style.Rule(declaration: "color:red")
         _ = context.pushStyle(style)
 
         let stylesheet = context.stylesheet
@@ -112,7 +112,7 @@ struct `HTML.Context Tests` {
     func `HTML.Context stylesheet with media query`() {
         var context = HTML.Context()
         let atRule = HTML.AtRule(rawValue: "@media (max-width: 768px)")
-        let style = HTML.Element.Style(declaration: "display:none", atRule: atRule)
+        let style = HTML.Style.Rule(declaration: "display:none", atRule: atRule)
         _ = context.pushStyle(style)
 
         let stylesheet = context.stylesheet
@@ -130,7 +130,7 @@ struct `HTML.Context Tests` {
             reservedCapacity: config.reservedCapacity
         )
         var context = HTML.Context(config)
-        let style = HTML.Element.Style(declaration: "color:blue")
+        let style = HTML.Style.Rule(declaration: "color:blue")
         _ = context.pushStyle(style)
 
         let stylesheet = context.stylesheet

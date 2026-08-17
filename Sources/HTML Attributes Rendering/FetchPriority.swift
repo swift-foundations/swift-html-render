@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the fetchpriority attribute on an element
     @discardableResult
     package func fetchPriority(
-        _ value: FetchPriority?
+        _ value: HTML.FetchPriority.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(FetchPriority.attribute, value?.description)
+        self.attribute(HTML.FetchPriority.Attribute.attribute, value?.description)
     }
 }

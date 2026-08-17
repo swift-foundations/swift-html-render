@@ -11,12 +11,12 @@ import HTML_Standard_Attributes
 extension HTML.View {
     /// Sets the inert attribute, making the element and all its descendants non-interactive
     public var inert: HTML._Attributes<Self> {
-        self.attribute(Inert.attribute)
+        self.attribute(HTML.Inert.Attribute.attribute)
     }
 
     /// Conditionally adds the disabled attribute to the element
     @HTML.Builder
-    package func inert(_ value: Inert?) -> some HTML.View {
+    package func inert(_ value: HTML.Inert.Attribute?) -> some HTML.View {
         self.attribute(boolean: value)
     }
 }

@@ -13,8 +13,8 @@ extension HTML.View {
     /// Sets the formmethod attribute on an element
     @discardableResult
     package func formMethod(
-        _ value: FormMethod?
+        _ value: HTML.FormMethod.Attribute?
     ) -> HTML._Attributes<Self> {
-        self.attribute(FormMethod.attribute, value?.description)
+        self.attribute(HTML.FormMethod.Attribute.attribute, value?.description)
     }
 }
