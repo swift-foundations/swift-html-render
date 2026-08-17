@@ -45,7 +45,7 @@ extension HTML.Tag.Element where Content: HTML.View {
     // switch; no single `some ... .Type` can express the union.
     // swiftlint:disable no_any_protocol_existential
     /// Returns the element type for a given tag name.
-    private static func elementType(for tag: String) -> (any WHATWG.HTML.Type.Element)? {
+    private static func elementType(for tag: String) -> (any WHATWG.HTML.Element.Type)? {
         switch tag {
         // Document (4.1)
         case "html": return WHATWG.HTML.HtmlRoot.Element.self
