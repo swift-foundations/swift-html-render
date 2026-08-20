@@ -1,4 +1,4 @@
-// swift-tools-version: 6.3.3
+// swift-tools-version: 6.4
 
 import PackageDescription
 
@@ -80,36 +80,72 @@ extension Target.Dependency {
 let package = Package(
     name: "swift-html-render",
     platforms: [
-        .macOS("27"),
-        .iOS("27"),
-        .tvOS("27"),
-        .watchOS("27"),
-        .visionOS("27"),
+        .macOS(.v27),
+        .iOS(.v27),
+        .tvOS(.v27),
+        .watchOS(.v27),
+        .visionOS(.v27),
     ],
     products: [
         .library(name: .htmlRenderingCore, targets: [.htmlRenderingCore]),
         .library(name: .htmlAttributesRendering, targets: [.htmlAttributesRendering]),
         .library(name: .htmlElementsRendering, targets: [.htmlElementsRendering]),
         .library(name: .htmlRendering, targets: [.htmlRendering]),
-        .library(name: "HTML Rendering Core Test Support", targets: ["HTML Rendering Core Test Support"]),
+        .library(
+            name: "HTML Rendering Core Test Support",
+            targets: ["HTML Rendering Core Test Support"]
+        ),
         .library(name: .htmlSnapshotTestSupport, targets: [.htmlSnapshotTestSupport]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-primitives/swift-render-primitives.git", branch: "main"),
+        .package(
+            url: "https://github.com/swift-primitives/swift-render-primitives.git",
+            branch: "main"
+        ),
         .package(url: "https://github.com/swift-foundations/swift-ascii.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-html-standard.git", branch: "main"),
         .package(url: "https://github.com/swift-whatwg/swift-whatwg-html.git", branch: "main"),
         .package(url: "https://github.com/swift-w3c/swift-w3c-css.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-test-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-dictionary-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-dictionary-ordered-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-ownership-shared-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-hash-table-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-column-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-hash-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-buffer-linear-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-ownership-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-async-primitives.git", branch: "main"),
+        .package(
+            url: "https://github.com/swift-primitives/swift-test-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-dictionary-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-dictionary-ordered-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-ownership-shared-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-hash-table-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-column-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-hash-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-buffer-linear-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-ownership-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-async-primitives.git",
+            branch: "main"
+        ),
     ],
     targets: [
 
@@ -123,7 +159,10 @@ let package = Package(
                 .w3cCSSShared,
                 .htmlStandard,
                 .dictionaryPrimitives,
-                .product(name: "Dictionary Ordered Primitives", package: "swift-dictionary-ordered-primitives"),
+                .product(
+                    name: "Dictionary Ordered Primitives",
+                    package: "swift-dictionary-ordered-primitives"
+                ),
                 .sharedPrimitive,
                 .hashIndexedPrimitive,
                 .columnPrimitives,
