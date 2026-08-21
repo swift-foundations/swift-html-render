@@ -9,7 +9,7 @@ public import Render_Primitives
 public import WHATWG_HTML_Shared
 
 #if canImport(SwiftUI)
-    @preconcurrency public import SwiftUI
+    @unsafe @preconcurrency import SwiftUI
 #endif
 
 extension HTML {

@@ -8,7 +8,7 @@ public import Column_Primitives
 public import Dictionary_Ordered_Primitives
 public import Dictionary_Primitives
 public import Hash_Indexed_Primitive
-public import Hash_Primitives
+import Hash_Primitives
 public import Ownership_Shared_Primitive
 public import WHATWG_HTML_Shared
 
