@@ -1,19 +1,8 @@
-//
-//  Security Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-//  Cross-cutting security tests for XSS prevention and safe HTML generation.
-//
-
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
 @_spi(DynamicHTML) @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 @Suite
 struct `Security Tests` {
@@ -21,8 +10,6 @@ struct `Security Tests` {
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `Security Tests`.Unit {
 
@@ -133,8 +120,6 @@ extension `Security Tests`.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension `Security Tests`.`Edge Case` {
 
     @Test
@@ -212,8 +197,6 @@ extension `Security Tests`.`Edge Case` {
         #expect(rendered.contains("&lt;ScRiPt&gt;"))
     }
 }
-
-// MARK: - Integration
 
 extension `Security Tests`.Integration {
 

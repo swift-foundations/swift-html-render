@@ -1,10 +1,3 @@
-//
-//  HTML.Text Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `HTML.Text Tests` {
-
-    // MARK: - Initialization
 
     @Test
     func `HTML.Text basic initialization`() throws {
@@ -43,8 +34,6 @@ struct `HTML.Text Tests` {
         let rendered = try String(text)
         #expect(rendered == "Hello, World!")
     }
-
-    // MARK: - HTML Escaping
 
     @Test
     func `HTML.Text escapes ampersand`() throws {
@@ -88,8 +77,6 @@ struct `HTML.Text Tests` {
         #expect(rendered == "It's working")
     }
 
-    // MARK: - Concatenation
-
     @Test
     func `HTML.Text concatenation with + operator`() throws {
         let hello = HTML.Text("Hello, ")
@@ -108,8 +95,6 @@ struct `HTML.Text Tests` {
         #expect(rendered == "A &amp; B &lt; C")
     }
 
-    // MARK: - Unicode
-
     @Test
     func `HTML.Text preserves Unicode characters`() throws {
         let text = HTML.Text("Hello, 世界! 🌍")
@@ -123,8 +108,6 @@ struct `HTML.Text Tests` {
         let rendered = try String(text)
         #expect(rendered == "👍🏽 Great job!")
     }
-
-    // MARK: - Edge Cases
 
     @Test
     func `HTML.Text with newlines`() throws {
@@ -151,8 +134,6 @@ struct `HTML.Text Tests` {
         #expect(rendered.contains("This is &amp; that"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

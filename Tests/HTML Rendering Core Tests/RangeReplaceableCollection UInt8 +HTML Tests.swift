@@ -1,16 +1,7 @@
-//
-//  RangeReplaceableCollection<UInt8>+HTML Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 26/11/2025.
-//
-
 import HTML_Rendering
 @_spi(DynamicHTML) import HTML_Rendering_Core
 import HTML_Standard
 import Testing
-
-// MARK: - Test Suite
 
 @Suite
 struct `RangeReplaceableCollection UInt8 HTML Tests` {
@@ -18,8 +9,6 @@ struct `RangeReplaceableCollection UInt8 HTML Tests` {
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `RangeReplaceableCollection UInt8 HTML Tests`.Unit {
 
@@ -108,8 +97,6 @@ extension `RangeReplaceableCollection UInt8 HTML Tests`.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension `RangeReplaceableCollection UInt8 HTML Tests`.`Edge Case` {
 
     @Test
@@ -133,8 +120,6 @@ extension `RangeReplaceableCollection UInt8 HTML Tests`.`Edge Case` {
         #expect(string.contains("nested"))
     }
 }
-
-// MARK: - Integration
 
 extension `RangeReplaceableCollection UInt8 HTML Tests`.Integration {
 

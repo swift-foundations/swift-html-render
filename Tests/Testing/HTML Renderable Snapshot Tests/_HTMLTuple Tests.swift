@@ -1,10 +1,3 @@
-//
-//  _Tuple Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -13,11 +6,9 @@ import Testing
 @Suite
 struct `_Tuple Tests` {
 
-    // MARK: - Basic Tuple Rendering
-
     @Test
     func `_Tuple renders multiple elements`() throws {
-        // _Tuple is created implicitly when you have multiple elements in a builder
+
         let html = HTML.Group {
             tag("h1") {
                 HTML.Text("Title")
@@ -60,8 +51,6 @@ struct `_Tuple Tests` {
         #expect(rendered.contains("Only one"))
     }
 
-    // MARK: - Attribute Isolation
-
     @Test
     func `_Tuple isolates attributes between elements`() throws {
         let html = HTML.Document {
@@ -79,7 +68,7 @@ struct `_Tuple Tests` {
         let rendered = try String(html)
         #expect(rendered.contains("class=\"first\""))
         #expect(rendered.contains("class=\"second\""))
-        // Ensure attributes don't leak between elements
+
         let firstDivRange = rendered.range(of: "First div")!
         let secondDivRange = rendered.range(of: "Second div")!
         let firstClassRange = rendered.range(of: "class=\"first\"")!
@@ -87,8 +76,6 @@ struct `_Tuple Tests` {
         #expect(firstClassRange.lowerBound < firstDivRange.lowerBound)
         #expect(secondClassRange.lowerBound < secondDivRange.lowerBound)
     }
-
-    // MARK: - Nested Tuples
 
     @Test
     func `_Tuple with nested groups`() throws {
@@ -115,8 +102,6 @@ struct `_Tuple Tests` {
         #expect(rendered.contains("<aside>"))
         #expect(rendered.contains("<footer>"))
     }
-
-    // MARK: - Different Types
 
     @Test
     func `_Tuple with mixed content types`() throws {
@@ -156,8 +141,6 @@ struct `_Tuple Tests` {
         #expect(rendered.contains("type=\"submit\""))
     }
 
-    // MARK: - Style Propagation
-
     @Test
     func `_Tuple propagates styles correctly`() throws {
         let html = HTML.Document {
@@ -176,8 +159,6 @@ struct `_Tuple Tests` {
         #expect(rendered.contains("color:red"))
         #expect(rendered.contains("color:blue"))
     }
-
-    // MARK: - Complex Structures
 
     @Test
     func `_Tuple in document structure`() throws {
@@ -208,8 +189,6 @@ struct `_Tuple Tests` {
         #expect(rendered.contains("<footer>"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

@@ -1,10 +1,3 @@
-//
-//  HTML.Document Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `HTML.Document Tests` {
-
-    // MARK: - Initialization
 
     @Test
     func `HTML.Document with body only`() throws {
@@ -81,8 +72,6 @@ struct `HTML.Document Tests` {
         #expect(rendered.contains("Just body"))
     }
 
-    // MARK: - Document Structure
-
     @Test
     func `HTML.Document includes doctype`() throws {
         let document = HTML.Document {
@@ -107,8 +96,6 @@ struct `HTML.Document Tests` {
         #expect(rendered.contains("</style>"))
         #expect(rendered.contains("color:red"))
     }
-
-    // MARK: - Complex Documents
 
     @Test
     func `HTML.Document with meta tags`() throws {
@@ -153,8 +140,6 @@ struct `HTML.Document Tests` {
         #expect(rendered.contains("<footer>"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

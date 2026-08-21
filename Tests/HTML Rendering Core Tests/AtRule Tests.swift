@@ -1,15 +1,6 @@
-//
-//  AtRule Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import Testing
 
 @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 extension HTML.AtRule {
     @Suite
@@ -19,8 +10,6 @@ extension HTML.AtRule {
         @Suite struct Integration {}
     }
 }
-
-// MARK: - Unit
 
 extension HTML.AtRule.Test.Unit {
 
@@ -131,8 +120,6 @@ extension HTML.AtRule.Test.Unit {
         #expect(atRule.rawValue.contains("max-width"))
     }
 }
-
-// MARK: - Integration
 
 extension HTML.AtRule.Test.Integration {
 

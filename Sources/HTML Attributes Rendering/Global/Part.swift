@@ -1,15 +1,8 @@
-///
-/// Part.swift
-/// swift-html
-///
-/// Created by Coen ten Thije Boonkkamp on 02/04/2025.
-///
-
 import HTML_Rendering_Core
 import HTML_Standard_Attributes
 
 extension HTML.View {
-    /// Sets the part attribute with a single part name
+
     @discardableResult
     public func part(
         _ partName: String
@@ -17,7 +10,6 @@ extension HTML.View {
         self.attribute(HTML.Part.Attribute.attribute, partName)
     }
 
-    /// Sets the part attribute with multiple part names
     @discardableResult
     public func part(
         _ partNames: [String]
@@ -25,7 +17,6 @@ extension HTML.View {
         self.attribute(HTML.Part.Attribute.attribute, partNames.joined(separator: " "))
     }
 
-    /// Sets the part attribute with multiple part names as variadic parameters
     @discardableResult
     public func part(
         _ partNames: String...
@@ -33,7 +24,6 @@ extension HTML.View {
         self.part(partNames)
     }
 
-    /// Sets the part attribute using a Part struct
     @discardableResult
     public func part(
         _ attribute: HTML.Part.Attribute

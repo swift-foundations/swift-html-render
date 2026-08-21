@@ -1,10 +1,3 @@
-//
-//  AsyncChannel Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 26/11/2025.
-//
-
 import Async_Channel_Primitives
 import HTML_Rendering
 import HTML_Standard
@@ -13,16 +6,12 @@ import Testing
 
 @testable import HTML_Rendering_Core
 
-// MARK: - Test Suite
-
 @Suite
 struct `AsyncChannel Tests` {
     @Suite struct Unit {}
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `AsyncChannel Tests`.Unit {
 
@@ -157,8 +146,6 @@ extension `AsyncChannel Tests`.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension `AsyncChannel Tests`.`Edge Case` {
 
     @Test
@@ -277,8 +264,6 @@ extension `AsyncChannel Tests`.`Edge Case` {
         #expect(totalDuration < .seconds(5), "Streaming should complete quickly")
     }
 }
-
-// MARK: - Integration
 
 extension `AsyncChannel Tests`.Integration {
 

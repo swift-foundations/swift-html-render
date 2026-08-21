@@ -1,10 +1,3 @@
-//
-//  _HTMLAttributes Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -79,7 +72,6 @@ extension `Snapshot Tests` {
     @Suite
     struct `Attribute Tests` {
 
-        // MARK: - Snapshot Tests
         @Test
         func `Form with various attributes snapshot`() {
             snapshot(as: .html) {

@@ -1,15 +1,8 @@
-///
-/// Target.swift
-/// swift-html
-///
-/// Created by Coen ten Thije Boonkkamp on 03/04/2025.
-///
-
 import HTML_Rendering_Core
 import HTML_Standard_Attributes
 
 extension HTML.View {
-    /// Add a target attribute to a form to specify where to display the response
+
     @discardableResult
     package func target(
         _ value: HTML.Target.Attribute?
@@ -19,7 +12,7 @@ extension HTML.View {
 }
 
 extension HTML.View {
-    /// Add a target attribute to a form to specify where to display the response
+
     @discardableResult
     package func target(
         _ value: HTML.FormTarget.Attribute?
@@ -29,7 +22,7 @@ extension HTML.View {
 }
 
 extension HTML.View {
-    /// Add a target attribute to a form to specify where to display the response
+
     @discardableResult
     package func target(
         form value: HTML.Target.Attribute?
@@ -39,7 +32,7 @@ extension HTML.View {
 }
 
 extension HTML.View {
-    /// Add a target attribute to specify where to display the linked URL
+
     @discardableResult
     public func target(
         anchor value: HTML.Target.Attribute?
@@ -47,7 +40,6 @@ extension HTML.View {
         self.attribute(HTML.Target.Attribute.attribute, value?.description)
     }
 
-    /// Open the link in a new tab or window
     @discardableResult
     @HTML.Builder
     public func openInNewTab(
@@ -62,13 +54,11 @@ extension HTML.View {
         }
     }
 
-    /// Open the link in the parent browsing context
     @discardableResult
     public func openInParent() -> HTML._Attributes<Self> {
         self.target(anchor: .parent)
     }
 
-    /// Open the link in the top-level browsing context
     @discardableResult
     public func openInTop() -> HTML._Attributes<Self> {
         self.target(anchor: .top)

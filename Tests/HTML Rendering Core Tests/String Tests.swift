@@ -1,17 +1,8 @@
-//
-//  String Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
 @_spi(DynamicHTML) @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 @Suite
 struct `String Extensions Tests` {
@@ -19,8 +10,6 @@ struct `String Extensions Tests` {
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `String Extensions Tests`.Unit {
 
@@ -42,8 +31,6 @@ extension `String Extensions Tests`.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension `String Extensions Tests`.`Edge Case` {
 
     @Test
@@ -53,8 +40,6 @@ extension `String Extensions Tests`.`Edge Case` {
         #expect(string.isEmpty)
     }
 }
-
-// MARK: - Integration
 
 extension `String Extensions Tests`.Integration {
 

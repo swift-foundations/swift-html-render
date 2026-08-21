@@ -1,10 +1,3 @@
-//
-//  AtRule mediaTests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -17,7 +10,6 @@ struct `AtRule media Tests` {
     func `AtRule media basic creation`() throws {
         let atRule = HTML.AtRule(rawValue: "screen and (max-width: 768px)")
 
-        // Test that media query can be created
         #expect(atRule.rawValue == "screen and (max-width: 768px)")
     }
 
@@ -69,8 +61,6 @@ struct `AtRule media Tests` {
         #expect(query1.rawValue != query3.rawValue)
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

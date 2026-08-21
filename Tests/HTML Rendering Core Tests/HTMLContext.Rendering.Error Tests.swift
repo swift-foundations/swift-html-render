@@ -1,17 +1,8 @@
-//
-//  HTMLContext.Rendering.Error Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
 @_spi(DynamicHTML) @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 extension HTML.Context.Configuration.Error {
     @Suite
@@ -21,8 +12,6 @@ extension HTML.Context.Configuration.Error {
         @Suite struct Integration {}
     }
 }
-
-// MARK: - Unit
 
 extension HTML.Context.Configuration.Error.Test.Unit {
 
@@ -106,8 +95,6 @@ extension HTML.Context.Configuration.Error.Test.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension HTML.Context.Configuration.Error.Test.`Edge Case` {
 
     @Test
@@ -146,8 +133,6 @@ extension HTML.Context.Configuration.Error.Test.`Edge Case` {
         #expect(error.message.contains("\u{1F6AB}"))
     }
 }
-
-// MARK: - Integration
 
 extension HTML.Context.Configuration.Error.Test.Integration {
 

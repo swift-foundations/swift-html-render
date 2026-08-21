@@ -1,17 +1,8 @@
-//
-//  CustomStringConvertible Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
 @_spi(DynamicHTML) @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 @Suite
 struct `CustomStringConvertible Tests` {
@@ -19,8 +10,6 @@ struct `CustomStringConvertible Tests` {
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `CustomStringConvertible Tests`.Unit {
 
@@ -107,8 +96,6 @@ extension `CustomStringConvertible Tests`.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension `CustomStringConvertible Tests`.`Edge Case` {
 
     @Test
@@ -158,8 +145,6 @@ extension `CustomStringConvertible Tests`.`Edge Case` {
         #expect(!description.contains("<script>"))
     }
 }
-
-// MARK: - Integration
 
 extension `CustomStringConvertible Tests`.Integration {
 

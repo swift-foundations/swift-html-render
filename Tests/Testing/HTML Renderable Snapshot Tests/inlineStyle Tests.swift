@@ -1,10 +1,3 @@
-//
-//  inlineStyle Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -74,12 +67,10 @@ struct `inlineStyle Tests` {
         .inlineStyle("color", "")
 
         let rendered = try String(HTML.Document { styledElement })
-        // Empty values might be omitted or rendered as empty
+
         #expect(rendered.contains("content"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

@@ -1,12 +1,3 @@
-//
-//  Edge Cases Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-//  Cross-cutting tests for edge cases, boundary conditions, and unusual inputs.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -14,8 +5,6 @@ import Testing
 
 @Suite
 struct `Edge Cases Tests` {
-
-    // MARK: - Empty Content
 
     @Test
     func `Empty HTML.Text renders nothing`() throws {
@@ -42,8 +31,6 @@ struct `Edge Cases Tests` {
         #expect(rendered.contains("<p></p>"))
     }
 
-    // MARK: - Whitespace
-
     @Test
     func `Whitespace-only text is preserved`() throws {
         let html = HTML.Text("   ")
@@ -64,8 +51,6 @@ struct `Edge Cases Tests` {
         let rendered = try String(HTML.Group { html })
         #expect(rendered.contains("\t"))
     }
-
-    // MARK: - Large Content
 
     @Test
     func `Very long text content`() throws {
@@ -104,20 +89,17 @@ struct `Edge Cases Tests` {
         #expect(rendered.contains("Item 999"))
     }
 
-    // MARK: - Attribute Edge Cases
-
     @Test
     func `Empty attribute value`() throws {
         let html = tag("input").attribute("value", "")
         let rendered = try String(html)
-        // Empty attribute values render as boolean attributes
+
         #expect(rendered.contains("value"))
     }
 
     @Test
     func `Boolean attribute`() throws {
-        // Boolean attributes in HTML are represented by presence alone
-        // Use empty string or attribute name as value
+
         let html = tag("input").attribute("disabled", "")
         let rendered = try String(html)
         #expect(rendered.contains("disabled"))
@@ -136,11 +118,9 @@ struct `Edge Cases Tests` {
             .attribute("class", "first")
             .attribute("class", "second")
         let rendered = try String(html)
-        // Later attribute should win or be appended
+
         #expect(rendered.contains("class="))
     }
-
-    // MARK: - Style Edge Cases
 
     @Test
     func `Empty style value`() throws {
@@ -166,8 +146,6 @@ struct `Edge Cases Tests` {
         let rendered = try String(HTML.Document { html })
         #expect(rendered.contains("--custom-prop"))
     }
-
-    // MARK: - Conditional Edge Cases
 
     @Test
     func `All false conditionals`() throws {
@@ -201,8 +179,6 @@ struct `Edge Cases Tests` {
         let rendered = try String(html)
         #expect(rendered.contains("All true"))
     }
-
-    // MARK: - Loop Edge Cases
 
     @Test
     func `Empty array loop`() throws {
@@ -242,8 +218,6 @@ struct `Edge Cases Tests` {
         #expect(rendered.contains("Fifth"))
     }
 
-    // MARK: - Type Erasure Edge Cases
-
     @Test
     func `Double type erasure`() throws {
         let original = tag("div") { HTML.Text("Original") }
@@ -262,11 +236,9 @@ struct `Edge Cases Tests` {
         #expect(rendered.contains("color:red"))
     }
 
-    // MARK: - Void Element Edge Cases
-
     @Test
     func `Void element with closing slash`() throws {
-        // Self-closing elements shouldn't have content
+
         let html = tag("br")
         let rendered = try String(html)
         #expect(
@@ -284,8 +256,6 @@ struct `Edge Cases Tests` {
         #expect(rendered.contains("alt=\"Description\""))
     }
 
-    // MARK: - Raw HTML Edge Cases
-
     @Test
     func `Raw HTML with unbalanced tags`() throws {
         let html = tag("div") {
@@ -302,8 +272,6 @@ struct `Edge Cases Tests` {
         #expect(rendered.contains("<script>"))
         #expect(rendered.contains("</script>"))
     }
-
-    // MARK: - Document Edge Cases
 
     @Test
     func `Document with empty head and body`() throws {
@@ -336,8 +304,6 @@ struct `Edge Cases Tests` {
     }
 }
 
-// MARK: - Snapshot Tests
-
 extension `Snapshot Tests` {
     @Suite
     struct `Edge Cases Snapshot Tests` {
@@ -346,17 +312,17 @@ extension `Snapshot Tests` {
             snapshot(as: .html) {
                 HTML.Document {
                     tag("div") {
-                        // Empty content
+
                         HTML.Empty()
-                        // Whitespace
+
                         HTML.Text("  ")
-                        // Nested structure
+
                         tag("span") {
                             tag("strong") {
                                 HTML.Text("Nested")
                             }
                         }
-                        // Conditional (true)
+
                         if true {
                             HTML.Text("Shown")
                         }

@@ -1,16 +1,8 @@
-///
-/// EncType.swift
-/// swift-html
-///
-/// Created by Coen ten Thije Boonkkamp on 03/04/2025.
-///
-
 import HTML_Rendering_Core
 import HTML_Standard_Attributes
 
 extension HTML.View {
-    // swift-format-ignore: AlwaysUseLowerCamelCase
-    /// Add an EncType attribute to specify the form data encoding type
+
     @discardableResult
     package func EncType(
         _ value: HTML.EncType.Attribute?

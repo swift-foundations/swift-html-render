@@ -1,12 +1,3 @@
-//
-//  Integration Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-//  Cross-cutting integration tests that verify multiple components work together.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -14,8 +5,6 @@ import Testing
 
 @Suite
 struct `Integration Tests` {
-
-    // MARK: - Full Page Rendering
 
     @Test
     func `Complete page with head and body`() throws {
@@ -53,8 +42,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("<main>"))
         #expect(rendered.contains("<footer>"))
     }
-
-    // MARK: - Component Composition
 
     @Test
     func `Custom components compose correctly`() throws {
@@ -113,8 +100,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("class=\"btn\""))
     }
 
-    // MARK: - Styles with Media Queries
-
     @Test
     func `Responsive styles integration`() throws {
         let html = tag("div") {
@@ -159,8 +144,6 @@ struct `Integration Tests` {
         #expect(rendered.contains(":hover"))
     }
 
-    // MARK: - Form Integration
-
     @Test
     func `Complete form rendering`() throws {
         let html = tag("form") {
@@ -203,8 +186,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("<button"))
     }
 
-    // MARK: - Table Integration
-
     @Test
     func `Data table rendering`() throws {
         struct Row {
@@ -245,8 +226,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("200"))
     }
 
-    // MARK: - Conditional Rendering
-
     @Test
     func `Conditional components`() throws {
         struct UserProfile: HTML.View {
@@ -276,8 +255,6 @@ struct `Integration Tests` {
         #expect(!guest.contains("Welcome"))
     }
 
-    // MARK: - Raw HTML Integration
-
     @Test
     func `Raw HTML within structured content`() throws {
         let html = tag("div") {
@@ -293,8 +270,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("<!-- This is a comment -->"))
         #expect(rendered.contains("<h1>Title</h1>"))
     }
-
-    // MARK: - AnyHTML Integration
 
     @Test
     func `AnyHTML in heterogeneous collection`() throws {
@@ -320,8 +295,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("<p>"))
         #expect(rendered.contains("<ul>"))
     }
-
-    // MARK: - Configuration Integration
 
     @Test
     func `Email configuration applies to full document`() throws {
@@ -355,8 +328,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("\n"))
     }
 
-    // MARK: - Array Integration
-
     @Test
     func `Array with identifiable data`() throws {
         struct Item: Identifiable {
@@ -385,8 +356,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("Second"))
     }
 
-    // MARK: - Group Integration
-
     @Test
     func `Group flattens nested content`() throws {
         let html = tag("div") {
@@ -406,8 +375,6 @@ struct `Integration Tests` {
         #expect(rendered.contains("Nested"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

@@ -1,19 +1,8 @@
-//
-//  Async Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-//  Cross-cutting tests for async rendering, streaming, and concurrency.
-//
-
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
 @_spi(DynamicHTML) @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 @Suite
 struct `Async Tests` {
@@ -21,8 +10,6 @@ struct `Async Tests` {
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `Async Tests`.Unit {
 
@@ -136,8 +123,6 @@ extension `Async Tests`.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension `Async Tests`.`Edge Case` {
 
     @Test
@@ -154,8 +139,6 @@ extension `Async Tests`.`Edge Case` {
         #expect(result.isEmpty)
     }
 }
-
-// MARK: - Integration
 
 extension `Async Tests`.Integration {
 

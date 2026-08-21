@@ -1,10 +1,3 @@
-//
-//  AsyncChannel+HTML.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 26/11/2025.
-//
-
 public import Async_Channel_Primitives
 public import Async_Primitive
 import Ownership_Mutable_Primitives
@@ -12,16 +5,7 @@ import Render_Primitives
 public import WHATWG_HTML_Shared
 
 extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
-    /// Stream HTML with true progressive rendering and backpressure.
-    ///
-    /// This renders the view synchronously into an HTML.Context, then sends
-    /// the bytes in chunks. For true streaming (suspension at element boundaries),
-    /// a future async rendering path can be added.
-    ///
-    /// - Parameters:
-    ///   - chunkSize: Size of each yielded chunk in bytes. Default is 4096.
-    ///   - configuration: Rendering configuration. Uses default if nil.
-    ///   - view: The HTML content to stream.
+
     public init<View: HTML.View & Sendable>(
         chunkSize: Int = 4096,
         configuration: HTML.Context.Configuration? = nil,
@@ -35,7 +19,7 @@ extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
             let state = Ownership.Mutable(HTML.Context(config))
             var context = Render.Context.html(state: state)
             context.render(view)
-            // Send rendered bytes in chunks
+
             let allBytes = state.value.bytes
             var offset = 0
             while offset < allBytes.count {
@@ -43,8 +27,7 @@ extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
                 do throws(Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Error) {
                     try await sender.send(ArraySlice(allBytes[offset..<end]))
                 } catch {
-                    // Preserve try?'s fire-and-forget semantics: a failed send
-                    // (e.g. the channel already closed) does not abort the loop.
+
                 }
                 offset = end
             }
@@ -54,12 +37,7 @@ extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
 }
 
 extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
-    /// Stream an HTML document with true progressive rendering and backpressure.
-    ///
-    /// - Parameters:
-    ///   - chunkSize: Size of each yielded chunk in bytes. Default is 4096.
-    ///   - configuration: Rendering configuration. Uses default if nil.
-    ///   - document: The HTML document to stream.
+
     public init<Document: HTML.Document.`Protocol` & Sendable>(
         chunkSize: Int = 4096,
         configuration: HTML.Context.Configuration? = nil,
@@ -79,8 +57,7 @@ extension Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Bounded {
                 do throws(Async_Primitive.Async.Channel<ArraySlice<UInt8>>.Error) {
                     try await sender.send(ArraySlice(allBytes[offset..<end]))
                 } catch {
-                    // Preserve try?'s fire-and-forget semantics: a failed send
-                    // (e.g. the channel already closed) does not abort the loop.
+
                 }
                 offset = end
             }

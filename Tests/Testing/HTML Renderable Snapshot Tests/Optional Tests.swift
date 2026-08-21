@@ -1,10 +1,3 @@
-//
-//  Optional Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `Optional Tests` {
-
-    // MARK: - Optional HTML Rendering
 
     @Test
     func `Optional some renders content`() throws {
@@ -28,29 +19,6 @@ struct `Optional Tests` {
         let rendered = try String(HTML.Group { optionalHTML })
         #expect(rendered.isEmpty)
     }
-
-    // MARK: - Optional Elements
-
-    //    @Test
-    //    func `Optional element renders when present`() throws {
-    //        let optionalElement: HTML.Tag.Element<HTML.Text>? = tag("div") {
-    //            HTML.Text("Content")
-    //        }
-    //
-    //        let rendered = try String(Group { optionalElement })
-    //        #expect(rendered.contains("<div>"))
-    //        #expect(rendered.contains("Content"))
-    //    }
-    //
-    //    @Test
-    //    func `Optional element renders nothing when nil`() throws {
-    //        let optionalElement: HTML.Tag.Element<HTML.Text>? = nil
-    //
-    //        let rendered = try String(Group { optionalElement })
-    //        #expect(rendered.isEmpty)
-    //    }
-
-    // MARK: - In Builder Context
 
     @Test
     func `Optional in builder with some value`() throws {
@@ -94,37 +62,16 @@ struct `Optional Tests` {
         #expect(!rendered.contains("Optional present"))
     }
 
-    // MARK: - Optional Chaining
-
-    //    @Test
-    //    func `Optional with attributes when present`() throws {
-    //        let optionalElement: HTML.Tag.Element<HTML.Text>? = tag("span") {
-    //            HTML.Text("Styled")
-    //        }
-    //
-    //        // Since Optional<HTML> conforms to HTML but doesn't chain .attribute,
-    //        // we test by rendering the base element with attributes first
-    //        if let element = optionalElement?.attribute("class", "highlight") {
-    //            let rendered = try String(HTML.Document { element })
-    //            #expect(rendered.contains("class=\"highlight\""))
-    //        }
-    //    }
-
-    // MARK: - Nested Optionals
-
     @Test
     func `Nested optional HTML`() throws {
         let inner: HTML.Text? = HTML.Text("Inner")
         let outer: HTML.Text?? = inner
 
-        // Both levels resolve to the value
         if let unwrapped = outer, let content = unwrapped {
             let rendered = try String(HTML.Group { content })
             #expect(rendered == "Inner")
         }
     }
-
-    // MARK: - Optional with Complex Types
 
     @Test
     func `Optional Group`() throws {
@@ -154,11 +101,9 @@ struct `Optional Tests` {
         #expect(!rendered.contains("Item 3"))
     }
 
-    // MARK: - Context Propagation
-
     @Test
     func `Optional propagates context when present`() throws {
-        // Use AnyHTML to type-erase the styled element into an optional
+
         let styledDiv = tag("div") {
             HTML.Text("Styled")
         }
@@ -173,8 +118,6 @@ struct `Optional Tests` {
         }
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

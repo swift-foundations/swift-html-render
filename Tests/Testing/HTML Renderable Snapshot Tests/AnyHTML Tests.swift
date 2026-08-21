@@ -1,10 +1,3 @@
-//
-//  AnyHTML Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `AnyHTML Tests` {
-
-    // MARK: - Initialization
 
     @Test
     func `AnyHTML wraps HTML.Text`() throws {
@@ -54,8 +45,6 @@ struct `AnyHTML Tests` {
         #expect(rendered.contains("<span>"))
         #expect(rendered.contains("From closure"))
     }
-
-    // MARK: - Type Erasure
 
     @Test
     func `AnyHTML enables heterogeneous collections`() throws {
@@ -106,8 +95,6 @@ struct `AnyHTML Tests` {
         #expect(rendered.contains("color:red"))
     }
 
-    // MARK: - Nested AnyHTML
-
     @Test
     func `AnyHTML can wrap AnyHTML`() throws {
         let text = HTML.Text("Inner")
@@ -116,8 +103,6 @@ struct `AnyHTML Tests` {
         let rendered = try String(outer)
         #expect(rendered == "Inner")
     }
-
-    // MARK: - Complex Structures
 
     @Test
     func `AnyHTML with nested elements`() throws {
@@ -136,8 +121,6 @@ struct `AnyHTML Tests` {
         #expect(rendered.contains("<h1>"))
         #expect(rendered.contains("<p>"))
     }
-
-    // MARK: - Dynamic Content
 
     @Test
     func `AnyHTML for dynamic content selection`() throws {
@@ -166,8 +149,6 @@ struct `AnyHTML Tests` {
         #expect(defaultRendered == "Default")
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

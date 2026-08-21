@@ -1,12 +1,3 @@
-//
-//  Rendering Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-//  Tests for HTML rendering functionality (formerly HTMLPrinter).
-//
-
 import ASCII
 import Foundation
 import HTML_Rendering
@@ -16,16 +7,12 @@ import Testing
 
 @_spi(DynamicHTML) @testable import HTML_Rendering_Core
 
-// MARK: - Test Suite
-
 @Suite
 struct `Rendering Tests` {
     @Suite struct Unit {}
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `Rendering Tests`.Unit {
 
@@ -88,13 +75,6 @@ extension `Rendering Tests`.Unit {
         #expect(stylesheet.contains("font-size:16px"))
     }
 
-    /// F-102 regression (deterministic discriminator): `stylesheetBytes` groups
-    /// styles by `atRule` before emission. Grouping through a plain `Dictionary`
-    /// leaks that dictionary's per-instance, hash-seed-dependent iteration order
-    /// into the emitted @media block order. This asserts the documented
-    /// contract instead: the unscoped (nil-`atRule`) group first, then @media
-    /// groups in first-registration order. Pre-fix this fails with probability
-    /// 1 - 1/6! per process (six distinct @media groups registered below).
     @Test
     func `stylesheet emits at-rule groups in first-registration order`() {
         func registerAll(into context: inout HTML.Context) {
@@ -165,16 +145,6 @@ extension `Rendering Tests`.Unit {
         )
     }
 
-    /// F-102 regression (consumer-level guarantee): rendering the same
-    /// registrations many times, in fresh contexts, must produce
-    /// byte-identical stylesheets every time — this is the property the
-    /// RepoTraffic consumer repro actually depends on (hash-stable HTML across
-    /// consecutive renders in the same server process). Paired with the
-    /// registration-order assertion above rather than relied on alone: a
-    /// Dictionary-backed grouping can be process-lucky and stay stable for many
-    /// iterations before shuffling (observed empirically: 1 of 3 probe runs
-    /// stayed stable across 200 in-process renders while the other 2 produced
-    /// 5-6 distinct byte outputs).
     @Test
     func `repeated stylesheet renders are byte-identical across 200 iterations`() {
         func renderOnce() -> String {
@@ -230,8 +200,6 @@ extension `Rendering Tests`.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension `Rendering Tests`.`Edge Case` {
 
     @Test
@@ -245,8 +213,6 @@ extension `Rendering Tests`.`Edge Case` {
         }
     }
 }
-
-// MARK: - Integration
 
 extension `Rendering Tests`.Integration {
 

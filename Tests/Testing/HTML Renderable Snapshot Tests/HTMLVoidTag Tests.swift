@@ -1,10 +1,3 @@
-//
-//  HTMLVoidTag Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,48 +5,6 @@ import Testing
 
 @Suite
 struct `HTMLVoidTag Tests` {
-
-    //    // MARK: - Initialization
-    //
-    //    @Test
-    //    func `HTMLVoidTag string initialization`() throws {
-    //        let voidTag = tag("br")
-    //        #expect(voidTag.rawValue == "br")
-    //    }
-    //
-    //    @Test
-    //    func `HTMLVoidTag string literal initialization`() throws {
-    //        let voidTag: tag = "hr"
-    //        #expect(voidTag.rawValue == "hr")
-    //    }
-    //
-    //    // MARK: - All Tags
-    //
-    //    @Test
-    //    func `tag.allTags contains expected tags`() {
-    //        let allTags = tag.allTags
-    //        #expect(allTags.contains("area"))
-    //        #expect(allTags.contains("base"))
-    //        #expect(allTags.contains("br"))
-    //        #expect(allTags.contains("col"))
-    //        #expect(allTags.contains("embed"))
-    //        #expect(allTags.contains("hr"))
-    //        #expect(allTags.contains("img"))
-    //        #expect(allTags.contains("input"))
-    //        #expect(allTags.contains("link"))
-    //        #expect(allTags.contains("meta"))
-    //        #expect(allTags.contains("param"))
-    //        #expect(allTags.contains("source"))
-    //        #expect(allTags.contains("track"))
-    //        #expect(allTags.contains("wbr"))
-    //    }
-    //
-    //    @Test
-    //    func `tag.allTags has correct count`() {
-    //        #expect(tag.allTags.count == 16)
-    //    }
-
-    // MARK: - Call As Function
 
     @Test
     func `HTMLVoidTag creates self-closing element`() throws {
@@ -63,8 +14,6 @@ struct `HTMLVoidTag Tests` {
         #expect(rendered.contains("<br"))
         #expect(!rendered.contains("</br>"))
     }
-
-    // MARK: - Common Void Tags
 
     @Test
     func `HTMLVoidTag br element`() throws {
@@ -136,8 +85,6 @@ struct `HTMLVoidTag Tests` {
         #expect(rendered.contains("href=\"/styles.css\""))
     }
 
-    // MARK: - Attributes
-
     @Test
     func `HTMLVoidTag with multiple attributes`() throws {
         let input = tag("input")
@@ -156,8 +103,6 @@ struct `HTMLVoidTag Tests` {
         #expect(rendered.contains("required"))
         #expect(rendered.contains("placeholder=\"your@email.com\""))
     }
-
-    // MARK: - In Context
 
     @Test
     func `HTMLVoidTag in form`() throws {
@@ -199,8 +144,6 @@ struct `HTMLVoidTag Tests` {
         #expect(rendered.contains("rel=\"stylesheet\""))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

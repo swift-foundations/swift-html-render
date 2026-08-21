@@ -1,23 +1,14 @@
-//
-//  ReadmeVerificationTests.swift
-//  swift-html-rendering
-//
-
 import HTML_Rendering
 import HTML_Standard
 import Testing
 
 @_spi(DynamicHTML) @testable import HTML_Rendering_Core
 
-// MARK: - Test Suite
-
 @Suite
 struct `README Verification Tests` {
     @Suite struct Unit {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `README Verification Tests`.Unit {
 
@@ -106,8 +97,6 @@ extension `README Verification Tests`.Unit {
         #expect(html.contains("<div>"))
     }
 }
-
-// MARK: - Integration
 
 extension `README Verification Tests`.Integration {
 

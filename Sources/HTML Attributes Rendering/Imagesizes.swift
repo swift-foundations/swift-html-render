@@ -1,16 +1,8 @@
-//
-//  Imagesizes.swift
-//  swift-html-css-pointfree
-//
-//  Created by Coen ten Thije Boonkkamp on 10/04/2025.
-//
-
 import HTML_Rendering_Core
 import HTML_Standard_Attributes
 
 extension HTML.View {
 
-    /// Sets the sizes attribute on an image element
     @discardableResult
     package func sizes(
         _ value: HTML.ImageSizes.Attribute?

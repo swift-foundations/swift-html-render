@@ -1,23 +1,12 @@
-//
-//  HTMLBuilder Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import Testing
 
 @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 @Suite
 struct `HTMLBuilder Tests` {
     @Suite struct Unit {}
     @Suite struct `Edge Case` {}
 }
-
-// MARK: - Unit
 
 extension `HTMLBuilder Tests`.Unit {
 
@@ -81,8 +70,6 @@ extension `HTMLBuilder Tests`.Unit {
         #expect(rendered == "firstsecondthird")
     }
 }
-
-// MARK: - EdgeCase
 
 extension `HTMLBuilder Tests`.`Edge Case` {
 

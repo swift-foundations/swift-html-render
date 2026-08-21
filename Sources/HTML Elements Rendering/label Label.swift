@@ -1,13 +1,3 @@
-/////
-///// Label.swift
-///// swift-html
-/////
-///// Represents the HTML label element for form controls.
-/////
-///// Created by Coen ten Thije Boonkkamp on 04/04/2025.
-/////
-//
-
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 

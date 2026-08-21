@@ -6,8 +6,6 @@
     public import WebKit
     public import WHATWG_HTML_Shared
 
-    // MARK: - Shared Implementation
-
     extension HTML.Document {
         @MainActor
         fileprivate func makeWebView() -> WKWebView {
@@ -38,8 +36,6 @@
         }
     }
 
-    // MARK: - macOS
-
     #if os(macOS)
         extension HTML.Document: SwiftUI.View {}
 
@@ -57,8 +53,6 @@
                 loadHTML(into: webView)
             }
         }
-
-    // MARK: - iOS
 
     #elseif os(iOS)
         extension HTML.Document: SwiftUI.View {}

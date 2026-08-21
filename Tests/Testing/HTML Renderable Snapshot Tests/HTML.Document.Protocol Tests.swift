@@ -1,10 +1,3 @@
-//
-//  HTML.Document.Protocol Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -37,8 +30,6 @@ struct `HTML.Document.Protocol Tests` {
         #expect(rendered.contains("</html>"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

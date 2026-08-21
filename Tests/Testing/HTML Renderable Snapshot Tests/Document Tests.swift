@@ -1,10 +1,3 @@
-//
-//  Document Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `Document Tests` {
-
-    // MARK: - Document Structure
 
     @Test
     func `Document produces valid HTML structure`() throws {
@@ -73,8 +64,6 @@ struct `Document Tests` {
         #expect(!rendered.contains("<style>"))
     }
 
-    // MARK: - Body Content
-
     @Test
     func `Document renders body content`() throws {
         let document = HTML.Document {
@@ -107,8 +96,6 @@ struct `Document Tests` {
         #expect(rendered.contains("id=\"main\""))
         #expect(rendered.contains("class=\"container\""))
     }
-
-    // MARK: - Stylesheet Collection
 
     @Test
     func `Document collects styles in stylesheet`() throws {
@@ -146,8 +133,6 @@ struct `Document Tests` {
         #expect(rendered.contains("color:blue"))
     }
 
-    // MARK: - Order
-
     @Test
     func `Document elements in correct order`() throws {
         let document = HTML.Document {
@@ -158,7 +143,6 @@ struct `Document Tests` {
 
         let rendered = try String(document)
 
-        // Check order: doctype < html < head < body
         let doctypeIndex = rendered.range(of: "<!doctype html>")?.lowerBound
         let htmlIndex = rendered.range(of: "<html>")?.lowerBound
         let headIndex = rendered.range(of: "<head>")?.lowerBound
@@ -175,8 +159,6 @@ struct `Document Tests` {
             #expect(hd < b)
         }
     }
-
-    // MARK: - Empty Content
 
     @Test
     func `Document with empty body`() throws {
@@ -201,11 +183,9 @@ struct `Document Tests` {
 
         #expect(rendered.contains("<head>"))
         #expect(rendered.contains("</head>"))
-        // No style tag when no styles are used
+
         #expect(!rendered.contains("<style>"))
     }
-
-    // MARK: - Complex Documents
 
     @Test
     func `Document with complex nested content`() throws {
@@ -258,8 +238,6 @@ struct `Document Tests` {
         #expect(rendered.contains("@media (min-width: 768px)"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

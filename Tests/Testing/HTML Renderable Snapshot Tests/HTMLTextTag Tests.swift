@@ -1,10 +1,3 @@
-//
-//  HTML.Tag.Text Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,24 +5,6 @@ import Testing
 
 @Suite
 struct `HTML.Tag.Text Tests` {
-
-    // MARK: - Initialization
-    // NOTE: These tests tested the old HTML.Tag.Text type which no longer exists.
-    // The tag() function now returns HTML.Tag.Element<Empty> which doesn't have rawValue.
-
-    //    @Test
-    //    func `HTML.Tag.Text string initialization`() throws {
-    //        let textTag = tag("title")
-    //        #expect(textTag.rawValue == "title")
-    //    }
-    //
-    //    @Test
-    //    func `HTML.Tag.Text string literal initialization`() throws {
-    //        let textTag = tag("option")
-    //        #expect(textTag.rawValue == "option")
-    //    }
-
-    // MARK: - Call As Function
 
     @Test
     func `HTML.Tag.Text with empty content`() throws {
@@ -55,8 +30,6 @@ struct `HTML.Tag.Text Tests` {
         let rendered = try String(element)
         #expect(rendered == "<option>Dynamic Value</option>")
     }
-
-    // MARK: - Common Text Tags
 
     @Test
     func `HTML.Tag.Text for title element`() throws {
@@ -92,8 +65,6 @@ struct `HTML.Tag.Text Tests` {
         #expect(rendered == "<label>Username:</label>")
     }
 
-    // MARK: - Escaping
-
     @Test
     func `HTML.Tag.Text escapes special characters`() throws {
         let textTag = tag("title")
@@ -102,8 +73,6 @@ struct `HTML.Tag.Text Tests` {
         #expect(rendered.contains("&lt;Title&gt;"))
         #expect(rendered.contains("&amp;"))
     }
-
-    // MARK: - Attributes
 
     @Test
     func `HTML.Tag.Text with attributes`() throws {
@@ -117,8 +86,6 @@ struct `HTML.Tag.Text Tests` {
         #expect(rendered.contains("selected"))
         #expect(rendered.contains("First"))
     }
-
-    // MARK: - In Document Context
 
     @Test
     func `HTML.Tag.Text in head`() throws {
@@ -150,8 +117,6 @@ struct `HTML.Tag.Text Tests` {
         #expect(rendered.contains("<option value=\"3\">Option 3</option>"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

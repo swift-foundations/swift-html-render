@@ -1,10 +1,3 @@
-// HTML.Document.Protocol Tests.swift
-// Tests for HTML.__DocumentProtocol._render — generic rendering path
-// used by non-HTML contexts (e.g. PDF). Validates that head and body
-// content both render through _render, in document order (head first).
-// Distinct from the HTML-output path (_renderHTMLDocument), which is
-// tested via String(...) / [UInt8](...) elsewhere.
-
 import HTML_Rendering
 import Ownership_Mutable_Primitives
 import Render_Primitives

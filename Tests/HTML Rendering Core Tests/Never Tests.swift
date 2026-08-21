@@ -1,25 +1,12 @@
-//
-//  Never Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import Testing
 
 @testable import HTML_Rendering_Core
-
-// Never is a stdlib type — use manual @Suite pattern [TEST-004].
-
-// MARK: - Test Suite
 
 @Suite
 struct NeverHTMLTests {
     @Suite struct Unit {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension NeverHTMLTests.Unit {
 
@@ -65,8 +52,6 @@ extension NeverHTMLTests.Unit {
         #expect(usesHTML(raw) == "Raw")
     }
 }
-
-// MARK: - Integration
 
 extension NeverHTMLTests.Integration {
 

@@ -1,12 +1,3 @@
-//
-//  Unicode Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-//  Cross-cutting tests for Unicode handling, internationalization, and encoding.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -14,8 +5,6 @@ import Testing
 
 @Suite
 struct `Unicode Tests` {
-
-    // MARK: - Basic Unicode Text
 
     @Test
     func `ASCII text renders correctly`() throws {
@@ -51,8 +40,6 @@ struct `Unicode Tests` {
         #expect(rendered.contains("français"))
         #expect(rendered.contains("élève"))
     }
-
-    // MARK: - CJK Characters
 
     @Test
     func `Japanese characters - Hiragana`() throws {
@@ -98,8 +85,6 @@ struct `Unicode Tests` {
         #expect(rendered.contains("한국어"))
     }
 
-    // MARK: - Other Scripts
-
     @Test
     func `Arabic text`() throws {
         let html = tag("p") { HTML.Text("مرحبا بالعالم") }
@@ -142,8 +127,6 @@ struct `Unicode Tests` {
         #expect(rendered.contains("Γειά"))
     }
 
-    // MARK: - Emoji
-
     @Test
     func `Basic emoji`() throws {
         let html = tag("p") { HTML.Text("Hello 👋 World 🌍") }
@@ -175,8 +158,6 @@ struct `Unicode Tests` {
         #expect(rendered.contains("🇯🇵"))
     }
 
-    // MARK: - Special Unicode Characters
-
     @Test
     func `Mathematical symbols`() throws {
         let html = tag("p") { HTML.Text("∑ ∏ ∫ ∂ ∆ √ ∞ ≠ ≈ ≤ ≥") }
@@ -203,8 +184,6 @@ struct `Unicode Tests` {
         #expect(rendered.contains("©"))
     }
 
-    // MARK: - Unicode in Attributes
-
     @Test
     func `Unicode in attribute values`() throws {
         let html = tag("div")
@@ -222,8 +201,6 @@ struct `Unicode Tests` {
         let rendered = try String(html)
         #expect(rendered.contains("🎉"))
     }
-
-    // MARK: - Mixed Content
 
     @Test
     func `Mixed scripts in single text`() throws {
@@ -251,12 +228,10 @@ struct `Unicode Tests` {
         #expect(rendered.contains("العربية"))
     }
 
-    // MARK: - Edge Cases
-
     @Test
     func `Combining characters`() throws {
-        // é can be represented as e + combining acute accent
-        let html = tag("p") { HTML.Text("cafe\u{0301}") }  // café with combining accent
+
+        let html = tag("p") { HTML.Text("cafe\u{0301}") }
         let rendered = try String(html)
         #expect(rendered.contains("é") || rendered.contains("e\u{0301}"))
     }
@@ -265,13 +240,13 @@ struct `Unicode Tests` {
     func `Zero-width characters`() throws {
         let html = tag("p") { HTML.Text("zero\u{200B}width\u{200B}space") }
         let rendered = try String(html)
-        // Zero-width space should be preserved
+
         #expect(rendered.contains("\u{200B}"))
     }
 
     @Test
     func `Right-to-left override`() throws {
-        let html = tag("p") { HTML.Text("Hello \u{202E}dlroW") }  // RLO character
+        let html = tag("p") { HTML.Text("Hello \u{202E}dlroW") }
         let rendered = try String(html)
         #expect(rendered.contains("\u{202E}"))
     }
@@ -280,29 +255,25 @@ struct `Unicode Tests` {
     func `Byte order mark (BOM)`() throws {
         let html = tag("p") { HTML.Text("\u{FEFF}Content with BOM") }
         let rendered = try String(html)
-        // BOM should be preserved
+
         #expect(rendered.contains("Content with BOM"))
     }
 
-    // MARK: - Unicode Normalization
-
     @Test
     func `NFC normalized content`() throws {
-        // Precomposed form
-        let html = tag("p") { HTML.Text("é") }  // U+00E9
+
+        let html = tag("p") { HTML.Text("é") }
         let rendered = try String(html)
         #expect(rendered.contains("é"))
     }
 
     @Test
     func `NFD normalized content`() throws {
-        // Decomposed form
-        let html = tag("p") { HTML.Text("e\u{0301}") }  // e + combining acute
+
+        let html = tag("p") { HTML.Text("e\u{0301}") }
         let rendered = try String(html)
         #expect(!rendered.isEmpty)
     }
-
-    // MARK: - Large Unicode Content
 
     @Test
     func `Large multilingual content`() throws {
@@ -316,8 +287,6 @@ struct `Unicode Tests` {
         #expect(rendered.contains("こんにちは"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

@@ -1,10 +1,3 @@
-//
-//  Capacity Optimization Performance Tests.swift
-//  swift-html-rendering
-//
-//  Performance tests for buffer capacity pre-allocation optimization.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 import Tests_Performance
@@ -15,8 +8,6 @@ extension `Performance Tests` {
 
     @Suite
     struct `Capacity Optimization` {
-
-        // MARK: - Without Capacity Reservation (Baseline)
 
         @Test(.timed(threshold: .seconds(3)))
         func `baseline - no capacity reservation 10K renders`() throws {
@@ -53,8 +44,6 @@ extension `Performance Tests` {
             }
         }
 
-        // MARK: - With Capacity Reservation (Optimized)
-
         @Test(.timed(threshold: .seconds(3)))
         func `optimized - 4KB capacity reservation 10K renders`() throws {
             HTML.Context.Configuration.$current.withValue(.optimized) {
@@ -89,8 +78,6 @@ extension `Performance Tests` {
                 }
             }
         }
-
-        // MARK: - Custom Capacity Sizes
 
         @Test(.timed(threshold: .milliseconds(300)))
         func `small capacity - 512 bytes for small docs 1K renders`() throws {

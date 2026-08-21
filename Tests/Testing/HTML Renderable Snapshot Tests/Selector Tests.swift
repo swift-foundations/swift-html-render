@@ -1,10 +1,3 @@
-//
-//  SelectorTests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `Selector Tests` {
-
-    // MARK: - Basic Creation Tests
 
     @Test
     func `Basic selector creation`() {
@@ -33,8 +24,6 @@ struct `Selector Tests` {
         #expect(selector1 == selector2)
         #expect(selector1 != selector3)
     }
-
-    // MARK: - HTML Element Tests
 
     @Test
     func `Document structure elements`() {
@@ -147,8 +136,6 @@ struct `Selector Tests` {
         #expect(th.rawValue == "th")
     }
 
-    // MARK: - Combinator Method Tests
-
     @Suite
     struct `Combinator Tests` {
         @Test
@@ -174,7 +161,6 @@ struct `Selector Tests` {
             let result = p.nextSibling(of: h1)
             #expect(result.rawValue == "h1 + p")
 
-            // Test alias
             let aliasResult = p.adjacent(to: h1)
             #expect(aliasResult.rawValue == "h1 + p")
         }
@@ -185,7 +171,6 @@ struct `Selector Tests` {
             let result = li.subsequentSibling(of: li)
             #expect(result.rawValue == "li ~ li")
 
-            // Test alias
             let aliasResult = li.sibling(of: li)
             #expect(aliasResult.rawValue == "li ~ li")
         }
@@ -199,7 +184,6 @@ struct `Selector Tests` {
         }
     }
 
-    // MARK: - Method-Based API Tests
     @Suite
     struct `Method Tests` {
         @Test
@@ -258,8 +242,6 @@ struct `Selector Tests` {
         }
     }
 
-    // MARK: - Complex Combinator Tests
-
     @Test
     func `Complex combinator chains using methods`() {
         let div: HTML.Selector = "div"
@@ -272,24 +254,19 @@ struct `Selector Tests` {
         let tbody: HTML.Selector = "tbody"
         let tr: HTML.Selector = "tr"
 
-        // div > h1 + p (using methods)
-        let nextSiblingPart = p.nextSibling(of: h1)  // h1 + p
-        let result1 = nextSiblingPart.child(of: div)  // div > (h1 + p)
+        let nextSiblingPart = p.nextSibling(of: h1)
+        let result1 = nextSiblingPart.child(of: div)
         #expect(result1.rawValue == "div > h1 + p")
 
-        // nav li a (using descendant)
-        let liPart = li.descendant(of: nav)  // nav li
-        let result2 = a.descendant(of: liPart)  // nav li a
+        let liPart = li.descendant(of: nav)
+        let result2 = a.descendant(of: liPart)
         #expect(result2.rawValue == "nav li a")
 
-        // table > tbody > tr ~ tr (using methods)
-        let tbodyPart = tbody.child(of: table)  // table > tbody
-        let trPart = tr.child(of: tbodyPart)  // table > tbody > tr
-        let result3 = tr.subsequentSibling(of: trPart)  // table > tbody > tr ~ tr
+        let tbodyPart = tbody.child(of: table)
+        let trPart = tr.child(of: tbodyPart)
+        let result3 = tr.subsequentSibling(of: trPart)
         #expect(result3.rawValue == "table > tbody > tr ~ tr")
     }
-
-    // MARK: - Attribute Selector Tests
 
     @Test
     func `Attribute exists selector`() {
@@ -333,8 +310,6 @@ struct `Selector Tests` {
         #expect(result.rawValue == "[lang|=\"en\"]")
     }
 
-    // MARK: - Class and ID Selector Tests
-
     @Test
     func `Class selector`() {
         let result = HTML.Selector.class("header")
@@ -346,8 +321,6 @@ struct `Selector Tests` {
         let result = HTML.Selector.id("main")
         #expect(result.rawValue == "#main")
     }
-
-    // MARK: - Input Type Tests
 
     @Test
     func `Generic input type selector`() {
@@ -371,8 +344,6 @@ struct `Selector Tests` {
         #expect(inputCheckbox.rawValue == "input[type=\"checkbox\"]")
         #expect(inputRadio.rawValue == "input[type=\"radio\"]")
     }
-
-    // MARK: - Convenience Method Tests
 
     @Test
     func `withClass convenience method`() {
@@ -409,8 +380,6 @@ struct `Selector Tests` {
         #expect(result.rawValue == "div.card#header[role=\"banner\"]")
     }
 
-    // MARK: - Universal and Namespace Tests
-
     @Test
     func `Universal selector`() {
         #expect(HTML.Selector.universal.rawValue == "*")
@@ -430,19 +399,15 @@ struct `Selector Tests` {
         #expect(result.rawValue == "svg|circle")
     }
 
-    // MARK: - Complex Real-World Examples
-
     @Test
     func `Complex attribute and pseudo combinations`() {
-        // input[type="text"]:not(:disabled):focus
+
         let focusedEnabledInput = HTML.Selector.inputText.withPseudo(.not(.disabled)).withPseudo(
             .focus
         )
         #expect(focusedEnabledInput.rawValue == "input[type=\"text\"]:not(:disabled):focus")
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

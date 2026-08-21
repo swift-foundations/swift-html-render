@@ -1,10 +1,3 @@
-//
-//  _Conditional Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `_Conditional Tests` {
-
-    // MARK: - Basic Conditionals
 
     @Test
     func `_Conditional renders true branch`() throws {
@@ -63,8 +54,6 @@ struct `_Conditional Tests` {
         #expect(rendered.contains("False branch"))
     }
 
-    // MARK: - If-Only Conditionals
-
     @Test
     func `_Conditional if-only true`() throws {
         struct TestHTML: HTML.View {
@@ -99,8 +88,6 @@ struct `_Conditional Tests` {
         #expect(rendered.isEmpty)
     }
 
-    // MARK: - Nested Conditionals
-
     @Test
     func `_Conditional nested conditionals`() throws {
         struct TestHTML: HTML.View {
@@ -127,8 +114,6 @@ struct `_Conditional Tests` {
         #expect(!rendered.contains("Inner true"))
         #expect(!rendered.contains("Outer false"))
     }
-
-    // MARK: - Conditionals with Attributes
 
     @Test
     func `_Conditional with attributes`() throws {
@@ -157,8 +142,6 @@ struct `_Conditional Tests` {
         #expect(!rendered.contains("disabled"))
     }
 
-    // MARK: - Conditionals with Styles
-
     @Test
     func `_Conditional with inline styles`() throws {
         struct TestHTML: HTML.View {
@@ -181,8 +164,6 @@ struct `_Conditional Tests` {
         #expect(rendered.contains("background-color:yellow"))
         #expect(rendered.contains("Highlighted"))
     }
-
-    // MARK: - Different Branch Types
 
     @Test
     func `_Conditional different element types`() throws {
@@ -207,8 +188,6 @@ struct `_Conditional Tests` {
         #expect(rendered.contains("href=\"/page\""))
         #expect(!rendered.contains("<span>"))
     }
-
-    // MARK: - Complex Content
 
     @Test
     func `_Conditional with complex content`() throws {
@@ -239,8 +218,6 @@ struct `_Conditional Tests` {
         #expect(rendered.contains("Details"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

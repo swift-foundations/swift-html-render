@@ -1,10 +1,3 @@
-//
-//  [UInt8] Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `[UInt8] Tests` {
-
-    // MARK: - Synchronous Initialization
 
     @Test
     func `[UInt8] init from HTML`() throws {
@@ -53,8 +44,6 @@ struct `[UInt8] Tests` {
         #expect(string.contains("&gt;"))
     }
 
-    // MARK: - Async Initialization
-
     @Test
     func `[UInt8] async init from HTML`() async {
         let html = tag("span") {
@@ -88,8 +77,6 @@ struct `[UInt8] Tests` {
         #expect(string.contains("<!doctype html>"))
         #expect(string.contains("Document content"))
     }
-
-    // MARK: - HTML Entity Constants
 
     @Test
     func `[UInt8] htmlEntityQuot`() {
@@ -126,8 +113,6 @@ struct `[UInt8] Tests` {
         #expect(string == "&gt;")
     }
 
-    // MARK: - asyncBytes Extension
-
     @Test
     func `HTML asyncBytes method`() async {
         let html = tag("article") {
@@ -149,8 +134,6 @@ struct `[UInt8] Tests` {
         #expect(string.contains("<section>"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

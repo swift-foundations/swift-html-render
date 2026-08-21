@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  swift-html-pointfree
-//
-//  Created by Coen ten Thije Boonkkamp on 05/04/2025.
-//
-
 import HTML_Attributes_Rendering
 import HTML_Standard_Elements
 
@@ -14,7 +7,7 @@ extension HTML.Marquee.Element {
     ) -> some HTML.View {
         HTML.Tag.Element(for: Self.self) { content() }
             .behavior(self.behavior)
-            //            .bgcolor(self.bgcolor)
+
             .attribute("bgcolor", self.bgcolor)
             .direction(self.direction)
             .height(self.height)

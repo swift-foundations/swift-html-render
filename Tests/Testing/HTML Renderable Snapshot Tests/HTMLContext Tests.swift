@@ -1,10 +1,3 @@
-//
-//  HTML.Context Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `HTML.Context Tests` {
-
-    // MARK: - Initialization
 
     @Test
     func `HTML.Context default initialization`() {
@@ -31,70 +22,11 @@ struct `HTML.Context Tests` {
         #expect(context.configuration.newline == config.newline)
     }
 
-    // MARK: - Class Name Generation
-
-    //    @Test
-    //    func `HTML.Context generates deterministic class names`() {
-    //        var context = HTML.Context()
-    //        let style1 = HTML.Style.Rule(property: "color", value: "red", atRule: nil, selector: nil, pseudo: nil)
-    //        let style2 = HTML.Style.Rule(property: "margin", value: "10px", atRule: nil, selector: nil, pseudo: nil)
-    //
-    //        let name1 = context.className(for: style1)
-    //        let name2 = context.className(for: style2)
-    //
-    //        #expect(name1 == "color-0")
-    //        #expect(name2 == "margin-1")
-    //    }
-    //
-    //    @Test
-    //    func `HTML.Context returns same name for same style`() {
-    //        var context = HTML.Context()
-    //        let style = HTML.Style.Rule(property: "color", value: "blue", atRule: nil, selector: nil, pseudo: nil)
-    //
-    //        let name1 = context.className(for: style)
-    //        let name2 = context.className(for: style)
-    //
-    //        #expect(name1 == name2)
-    //    }
-    //
-    //    @Test
-    //    func `HTML.Context different contexts generate independent names`() {
-    //        var context1 = HTML.Context()
-    //        var context2 = HTML.Context()
-    //        let style = HTML.Style.Rule(property: "color", value: "green", atRule: nil, selector: nil, pseudo: nil)
-    //
-    //        let name1 = context1.className(for: style)
-    //        let name2 = context2.className(for: style)
-    //
-    //        // Both should be color-0 since they're independent contexts
-    //        #expect(name1 == "color-0")
-    //        #expect(name2 == "color-0")
-    //    }
-
-    //    @Test
-    //    func `HTML.Context classNames batch method`() {
-    //        var context = HTML.Context()
-    //        let styles = [
-    //            HTML.Style.Rule(property: "color", value: "red", atRule: nil, selector: nil, pseudo: nil),
-    //            HTML.Style.Rule(property: "font-size", value: "16px", atRule: nil, selector: nil, pseudo: nil),
-    //            HTML.Style.Rule(property: "padding", value: "10px", atRule: nil, selector: nil, pseudo: nil)
-    //        ]
-    //
-    //        let names = context.classNames(for: styles)
-    //
-    //        #expect(names.count == 3)
-    //        #expect(names[0] == "color-0")
-    //        #expect(names[1] == "font-size-1")
-    //        #expect(names[2] == "padding-2")
-    //    }
-
-    // MARK: - Stylesheet Generation
-
     @Test
     func `HTML.Context empty stylesheet`() {
         let context = HTML.Context()
         let stylesheet = context.stylesheet
-        // Empty stylesheet is empty
+
         #expect(stylesheet.isEmpty)
     }
 
@@ -137,8 +69,6 @@ struct `HTML.Context Tests` {
         #expect(stylesheet.contains("!important"))
     }
 
-    // MARK: - Attributes
-
     @Test
     func `HTML.Context attribute storage`() {
         var context = HTML.Context()
@@ -162,8 +92,6 @@ struct `HTML.Context Tests` {
         #expect(keys == ["a", "b", "c"])
     }
 
-    // MARK: - Indentation
-
     @Test
     func `HTML.Context indentation tracking`() {
         var context = HTML.Context(.pretty)
@@ -174,14 +102,12 @@ struct `HTML.Context Tests` {
     }
 }
 
-// MARK: - Snapshot Tests
-
 extension `Snapshot Tests` {
     @Suite
     struct `HTMLContext Snapshot Tests` {
         @Test
         func `HTML.Context stylesheet rendering snapshot`() {
-            // This tests the stylesheet generation through actual rendering
+
             snapshot(as: .html) {
                 HTML.Document {
                     tag("div") {

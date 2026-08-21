@@ -1,10 +1,3 @@
-//
-//  HTML.Context.swift
-//  swift-html-rendering
-//
-//  Rendering context for HTML. Owns the output buffer and conforms to Render.Context.
-//
-
 import ASCII
 public import Dictionary_Ordered_Primitives
 import Dictionary_Primitives
@@ -12,49 +5,27 @@ public import Render_Primitives
 public import WHATWG_HTML_Shared
 
 extension HTML {
-    /// Rendering context for HTML.
-    ///
-    /// `HTML.Context` is both the rendering state container and the output destination.
-    /// It conforms to `Render.Context`, implementing all 15 semantic methods by writing
-    /// proper HTML bytes to its internal buffer.
-    ///
-    /// ## Design
-    ///
-    /// The buffer lives inside the context. Entry points create an `HTML.Context`,
-    /// call `View._render(view, context: &context)`, then extract the buffer via
-    /// `context.bytes`. This ensures a single rendering path through `_render<C>`.
-    public struct Context: Sendable {
-        // MARK: - Output buffer
 
-        /// The accumulated HTML output bytes.
+    public struct Context: Sendable {
+
         public var bytes: ContiguousArray<UInt8>
 
-        // MARK: - HTML-specific state
-
-        /// The current set of attributes to apply to the next HTML element.
         public var attributes: Attributes
 
-        /// The collected styles mapped to their generated class names.
         public var styles: Styles
 
-        /// Configuration for rendering, including formatting options.
         public let configuration: Configuration
 
-        /// The current indentation level for pretty-printing.
         public var currentIndentation: [UInt8]
 
-        /// Counter for generating sequential class names.
         private var styleCounter: Int
 
-        // MARK: - Block/inline state stack
-
-        /// Stack of saved states for nested elements.
         var stateStack: [SavedState]
     }
 }
 
 extension HTML.Context {
-    /// State saved by pushBlock/pushInline for restoration by pop.
+
     struct SavedState {
         let tag: String
         let isVoid: Bool
@@ -65,12 +36,8 @@ extension HTML.Context {
     }
 }
 
-// MARK: - Initialization
-
 extension HTML.Context {
-    /// Creates a new HTML rendering context.
-    ///
-    /// - Parameter configuration: The rendering configuration. Defaults to current task-local value.
+
     public init(_ configuration: Configuration = .current) {
         self.bytes = ContiguousArray<UInt8>()
         self.attributes = Self.Attributes()
@@ -82,8 +49,6 @@ extension HTML.Context {
         self.bytes.reserveCapacity(configuration.reservedCapacity)
     }
 }
-
-// MARK: - Render.Context conformance
 
 extension HTML.Context {
     public mutating func text(_ content: borrowing String) {
@@ -346,17 +311,12 @@ extension HTML.Context {
     }
 }
 
-// MARK: - HTML tag writing helpers
-
 extension HTML.Context {
-    /// Write an opening tag with the current attributes.
+
     mutating func writeOpeningTag(_ tag: String) {
         bytes.append(.ascii.lessThanSign)
         bytes.append(contentsOf: tag.utf8)
 
-        // Write attributes with single-pass escaping. Snapshot the CoW map first so
-        // the closure may mutate `self` (bytes / escapeAttributeValue) without
-        // overlapping the borrow of `self.attributes`.
         let currentAttributes = attributes
         currentAttributes.forEach { name, value in
             bytes.append(.ascii.space)
@@ -371,7 +331,6 @@ extension HTML.Context {
         bytes.append(.ascii.greaterThanSign)
     }
 
-    /// Write a closing tag.
     mutating func writeClosingTag(_ tag: String) {
         bytes.append(.ascii.lessThanSign)
         bytes.append(.ascii.slant)
@@ -379,7 +338,6 @@ extension HTML.Context {
         bytes.append(.ascii.greaterThanSign)
     }
 
-    /// Escape an attribute value directly into the buffer.
     mutating func escapeAttributeValue(_ value: String) {
         for byte in value.utf8 {
             switch byte {
@@ -405,10 +363,8 @@ extension HTML.Context {
     }
 }
 
-// MARK: - Semantic role → HTML tag mapping
-
 extension HTML.Context {
-    /// Maps a semantic block role to an HTML tag name.
+
     static func tagName(forBlock role: Render.Semantic.Block?) -> String {
         switch role {
         case .heading(let level): "h\(level)"
@@ -424,7 +380,6 @@ extension HTML.Context {
         }
     }
 
-    /// Maps a semantic inline role to an HTML tag name.
     static func tagName(forInline role: Render.Semantic.Inline?) -> String {
         switch role {
         case .emphasis: "em"
@@ -434,7 +389,6 @@ extension HTML.Context {
         }
     }
 
-    /// Whether a tag is a void element (no closing tag).
     static func isVoidTag(_ tag: String) -> Bool {
         switch tag {
         case "area", "base", "br", "col", "embed", "hr", "img",
@@ -446,8 +400,6 @@ extension HTML.Context {
         }
     }
 }
-
-// MARK: - Element method overrides
 
 extension HTML.Context {
     public mutating func set(attribute name: String, _ value: String?) {
@@ -496,7 +448,6 @@ extension HTML.Context {
         let isPrettyPrinting = !context.configuration.newline.isEmpty
         let htmlIsBlock = isPrettyPrinting && isBlock
 
-        // Leading whitespace for block elements
         if htmlIsBlock {
             if !context.bytes.isEmpty {
                 context.bytes.append(contentsOf: context.configuration.newline)
@@ -504,17 +455,14 @@ extension HTML.Context {
             context.bytes.append(contentsOf: context.currentIndentation)
         }
 
-        // Opening tag with attributes
         context.writeOpeningTag(tagName)
 
-        // Save state and prepare for content
         let savedAttributes = context.attributes
         let savedIndentation = context.currentIndentation
         context.attributes.removeAll()
 
         if isVoid {
-            // Void elements still push to the state stack so the balanced
-            // _popElement call doesn't steal the parent's entry.
+
             context.stateStack.append(
                 SavedState(
                     tag: tagName,
@@ -547,14 +495,11 @@ extension HTML.Context {
     public static func _popElement(_ context: inout Self, isBlock: Bool) {
         guard let state = context.stateStack.popLast() else { return }
 
-        // Restore state
         context.attributes = state.savedAttributes
         context.currentIndentation = state.savedIndentation
 
-        // Void elements have no closing tag
         if state.isVoid { return }
 
-        // Closing tag
         let isPrettyPrinting = !context.configuration.newline.isEmpty
         if isPrettyPrinting && state.isBlock && !state.isPreElement {
             context.bytes.append(contentsOf: context.configuration.newline)
@@ -579,13 +524,8 @@ extension HTML.Context {
     }
 }
 
-// MARK: - Style API
-
 extension HTML.Context {
-    /// Push a style to the context and get its class name.
-    ///
-    /// Same style always returns same class name within a render context.
-    /// Class names are descriptive and sequential: `color-0`, `margin-1`, and similar.
+
     public mutating func pushStyle(
         _ style: HTML.Style.Rule
     ) -> String {
@@ -599,24 +539,10 @@ extension HTML.Context {
     }
 }
 
-// MARK: - Stylesheet generation
-
 extension HTML.Context {
-    /// Generates a CSS stylesheet from the collected styles as bytes.
-    ///
-    /// Emission order: the unscoped (nil-`atRule`) group is emitted first,
-    /// followed by `@media` (and other at-rule) groups in first-registration
-    /// order — the order in which distinct `atRule` values were first seen
-    /// while iterating the insertion-ordered `styles` map. This keeps output
-    /// byte-identical across renders and processes: grouping through a plain
-    /// `Dictionary` alone would leak that dictionary's per-instance,
-    /// hash-seed-dependent iteration order into the emitted at-rule order
-    /// (F-102).
+
     public func stylesheetBytes(baseIndentation: [UInt8] = []) -> ContiguousArray<UInt8> {
-        // Group styles by atRule. `grouped`'s own Dictionary iteration order
-        // is not deterministic (per-instance hash seed), so `groupOrder`
-        // tracks first-registration order separately; emission below reads
-        // from `groupOrder`, never from `Array(grouped)`.
+
         var grouped: [HTML.AtRule?: [(style: HTML.Style.Rule, className: String)]] = [:]
         var groupOrder: [HTML.AtRule?] = []
         styles.forEach { style, className in
@@ -677,12 +603,10 @@ extension HTML.Context {
         return sheet
     }
 
-    /// Convenience property for stylesheet bytes with no indentation.
     public var stylesheetBytes: ContiguousArray<UInt8> {
         stylesheetBytes(baseIndentation: [])
     }
 
-    /// Convenience property that converts bytes to String.
     public var stylesheet: String {
         String(decoding: stylesheetBytes, as: UTF8.self)
     }

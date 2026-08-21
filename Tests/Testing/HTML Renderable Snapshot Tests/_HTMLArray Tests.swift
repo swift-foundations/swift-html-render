@@ -1,10 +1,3 @@
-//
-//  _Array Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Rendering_Core
 import HTML_Snapshot_Test_Support
 import Testing
@@ -12,11 +5,9 @@ import Testing
 @Suite
 struct `_Array Tests` {
 
-    // MARK: - Basic Rendering
-
     @Test
     func `_Array renders multiple elements`() throws {
-        // _Array is created through HTMLBuilder with for loops
+
         let html = HTML.Group {
             for item in ["A", "B", "C"] {
                 tag("li") {
@@ -59,8 +50,6 @@ struct `_Array Tests` {
         let rendered = try String(html)
         #expect(rendered == "<span>Only</span>")
     }
-
-    // MARK: - Complex Content
 
     @Test
     func `_Array with nested elements`() throws {
@@ -121,8 +110,6 @@ struct `_Array Tests` {
         #expect(rendered.contains("2: Third"))
     }
 
-    // MARK: - Array Map Integration
-
     @Test
     func `_Array via map`() throws {
         let items = ["Alpha", "Beta", "Gamma"]
@@ -137,8 +124,6 @@ struct `_Array Tests` {
         #expect(rendered.contains("<option>Beta</option>"))
         #expect(rendered.contains("<option>Gamma</option>"))
     }
-
-    // MARK: - Context Propagation
 
     @Test
     func `_Array propagates context correctly`() throws {
@@ -157,8 +142,6 @@ struct `_Array Tests` {
         #expect(rendered.contains("color:blue"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

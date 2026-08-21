@@ -1,10 +1,3 @@
-//
-//  EmptyTests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Rendering_Core
 import HTML_Snapshot_Test_Support
 import Testing
@@ -73,8 +66,6 @@ struct `Empty Tests` {
     }
 }
 
-// MARK: - Snapshot Tests
-
 extension `Snapshot Tests` {
     @Suite
     struct `Empty Snapshot Tests` {
@@ -142,19 +133,19 @@ extension `Snapshot Tests` {
                             HTML.Text("Article Title")
                         }
 
-                        HTML.Empty()  // This should render nothing
+                        HTML.Empty()
 
                         tag("p") {
                             HTML.Text("First paragraph of content.")
                         }
 
-                        HTML.Empty()  // This should render nothing
+                        HTML.Empty()
 
                         tag("p") {
                             HTML.Text("Second paragraph of content.")
                         }
 
-                        HTML.Empty()  // This should render nothing
+                        HTML.Empty()
                     }
                 }
             } matches: {

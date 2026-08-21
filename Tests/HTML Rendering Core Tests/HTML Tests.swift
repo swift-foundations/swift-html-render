@@ -1,15 +1,6 @@
-//
-//  HTML Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import Testing
 
 @testable import HTML_Rendering_Core
-
-// MARK: - Test Suite
 
 @Suite
 struct `HTML Protocol Tests` {
@@ -17,8 +8,6 @@ struct `HTML Protocol Tests` {
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension `HTML Protocol Tests`.Unit {
 
@@ -47,8 +36,6 @@ extension `HTML Protocol Tests`.Unit {
         #expect(try String(anyHTML2) == "second")
     }
 }
-
-// MARK: - Integration
 
 extension `HTML Protocol Tests`.Integration {
 

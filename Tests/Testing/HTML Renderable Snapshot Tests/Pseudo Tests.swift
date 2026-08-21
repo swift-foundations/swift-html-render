@@ -1,10 +1,3 @@
-//
-//  PseudoTests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -19,7 +12,6 @@ struct `Pseudo Tests` {
         let active = HTML.Pseudo.active
         let focus = HTML.Pseudo.focus
 
-        // Test that pseudo classes can be created
         #expect(hover.rawValue == ":hover")
         #expect(active.rawValue == ":active")
         #expect(focus.rawValue == ":focus")
@@ -99,7 +91,6 @@ struct `Pseudo Tests` {
     func `Pseudo + operator - combining pseudo-elements`() throws {
         let beforeAfter = HTML.Pseudo.before + HTML.Pseudo.after
 
-        // Note: This creates an invalid CSS selector, but tests the operator
         #expect(beforeAfter.rawValue == "::before::after")
     }
 
@@ -138,8 +129,6 @@ struct `Pseudo Tests` {
         #expect(hoverCustom.rawValue == ":hover:not(.hidden)")
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

@@ -1,18 +1,7 @@
-//
-//  HTMLStyled Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Rendering
 @_spi(DynamicHTML) import HTML_Rendering_Core
 import HTML_Standard
 import Testing
-
-// HTML.Styled is generic — use parallel namespace pattern [TEST-004].
-
-// MARK: - Test Suite
 
 @Suite
 struct HTMLStyledTests {
@@ -20,8 +9,6 @@ struct HTMLStyledTests {
     @Suite struct `Edge Case` {}
     @Suite struct Integration {}
 }
-
-// MARK: - Unit
 
 extension HTMLStyledTests.Unit {
 
@@ -164,8 +151,6 @@ extension HTMLStyledTests.Unit {
     }
 }
 
-// MARK: - EdgeCase
-
 extension HTMLStyledTests.`Edge Case` {
 
     @Test
@@ -179,8 +164,6 @@ extension HTMLStyledTests.`Edge Case` {
         #expect(rendered.contains("<div"))
     }
 }
-
-// MARK: - Integration
 
 extension HTMLStyledTests.Integration {
 

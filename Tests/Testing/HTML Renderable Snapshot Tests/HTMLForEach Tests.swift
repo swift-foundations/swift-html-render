@@ -1,10 +1,3 @@
-//
-//  Array Map Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -110,8 +103,6 @@ struct `Array Map Tests` {
         #expect(rendered.contains("<p>Second description</p>"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

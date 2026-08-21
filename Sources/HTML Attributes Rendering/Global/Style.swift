@@ -1,15 +1,8 @@
-///
-/// Style.swift
-/// swift-html
-///
-/// Created by Coen ten Thije Boonkkamp on 02/04/2025.
-///
-
 import HTML_Rendering_Core
 import HTML_Standard_Attributes
 
 extension HTML.View {
-    /// Sets the style attribute with CSS declarations as a string
+
     @discardableResult
     public func style(
         _ css: String
@@ -17,7 +10,6 @@ extension HTML.View {
         self.attribute(HTML.Style.Attribute.attribute, css)
     }
 
-    /// Sets the style attribute with CSS declarations as key-value pairs
     @discardableResult
     public func style(
         _ declarations: [String: String]
@@ -29,7 +21,6 @@ extension HTML.View {
         return self.attribute(HTML.Style.Attribute.attribute, formattedDeclarations)
     }
 
-    /// Sets the style attribute using a Style struct
     @discardableResult
     public func style(
         _ attribute: WHATWG.HTML.Style.Attribute

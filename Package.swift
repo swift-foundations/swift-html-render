@@ -7,7 +7,7 @@ extension String {
     static let htmlAttributesRendering: Self = "HTML Attributes Rendering"
     static let htmlElementsRendering: Self = "HTML Elements Rendering"
     static let htmlRendering: Self = "HTML Rendering"
-//    static let htmlSnapshotTestSupport: Self = "HTML Snapshot Test Support"
+
     var tests: Self { self + " Tests" }
 }
 
@@ -42,9 +42,7 @@ extension Target.Dependency {
     static var whatwgHTMLShared: Self {
         .product(name: "WHATWG HTML Shared", package: "swift-whatwg-html")
     }
-//    static var testSnapshotPrimitives: Self {
-//        .product(name: "Test Snapshot Primitives", package: "swift-test-primitives")
-//    }
+
     static var w3cCSSShared: Self {
         .product(name: "W3C CSS Shared", package: "swift-w3c-css")
     }
@@ -95,7 +93,7 @@ let package = Package(
             name: "HTML Rendering Core Test Support",
             targets: ["HTML Rendering Core Test Support"]
         ),
-//        .library(name: .htmlSnapshotTestSupport, targets: [.htmlSnapshotTestSupport]),
+
     ],
     dependencies: [
         .package(
@@ -106,10 +104,7 @@ let package = Package(
         .package(url: "https://github.com/swift-standards/swift-html-standard.git", branch: "main"),
         .package(url: "https://github.com/swift-whatwg/swift-whatwg-html.git", branch: "main"),
         .package(url: "https://github.com/swift-w3c/swift-w3c-css.git", branch: "main"),
-//        .package(
-//            url: "https://github.com/swift-primitives/swift-test-primitives.git",
-//            branch: "main"
-//        ),
+
         .package(
             url: "https://github.com/swift-primitives/swift-dictionary-primitives.git",
             branch: "main"
@@ -149,8 +144,6 @@ let package = Package(
     ],
     targets: [
 
-        // MARK: - Core
-
         .target(
             name: .htmlRenderingCore,
             dependencies: [
@@ -174,8 +167,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Attributes
-
         .target(
             name: .htmlAttributesRendering,
             dependencies: [
@@ -184,8 +175,6 @@ let package = Package(
                 .htmlStandardAttributes,
             ]
         ),
-
-        // MARK: - Elements
 
         .target(
             name: .htmlElementsRendering,
@@ -196,8 +185,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Umbrella
-
         .target(
             name: .htmlRendering,
             dependencies: [
@@ -207,8 +194,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Test Support
-
         .target(
             name: "HTML Rendering Core Test Support",
             dependencies: [
@@ -217,20 +202,6 @@ let package = Package(
             ],
             path: "Tests/Support"
         ),
-
-//        .target(
-//            name: .htmlSnapshotTestSupport,
-//            dependencies: [
-//                .htmlRenderingCore,
-//                .htmlRenderingCoreTestSupport,
-//                .htmlStandardTestSupport,
-//                .testSnapshotPrimitives,
-//                .whatwgHTMLShared,
-//            ],
-//            path: "Tests/Testing/Snapshot Support"
-//        ),
-
-        // MARK: - Tests
 
         .testTarget(
             name: .htmlRenderingCore.tests,

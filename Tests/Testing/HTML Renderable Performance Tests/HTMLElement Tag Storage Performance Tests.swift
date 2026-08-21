@@ -1,26 +1,9 @@
-//
-//  HTMLElement Tag Storage Performance Tests.swift
-//  swift-html-rendering
-//
-//  A/B comparison: class-backed indirect storage vs inline storage
-//  for HTML.Tag.Element<Content>.
-//
-//  Indirect storage keeps Tag at pointer size (8 bytes) regardless of content,
-//  preventing cooperative pool stack overflow during result builder expansion.
-//  These tests measure the allocation overhead trade-off.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 import Tests_Performance
 
 @testable import HTML_Rendering_Core
 
-// MARK: - Inline Baseline
-
-/// Mirrors the original `HTML.Tag.Element` layout with inline storage.
-///
-/// Used as a measurement control — not connected to the rendering pipeline.
 private struct InlineTag<Content> {
     let tagName: String
     let isBlock: Bool
@@ -31,14 +14,10 @@ private struct InlineTag<Content> {
 
 extension InlineTag: Sendable where Content: Sendable {}
 
-// MARK: - Tests
-
 extension `Performance Tests` {
 
     @Suite(.serialized)
     struct `Tag Storage` {
-
-        // MARK: - Tag Creation (isolates allocation overhead)
 
         @Test(.timed(iterations: 3))
         func `inline tag creation 100K`() {
@@ -63,8 +42,6 @@ extension `Performance Tests` {
                 blackHole(t)
             }
         }
-
-        // MARK: - Tag Copy (retain vs memcpy)
 
         @Test(.timed(iterations: 3))
         func `inline tag copy 100K`() {
@@ -91,8 +68,6 @@ extension `Performance Tests` {
                 blackHole(copy)
             }
         }
-
-        // MARK: - Large Content Tag (where indirect wins on copy)
 
         @Test(.timed(iterations: 3))
         func `inline tag copy with large content 100K`() {
@@ -124,8 +99,6 @@ extension `Performance Tests` {
                 blackHole(copy)
             }
         }
-
-        // MARK: - Full Document Rendering (end-to-end throughput)
 
         @Test(.timed(iterations: 3))
         func `small document 1K renders`() throws {
@@ -299,9 +272,6 @@ extension `Performance Tests` {
     }
 }
 
-// MARK: - Black Hole
-
-/// Prevents dead-code elimination without observable side effects.
 @inline(never)
 private func blackHole<T>(_ value: T) {
     withExtendedLifetime(value) {}

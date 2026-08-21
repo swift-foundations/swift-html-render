@@ -1,10 +1,3 @@
-//
-//  TestProperty.swift
-//  swift-html-rendering
-//
-//  String-based CSS property for testing.
-//
-
 public struct TestProperty: W3C_CSS_Shared.Property, GlobalConvertible {
     public static var property: String { "" }
     public let name: String

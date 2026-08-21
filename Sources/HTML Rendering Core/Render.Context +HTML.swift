@@ -3,13 +3,7 @@ import Render_Primitives
 public import WHATWG_HTML_Shared
 
 extension Render.Context {
-    /// Creates a rendering context that forwards all operations to an HTML context.
-    ///
-    /// The HTML context is captured via `Ownership.Mutable` so that closures
-    /// share mutable access to the same underlying state.
-    ///
-    /// - Parameter state: A mutable reference to the HTML rendering state.
-    /// - Returns: A witness-based rendering context backed by the HTML context.
+
     public static func html(state: Ownership.Mutable<HTML.Context>) -> Self {
         .init(
             text: { state.value.text($0) },
@@ -35,10 +29,7 @@ extension Render.Context {
                         isPreElement: $3
                     )
                 },
-                // A style scope isolates the class attribute it accumulates so an
-                // element's generated classes don't leak to the next sibling. That's
-                // exactly the attribute save/restore, so reuse it (the default
-                // `style` witness is a no-op, which let classes leak forward).
+
                 style: { HTML.Context._pushAttributes(&state.value) }
             ),
             pop: Render.Pop(

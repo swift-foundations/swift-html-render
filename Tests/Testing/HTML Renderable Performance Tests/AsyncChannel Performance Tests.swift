@@ -1,8 +1,3 @@
-//
-//  AsyncChannel Performance Tests.swift
-//  swift-html-rendering
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -40,7 +35,6 @@ extension `Performance Tests` {
             var chunkCount = 0
             let startTime = ContinuousClock.now
 
-            // Use backpressure mode for bounded memory
             var channel = Async.Channel<ArraySlice<UInt8>>.Bounded { html }
             for try await chunk in channel.receiver.elements {
                 if chunkCount == 0 {
@@ -49,7 +43,6 @@ extension `Performance Tests` {
                 totalBytes += chunk.count
                 chunkCount += 1
 
-                // Print progress every 1000 chunks
                 if chunkCount % 1000 == 0 {
                     print("Progress: \(chunkCount) chunks, \(totalBytes) bytes")
                     print("Time4: \(ContinuousClock.now)")

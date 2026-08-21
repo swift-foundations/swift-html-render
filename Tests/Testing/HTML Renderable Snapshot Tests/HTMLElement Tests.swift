@@ -1,10 +1,3 @@
-//
-//  HTML.ElementTests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -75,8 +68,6 @@ struct `HTML.Element Tests` {
         #expect(rendered.contains("custom content"))
         #expect(rendered.contains("</custom-element>"))
     }
-
-    // MARK: - Attribute Escaping Tests (Fast Path Optimization)
 
     @Test
     func `Attribute with no escaping needed - fast path`() throws {
@@ -156,13 +147,11 @@ struct `HTML.Element Tests` {
             .attribute("disabled", "")
 
         let rendered = try String(HTML.Document { element })
-        // Empty string attributes are rendered as boolean attributes (no value)
+
         #expect(rendered.contains("required"))
         #expect(rendered.contains("disabled"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

@@ -1,10 +1,3 @@
-//
-//  callAsFunction.swift
-//  swift-html-rendering
-//
-//  Test helpers enabling `tag("div") { content }` chaining.
-//
-
 extension HTML.Tag {
     @inlinable
     public func callAsFunction() -> HTML.Tag.Element<HTML.Empty> {

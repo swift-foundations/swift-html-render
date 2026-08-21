@@ -1,10 +1,3 @@
-//
-//  HTML.Tag.swift
-//
-//
-//  Created by Point-Free, Inc
-//
-
 import Render_Primitives
 public import WHATWG_HTML_Shared
 
@@ -15,32 +8,11 @@ extension HTML {
 }
 
 extension HTML {
-    /// Represents a standard HTML tag that can contain other HTML elements.
-    ///
-    /// `HTML.Tag` provides a convenient way to create HTML elements with a function-call
-    /// syntax. It supports both empty elements and elements with content.
-    ///
-    /// Example:
-    /// ```swift
-    /// // Empty div
-    /// let emptyDiv = div()
-    ///
-    /// // Div with content
-    /// let contentDiv = div {
-    ///     h1 { "Title" }
-    ///     p { "Paragraph" }
-    /// }
-    /// ```
-    ///
-    /// This struct is primarily used through the predefined tag variables like `div`, `span`,
-    /// `h1` and similar, but can also be used directly with custom tag names.
+
     public struct Tag {
-        /// The name of the HTML tag.
+
         public let rawValue: String
 
-        /// Creates a new HTML tag with the specified name.
-        ///
-        /// - Parameter rawValue: The name of the HTML tag.
         internal init(_ rawValue: String) {
             self.rawValue = rawValue
         }
@@ -48,7 +20,7 @@ extension HTML {
 }
 
 extension HTML.Tag {
-    /// <!doctype html>
+
     @inlinable
     public static var doctype: [UInt8] {
         [
@@ -60,7 +32,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// <html>
     @inlinable
     public static var open: [UInt8] {
         [
@@ -70,7 +41,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// </html>
     @inlinable
     public static var close: [UInt8] {
         [
@@ -80,7 +50,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// <head>
     @inlinable
     public static var headOpen: [UInt8] {
         [
@@ -90,7 +59,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// </head>
     @inlinable
     public static var headClose: [UInt8] {
         [
@@ -100,7 +68,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// <body>
     @inlinable
     public static var bodyOpen: [UInt8] {
         [
@@ -110,7 +77,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// </body>
     @inlinable
     public static var bodyClose: [UInt8] {
         [
@@ -120,7 +86,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// <style>
     @inlinable
     public static var styleOpen: [UInt8] {
         [
@@ -130,7 +95,6 @@ extension HTML.Tag {
         ]
     }
 
-    /// </style>
     @inlinable
     public static var styleClose: [UInt8] {
         [

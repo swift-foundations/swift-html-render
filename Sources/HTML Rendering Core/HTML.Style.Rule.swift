@@ -1,52 +1,19 @@
-//
-//  HTML.Style.Rule.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 26/11/2025.
-//
-
 import Render_Primitives
 public import W3C_CSS_Shared
 public import WHATWG_HTML_Shared
 
 extension HTML.Style {
-    /// A CSS style declaration with optional scope modifiers.
-    ///
-    /// `HTML.Style.Rule` captures a CSS declaration and its context (at-rule, selector, pseudo).
-    /// This is the unified representation for all styling operations.
-    ///
-    /// Create styles from typed CSS properties for compile-time safety:
-    /// ```swift
-    /// HTML.Style.Rule(Color.red)
-    /// HTML.Style.Rule(Margin.px(10), pseudo: .hover)
-    /// ```
-    ///
-    /// Or from raw declaration strings when needed:
-    /// ```swift
-    /// HTML.Style.Rule(declaration: "color:red")
-    /// ```
+
     public struct Rule: Hashable, Sendable {
-        /// The CSS declaration string (such as "color:red")
+
         public let declaration: String
 
-        /// Optional at-rule (such as @media query)
         public let atRule: HTML.AtRule?
 
-        /// Optional CSS selector prefix
         public let selector: HTML.Selector?
 
-        /// Optional pseudo-class or pseudo-element
         public let pseudo: HTML.Pseudo?
 
-        /// Create a style from a typed CSS property.
-        ///
-        /// This is the primary API for creating styles with compile-time type safety.
-        ///
-        /// - Parameters:
-        ///   - property: The typed CSS property value.
-        ///   - atRule: Optional at-rule (such as media query).
-        ///   - selector: Optional selector prefix.
-        ///   - pseudo: Optional pseudo-class or pseudo-element.
         public init<P: W3C_CSS_Shared.Property>(
             _ property: P,
             atRule: HTML.AtRule? = nil,
@@ -59,15 +26,6 @@ extension HTML.Style {
             self.pseudo = pseudo
         }
 
-        /// Create a style from a raw declaration string.
-        ///
-        /// Use this when you need to bypass the typed property system.
-        ///
-        /// - Parameters:
-        ///   - declaration: The CSS declaration string (such as "color:red").
-        ///   - atRule: Optional at-rule (such as media query).
-        ///   - selector: Optional selector prefix.
-        ///   - pseudo: Optional pseudo-class or pseudo-element.
         public init(
             declaration: String,
             atRule: HTML.AtRule? = nil,
@@ -83,10 +41,7 @@ extension HTML.Style {
 }
 
 extension HTML.Style.Rule {
-    /// The CSS property name extracted from the declaration.
-    ///
-    /// For "color:red", returns "color".
-    /// Used for generating descriptive class names.
+
     public var propertyName: String {
         if let colonIndex = declaration.firstIndex(of: ":") {
             return String(declaration[..<colonIndex])
@@ -95,7 +50,6 @@ extension HTML.Style.Rule {
     }
 }
 
-// Dictionary.Ordered key conformances
 extension HTML.Style.Rule: Equation.`Protocol` {
     public static func == (lhs: borrowing Self, rhs: borrowing Self) -> Bool {
         lhs.declaration == rhs.declaration

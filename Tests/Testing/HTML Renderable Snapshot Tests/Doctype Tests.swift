@@ -1,10 +1,3 @@
-//
-//  Doctype Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -73,8 +66,6 @@ struct `Doctype Tests` {
         #expect(rendered == "<!doctype html><!doctype html>")
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

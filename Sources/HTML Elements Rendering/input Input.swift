@@ -1,11 +1,3 @@
-//
-//  File.swift
-//  swift-html
-//
-//  Created by Coen ten Thije Boonkkamp on 04/04/2025.
-//
-//
-
 import HTML_Attributes_Rendering
 public import HTML_Standard
 import HTML_Standard_Elements

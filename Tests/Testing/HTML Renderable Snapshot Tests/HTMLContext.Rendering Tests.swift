@@ -1,10 +1,3 @@
-//
-//  HTML.Context.Configuration Tests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 25/11/2025.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 
@@ -12,8 +5,6 @@ import Testing
 
 @Suite
 struct `HTML.Context.Configuration Tests` {
-
-    // MARK: - Preset Configurations
 
     @Test
     func `Configuration.default properties`() {
@@ -51,14 +42,12 @@ struct `HTML.Context.Configuration Tests` {
         #expect(config.reservedCapacity == 4096)
     }
 
-    // MARK: - Custom Initialization
-
     @Test
     func `Configuration custom initialization`() {
         let config = HTML.Context.Configuration(
             forceImportant: true,
-            indentation: [.ascii.htab],  // Tab
-            newline: [.ascii.cr, .ascii.lf],  // CRLF
+            indentation: [.ascii.htab],
+            newline: [.ascii.cr, .ascii.lf],
             reservedCapacity: 8192
         )
 
@@ -67,8 +56,6 @@ struct `HTML.Context.Configuration Tests` {
         #expect(config.newline == [.ascii.cr, .ascii.lf] as [UInt8])
         #expect(config.reservedCapacity == 8192)
     }
-
-    // MARK: - TaskLocal
 
     @Test
     func `Configuration TaskLocal current defaults to default`() {
@@ -82,15 +69,14 @@ struct `HTML.Context.Configuration Tests` {
 
     @Test
     func `Configuration TaskLocal withValue scoped`() throws {
-        // Outside scope should use default
+
         #expect(HTML.Context.Configuration.current.forceImportant == false)
 
         HTML.Context.Configuration.$current.withValue(.email) {
-            // Inside scope should use email config
+
             #expect(HTML.Context.Configuration.current.forceImportant == true)
         }
 
-        // Outside scope should still use default
         #expect(HTML.Context.Configuration.current.forceImportant == false)
     }
 
@@ -101,19 +87,15 @@ struct `HTML.Context.Configuration Tests` {
         }
         .inlineStyle("color", "red")
 
-        // Default rendering (no !important)
         let defaultRendered = try String(HTML.Document { html })
         #expect(defaultRendered.contains("color:red}"))
         #expect(!defaultRendered.contains("!important"))
 
-        // Email rendering (with !important)
         let emailRendered: String = try HTML.Context.Configuration.$current.withValue(.email) {
             try String(HTML.Document { html })
         }
         #expect(emailRendered.contains("!important"))
     }
-
-    // MARK: - Sendable
 
     @Test
     func `Configuration is Sendable`() async {
@@ -126,8 +108,6 @@ struct `HTML.Context.Configuration Tests` {
         #expect(result == 2048)
     }
 
-    // MARK: - Rendering Effects
-
     @Test
     func `Configuration.default produces minified output`() throws {
         let html = tag("div") {
@@ -137,7 +117,7 @@ struct `HTML.Context.Configuration Tests` {
         }
 
         let rendered = try String(html)
-        // Minified should not have extra newlines between elements
+
         #expect(!rendered.contains("\n\n"))
     }
 
@@ -153,7 +133,6 @@ struct `HTML.Context.Configuration Tests` {
             try String(html)
         }
 
-        // Pretty should have newlines and indentation
         #expect(rendered.contains("\n"))
     }
 
@@ -171,8 +150,6 @@ struct `HTML.Context.Configuration Tests` {
         #expect(rendered.contains("!important"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

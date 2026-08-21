@@ -1,10 +1,3 @@
-//
-//  GroupTests.swift
-//  swift-html-rendering
-//
-//  Created by Coen ten Thije Boonkkamp on 20/07/2025.
-//
-
 import HTML_Rendering_Core
 import HTML_Snapshot_Test_Support
 import Testing
@@ -108,8 +101,6 @@ struct `Group Tests` {
         #expect(!rendered.contains("<group>") && !rendered.contains("</group>"))
     }
 }
-
-// MARK: - Snapshot Tests
 
 extension `Snapshot Tests` {
     @Suite

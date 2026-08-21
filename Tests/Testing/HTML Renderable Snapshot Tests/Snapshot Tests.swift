@@ -1,8 +1,3 @@
-//
-//  Snapshot Tests.swift
-//  swift-html-rendering
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 

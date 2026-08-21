@@ -1,10 +1,3 @@
-//
-//  HTML.Element AttributeEscaping PerformanceTests.swift
-//  swift-html-rendering
-//
-//  Performance tests for HTML attribute value escaping optimization.
-//
-
 import HTML_Snapshot_Test_Support
 import Testing
 import Tests_Performance
@@ -14,8 +7,6 @@ import Tests_Performance
 extension `Performance Tests` {
     @Suite
     struct `HTML.Element AttributeEscaping` {
-
-        // MARK: - Fast Path Tests (No Escaping Needed)
 
         @Test(.timed(threshold: .seconds(4)))
         func `fast path - simple attributes 10K renders`() throws {
@@ -66,8 +57,6 @@ extension `Performance Tests` {
             }
         }
 
-        // MARK: - Slow Path Tests (Escaping Required)
-
         @Test(.timed(threshold: .seconds(3)))
         func `slow path - attributes with quotes 10K renders`() throws {
             for _ in 0..<10_000 {
@@ -107,13 +96,11 @@ extension `Performance Tests` {
             }
         }
 
-        // MARK: - Mixed Workload Tests
-
         @Test(.timed(threshold: .milliseconds(3500)))
         func `mixed - 80 percent fast path 20 percent slow path`() throws {
             for i in 0..<10_000 {
                 if i % 5 < 4 {
-                    // Fast path: 80% of operations
+
                     _ = try String(
                         HTML.Document {
                             tag("div")
@@ -122,7 +109,7 @@ extension `Performance Tests` {
                         }
                     )
                 } else {
-                    // Slow path: 20% of operations
+
                     _ = try String(
                         HTML.Document {
                             tag("div")
@@ -132,8 +119,6 @@ extension `Performance Tests` {
                 }
             }
         }
-
-        // MARK: - Baseline Comparison Tests
 
         @Test(.timed(threshold: .seconds(4)))
         func `baseline - element without attributes 10K renders`() throws {
@@ -158,8 +143,6 @@ extension `Performance Tests` {
                 )
             }
         }
-
-        // MARK: - Real-World Scenario Tests
 
         @Test(.timed(threshold: .milliseconds(600)))
         func `real-world - form with mixed attributes 1K renders`() throws {
